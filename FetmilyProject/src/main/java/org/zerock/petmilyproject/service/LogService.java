@@ -6,6 +6,7 @@ public interface LogService {
 
     Long register(MemberDTO memberDTO);
     MemberDTO readOne(Long bno);
+    MemberDTO login(MemberDTO memberDTO);
     void modify(MemberDTO memberDTO);
     void remove(Long bno);
 }
