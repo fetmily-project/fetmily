@@ -17,9 +17,11 @@ public class Cart {
     private Long cartId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "itemId")
     private Item item;
 
     @ColumnDefault("0")

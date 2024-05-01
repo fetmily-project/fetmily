@@ -16,9 +16,11 @@ public class Reply extends BaseEntity {
     private Long replyId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "boardId")
     private Board board;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
     private Member member;
 
     @Column(length = 1000, nullable = false)

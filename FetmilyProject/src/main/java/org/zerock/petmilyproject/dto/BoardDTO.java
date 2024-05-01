@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,7 +15,6 @@ public class BoardDTO {
     private Long memberId;
     private String title;
     private String content;
-    private String category;
     private Long viewCnt;
     private Long likeCnt;
 
