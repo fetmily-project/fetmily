@@ -18,6 +18,7 @@ public class Pet {
     private Long petId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
     private Member member;
 
     @Column(length = 500, nullable = false)

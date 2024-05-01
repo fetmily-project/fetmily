@@ -1,6 +1,7 @@
 package org.zerock.petmilyproject.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -16,8 +17,8 @@ public class Board extends BaseEntity{
     private Long boardId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
     private Member member;
-
 
     @Column(length = 500, nullable = false)
     private String title;
@@ -25,13 +26,10 @@ public class Board extends BaseEntity{
     @Column(length = 500, nullable = false)
     private String content;
 
-    @Column(length = 500, nullable = false)
-    private String category;
-
-    @Column(nullable = false)
+    @ColumnDefault("0")
     private Long viewCnt;
 
-    @Column(nullable = false)
+    @ColumnDefault("0")
     private Long likeCnt;
 
     public void change(String title, String content){

@@ -17,6 +17,7 @@ public class Memo extends BaseEntity {
     private Long memoId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberId")
     private Member member;
 
     private String content;
