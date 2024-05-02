@@ -20,6 +20,7 @@
             flex-direction: column;
             gap: 10px;
         }
+        /* 버튼 스타일 */
         .search-btns button {
             width: 110px;
             padding: 15px;
@@ -31,6 +32,30 @@
         .search-btns button:hover {
             background-color: #FFC107; /* warning color */
         }
+        /* 드롭다운 */
+        #dropBox{
+            width: 90px;
+            padding: 15px;
+            background-color: #007BFF; /* primary color */
+            border-radius: 10px;
+            font-size: 1.2em;
+            color: #FFFFFF; /* white color */
+        }
+
+        .dropdown-content{
+            display: none;
+            position: absolute;
+            top: 56px;
+            right: 10px;
+            min-width: 110px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .search-btns:hover .dropdown-content{
+            display: block;
+        }
+
     /* 목록을 표시하는 css */
         .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
         .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -86,12 +111,12 @@
 </div>
 <!-- 검색 버튼 컨테이너-->
 <div class="search-btns">
-    <!--    <button type="button" onclick="searchPlaces('애견카페')">애견카페 :커피:️</button>-->
-    <!--    <button type="button" onclick="searchPlaces('동물병원')">동물병원 :의료_종사자:</button>-->
-    <!--    <button type="button" onclick="searchPlaces('애견호텔')">애견호텔 :호텔:</button>-->
-    <button id="cafeBtn" type="button">애견카페 ☕️</button>
-    <button id="hospitalBtn" type="button">동물병원 🧑‍⚕️</button>
-    <button id="hotelBtn" type="button">애견호텔 🏨</button>
+    <span id="dropBox">DropBox</span>
+    <div class="dropdown-content">
+        <button id="cafeBtn" type="button">애견카페 ☕️</button>
+        <button id="hospitalBtn" type="button">동물병원 🧑‍⚕️</button>
+        <button id="hotelBtn" type="button">애견호텔 🏨</button>
+    </div>
 </div>
 <!-- kakao 지도 API 불러오기 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fa50bac5a61c8b7be8bba979347a108c&libraries=services"></script>
