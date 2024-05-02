@@ -57,19 +57,26 @@
         // };
         // var map = new kakao.maps.Map(mapContainer, options); //지도 생성 및 객체 리턴
         // 버튼 클릭 이벤트 추가
-
         document.getElementById('cafeBtn').addEventListener('click', function() {
-
-            ps.keywordSearch("애견카페", placesSearchCB);
+            ps.keywordSearch("애견카페", placesSearchCB, {
+                radius : 2000,
+                location: new kakao.maps.LatLng(lat, long)
+            });
         });
         document.getElementById('hospitalBtn').addEventListener('click', function() {
-
-            ps.keywordSearch("동물병원", placesSearchCB);
+            ps.keywordSearch("동물병원", placesSearchCB, {
+                radius : 2000,
+                location: new kakao.maps.LatLng(lat, long)
+            });
         });
         document.getElementById('hotelBtn').addEventListener('click', function() {
-
-            ps.keywordSearch("애견호텔", placesSearchCB);
+            ps.keywordSearch("애견호텔", placesSearchCB, {
+                radius : 2000,
+                location: new kakao.maps.LatLng(lat, long)
+            });
         });
+        let lat;
+        let long;
         // 현재 위치 가져오기
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -84,6 +91,8 @@
                         position: markerPosition,
                         image: markerImage
                     });
+                    lat = position.coords.latitude;
+                    long = position.coords.longitude;
                     marker.setMap(map);
                 },
                 function (error) {
