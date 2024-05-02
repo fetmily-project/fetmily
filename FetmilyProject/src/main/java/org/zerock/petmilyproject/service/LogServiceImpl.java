@@ -19,7 +19,7 @@ public class LogServiceImpl implements LogService{
     public Long register(MemberDTO memberDTO) {
         Member member = modelMapper.map(memberDTO, Member.class);
         Long memberId = logRepository.save(member).getMemberId();
-
+        log.info(member);
         return memberId;
     }
 

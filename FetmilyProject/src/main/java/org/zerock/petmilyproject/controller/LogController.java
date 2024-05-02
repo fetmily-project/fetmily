@@ -3,12 +3,16 @@ package org.zerock.petmilyproject.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.petmilyproject.dto.MemberDTO;
 import org.zerock.petmilyproject.service.LogService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Log4j2
 @Controller
@@ -21,40 +25,41 @@ public class LogController {
     public void signupGET(){}
 
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String signup(@RequestBody MemberDTO memberDTO){
+    public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO){
+        log.info(memberDTO);
         logService.register(memberDTO);
 
-        return "redirect:";
+        return ResponseEntity.ok(1);
     }
 
     @GetMapping("/login")
     public void loginGET(){}
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String login(@RequestBody MemberDTO memberDTO, RedirectAttributes redirectAttributes){
+    public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO){
         MemberDTO loginMemberDTO = logService.login(memberDTO);
-        redirectAttributes.addAttribute("loginMemberDTO", loginMemberDTO);
 
-        return "redirect:/member/login";
+        return ResponseEntity.ok(loginMemberDTO);
     }
 
-    @GetMapping(value = {"/info?memberId={memberId}", "/update" })
-    public void memberGET(@PathVariable("memberId") Long memberId, Model model){
+    @GetMapping(value = {"/info", "/update" })
+    public ResponseEntity<MemberDTO> memberGET(@RequestParam("memberId") Long memberId){
         MemberDTO memberDTO = logService.readOne(memberId);
-        model.addAttribute("memberDTO", memberDTO);
+
+        return ResponseEntity.ok(memberDTO);
     }
 
-    @DeleteMapping("/delete?memberId={memberId}")
-    public String memberDelete(@PathVariable("memberId") Long memberId){
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> memberDelete(@RequestParam Long memberId){
         logService.remove(memberId);
 
-        return null;
+        return ResponseEntity.ok(1);
     }
 
-    @PostMapping("/update")
-    public String memberUpdate(@RequestBody MemberDTO memberDTO){
+    @PutMapping("/update")
+    public ResponseEntity<?> memberUpdate(@RequestBody MemberDTO memberDTO){
         logService.modify(memberDTO);
 
-        return null;
+        return ResponseEntity.ok(1);
     }
 }

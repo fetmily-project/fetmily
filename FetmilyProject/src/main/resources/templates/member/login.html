@@ -2,25 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
     <script src="/js/member/member.js"></script>
+    <title>Title</title>
 </head>
 <body>
 <div>email: <input type="text" class="email"/></div>
 <div>pw: <input type="text" class="password"/></div>
-<div>name: <input type="text" class="name"/></div>
-<div>주민번호: <input type="text" class="socialNumber"/></div>
-<div>핸드폰: <input type="text" class="phone"/></div>
-<div>주소: <input type="text" class="addr"/></div>
-<div>nickname: <input type="text" class="nickname"/></div>
 <button class="submitBtn"></button>
 </body>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 <script>
     document.querySelector('.submitBtn').addEventListener('click', () => {
-        signup();
+        login();
     })
 </script>
 
