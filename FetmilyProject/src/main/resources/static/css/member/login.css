@@ -6,8 +6,6 @@
             "wdth" 100;
 }
 
-
-
 .container{
     position:absolute;
     display: flex;
@@ -141,6 +139,8 @@
     height:500px;
 
     padding:0 50px;
+
+    border-radius:10px;
 
     background-color: rgb(255,255,255);
 
