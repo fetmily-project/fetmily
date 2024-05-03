@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +14,7 @@
     <title>Document</title>
 </head>
 <body>
+<div layout:fragment="content">
 <div class="modal">
     <div class="modal_body">
         <div class="modal_title"><h2>회원가입</h2><img src="/assets/member/modalDelete.svg" class="modal_delete"></div>
@@ -55,6 +59,7 @@
         <button type="submit">로그인</button>
         <div class="login_footer"><span class="btn-open-modal">회원가입</span>&nbsp;&nbsp;&nbsp;<span class="search_id">ID/PW 찾기</span></div>
     </div>
+</div>
 </div>
 </body>
 

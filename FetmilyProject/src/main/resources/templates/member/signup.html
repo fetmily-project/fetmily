@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +9,7 @@
     <link rel="stylesheet" href="/css/member/signup.css"/>
     <title>Document</title>
 </head>
-<body>
+<body layout:fragment="content">
 <div class="modal">
     <div class="modal_body">
         <h2>회원가입</h2>

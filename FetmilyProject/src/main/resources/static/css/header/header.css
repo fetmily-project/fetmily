@@ -12,15 +12,21 @@ header{
     height: 80px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(87, 87, 87, 0.7);
     background-color: rgba(0, 0, 0, 0);
+    z-index: 999;
 }
+.center, .right{
+    display: flex;
+}
+ul{
 
-nav
-ul {
+}
+.center ul, .right ul{
+    list-style: none;
+    display: flex;
     justify-content: space-between;
 }
-nav ul li{
+.center ul li{
     margin: auto 20px;
 }
 
@@ -28,20 +34,10 @@ nav ul li{
     width: 113px;
     height: 37px;
 }
-nav{
-    display: flex;
-}
 
-ul{
-    list-style: none;
-    display: flex;
-}
-ul li{
+.center ul li{
     margin: 10px;
 }
 
-ul .center{
-    justify-content: space-around;
-}
 
 

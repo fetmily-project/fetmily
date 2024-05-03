@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -96,7 +98,7 @@
 
     </style>
 </head>
-<body>
+<body layout:fragment="content">
 <div class="map_wrap">
 <!-- Kakao Map 컨테이너 -->
 <div id="map" style="width:100%;height:100%;position: relative;overflow: hidden;"></div>
