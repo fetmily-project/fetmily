@@ -1,24 +1,18 @@
 async function signup(){
     let email = document.querySelector(".email").value;
-    let name = document.querySelector(".name").value;
     let password = document.querySelector(".password").value;
-    let socialNumber = document.querySelector(".socialNumber").value;
-    let phone = document.querySelector(".phone").value;
-    let addr = document.querySelector(".addr").value;
     let nickname = document.querySelector(".nickname").value;
-    console.log(email)
 
     await axios.post("/member/signup", {
         email: email,
-        name: name,
         password: password,
-        socialNumber: socialNumber,
-        phone: phone,
-        addr: addr,
         nickname: nickname
     }).then((response) => {
-        if(response.body === 1){
+        if(response.data === 1){
             alert("회원가입이 완료되었습니다");
+            document.querySelector('.modal').style.display = 'none';
+        }else{
+            alert("이미 가입된 이메일입니다");
         }
     }).catch((error) => {
         alert("잠시후 다시 시도해주세요");

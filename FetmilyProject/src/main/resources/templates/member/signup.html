@@ -30,15 +30,11 @@
 </div>
 <button class="btn-open-modal">Modal열기</button>
 </body>
-<script src="member.js"></script>
-<script src="index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/member/member.js"></script>
 <script>
     document.querySelector('.signup_btn').addEventListener('click', (e) => {
-        signup().then((response) => {
-            if(response === 1){
-                document.querySelector('.modal').style.display = 'none';
-            }
-        });
+        signup();
     });
 
     const modal = document.querySelector('.modal');
