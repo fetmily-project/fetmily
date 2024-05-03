@@ -31,6 +31,6 @@ public class Item {
     @Column(length = 500, nullable = false)
     private Long cnt;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private String category;
 }

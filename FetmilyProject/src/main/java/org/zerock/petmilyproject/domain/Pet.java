@@ -27,16 +27,16 @@ public class Pet {
     @Column(length = 500, nullable = false)
     private String petType;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private LocalDateTime birth;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private String weight;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private String neut;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private String sex;
 
     @Column(length = 1000)
