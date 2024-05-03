@@ -28,6 +28,7 @@ public class Cart {
     @Column(length = 500, nullable = false)
     private Long cnt;
 
+    @ColumnDefault("0")
     @Column(length = 500, nullable = false)
     private Long status;
 }
