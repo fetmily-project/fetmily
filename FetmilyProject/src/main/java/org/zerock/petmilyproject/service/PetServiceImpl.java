@@ -3,6 +3,7 @@ package org.zerock.petmilyproject.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Pet;
 import org.zerock.petmilyproject.dto.PetDTO;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class PetServiceImpl implements PetService{
     private final ModelMapper modelMapper;
     private final PetRepository petRepository;
+
     @Override
     public Long register(PetDTO petDTO) {
         Pet pet = modelMapper.map(petDTO, Pet.class);
@@ -27,8 +29,7 @@ public class PetServiceImpl implements PetService{
 
     @Override
     public PetDTO readOne(Long memberId, Long petId) {
-        Pet pet = petRepository.findByPetId(petId)
-                .orElseThrow();
+        Pet pet = petRepository.findByPetId(petId);
         PetDTO petDTO = modelMapper.map(pet, PetDTO.class);
 
         return petDTO;

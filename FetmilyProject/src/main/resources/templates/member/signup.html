@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/member/signup.css"/>
     <title>Document</title>
 </head>
 <body>
-    <h1>asd</h1>
+<div class="modal">
+    <div class="modal_body">
+        <h2>회원가입</h2>
+        <div class="modal_input">
+            <input type="text" placeholder="닉네임" class="nickname">
+            <input type="text" placeholder="이메일" class="email">
+            <input type="text" placeholder="비밀번호" class="password">
+            <input type="text" placeholder="비밀번호 확인" class="password_check">
+        </div>
+        <div class="modal_checkbox">
+            <span class="all_check"><img src="/assets/member/bigCheck.svg">&nbsp모두 동의합니다</span>
+            <hr>
+            <div class="check_set">
+                <span class="check1"><img src="/assets/member/smallCheck.svg">&nbsp만 14세 이상입니다.(필수)</span>
+                <span class="check2"><img src="/assets/member/smallCheck.svg">&nbsp이용약관(필수)</span>
+                <span class="check3"><img src="/assets/member/smallCheck.svg">&nbsp개인정보수집 및 이용동의(필수)</span>
+            </div>
+        </div>
+        <button class="signup_btn">회원가입 완료</button>
+    </div>
+</div>
+<button class="btn-open-modal">Modal열기</button>
 </body>
+<script src="member.js"></script>
+<script src="index.js"></script>
+<script>
+    document.querySelector('.signup_btn').addEventListener('click', (e) => {
+        signup().then((response) => {
+            if(response === 1){
+                document.querySelector('.modal').style.display = 'none';
+            }
+        });
+    });
+
+    const modal = document.querySelector('.modal');
+    const btnOpenModal=document.querySelector('.btn-open-modal');
+
+    btnOpenModal.addEventListener("click", ()=>{
+        modal.style.display="flex";
+    });
+</script>
 </html>

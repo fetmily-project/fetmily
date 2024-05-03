@@ -14,23 +14,28 @@ import org.zerock.petmilyproject.repository.LogRepository;
 public class LogServiceImpl implements LogService{
     private final ModelMapper modelMapper;
     private final LogRepository logRepository;
+
     @Override
     public Long register(MemberDTO memberDTO) {
         Member member = modelMapper.map(memberDTO, Member.class);
         Long memberId = logRepository.save(member).getMemberId();
-
+        log.info(member);
         return memberId;
     }
 
     @Override
     public MemberDTO login(MemberDTO memberDTO){
         Member member = modelMapper.map(memberDTO, Member.class);
-        Member loginMember = logRepository.login(member.getEmail(), member.getPassword());
+        Member loginMember = logRepository.login(member.getEmail(), member.getPassword())
+                .orElseThrow();
+
         MemberDTO loginMemberDTO = MemberDTO.builder()
                 .memberId(loginMember.getMemberId())
                 .nickname(loginMember.getNickname())
                 .build();
+
         log.info(loginMemberDTO);
+
         return loginMemberDTO;
     }
 
@@ -38,6 +43,7 @@ public class LogServiceImpl implements LogService{
     public MemberDTO readOne(Long memberId) {
         Member member = logRepository.findByMemberId(memberId)
                 .orElseThrow();
+
         MemberDTO memberDTO = MemberDTO.builder()
                 .memberId(member.getMemberId())
                 .nickname(member.getNickname())
