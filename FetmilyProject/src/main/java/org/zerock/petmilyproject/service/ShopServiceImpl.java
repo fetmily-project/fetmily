@@ -31,7 +31,9 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public ItemDTO readOne(Long bno) {
-        return null;
+        Optional<Item> item = shopRepository.findById(bno);
+        ItemDTO itemDTO = modelMapper.map(item, ItemDTO.class);
+        return itemDTO;
     }
 
     @Override
