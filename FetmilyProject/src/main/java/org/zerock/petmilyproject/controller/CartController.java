@@ -19,19 +19,21 @@ public class CartController {
     @GetMapping()
     public List<CartDTO> getCartList(@RequestParam Long memberId){
         List<CartDTO> cartDTOList = cartService.readList(memberId);
+
         return cartDTOList;
     }
 
     @PostMapping("/insert")
     public ResponseEntity<?> insertCartItem(@RequestBody CartDTO cartDTO){
         cartService.register(cartDTO);
-        log.info(cartDTO);
+
         return ResponseEntity.ok(1);
     }
 
     @PostMapping("/update")
     public ResponseEntity<?> updateCartItem(@RequestBody CartDTO cartDTO){
         cartService.modify(cartDTO);
+        
         return ResponseEntity.ok(1);
     }
 
