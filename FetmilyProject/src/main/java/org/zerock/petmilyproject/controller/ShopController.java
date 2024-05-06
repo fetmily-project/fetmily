@@ -34,8 +34,8 @@ public class ShopController {
         return ResponseEntity.ok(responseDTO);
     }
 
-    @PostMapping("/detail")
-    public ResponseEntity<ItemDTO> itemDetail(@RequestBody Long itemId){
+    @GetMapping("/detail")
+    public ResponseEntity<ItemDTO> itemDetail(@RequestParam Long itemId){
         ItemDTO itemDTO = shopService.readOne(itemId);
 
         return ResponseEntity.ok(itemDTO);
