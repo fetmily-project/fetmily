@@ -188,7 +188,6 @@
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 3px 3px 1px 0 inset rgba(100, 171, 255, 0.2);
-
 }
 
 .login_input > * > input{
@@ -199,7 +198,7 @@
     color: rgba(3, 69, 147, 1);
 }
 
-.login_input > * > input :focus {
+.login_input > * > input:focus {
     outline: none;
 }
 

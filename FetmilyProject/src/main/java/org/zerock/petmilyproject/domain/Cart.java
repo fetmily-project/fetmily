@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"member", "item"})
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +31,4 @@ public class Cart {
     @ColumnDefault("0")
     @Column(length = 500, nullable = false)
     private Long status;
-
-    public void changeCnt(Long cnt){
-        this.cnt = cnt;
-    }
 }
