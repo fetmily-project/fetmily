@@ -9,12 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.petmilyproject.domain.Board;
 import org.zerock.petmilyproject.dto.*;
+import org.zerock.petmilyproject.repository.BoardRepository;
 import org.zerock.petmilyproject.service.BoardService;
+import org.zerock.petmilyproject.service.BoardServiceImpl;
 
 import javax.validation.Valid;
 import java.io.File;
@@ -27,7 +30,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
 
-    @Value("${org.zeroce.upload.path}")
+    private final BoardServiceImpl boardServiceImpl;
+    @Value("${org.zerock.upload.path}")
     private String uploadPath;
 
     private final BoardService boardService;
@@ -73,10 +77,12 @@ public class BoardController {
     }
 
     @GetMapping({"/read", "/modify"})
-    public void read(Long bno, PageRequestDTO pageRequestDTO, Model model){
-        BoardDTO boardDTO = boardService.readOne(bno);
+    public void read(Long boardId, PageRequestDTO pageRequestDTO, Model model){
+        BoardDTO boardDTO = boardService.readOne(boardId);
 
         log.info(boardDTO);
+
+        boardServiceImpl.updateViewCnt(boardId);
 
         model.addAttribute("dto", boardDTO);
     }
@@ -155,7 +161,6 @@ public class BoardController {
                 String contentType = Files.probeContentType(resource.getFile().toPath());
                 resource.getFile().delete();
 
-                //섬네일이 존재한다면
                 if (contentType.startsWith("image")) {
                     File thumbnailFile = new File(uploadPath + File.separator + "s_" + fileName);
                     thumbnailFile.delete();
@@ -165,6 +170,6 @@ public class BoardController {
                 log.error(e.getMessage());
             }
 
-        }//end for
+        }
     }
 }

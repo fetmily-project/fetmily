@@ -126,4 +126,9 @@ public class BoardServiceImpl implements BoardService {
                 .total((int)result.getTotalElements())
                 .build();
     }
+
+    @Transactional
+    public int updateViewCnt(Long boardId) {
+        return boardRepository.updateViewCnt(boardId);
+    }
 }
