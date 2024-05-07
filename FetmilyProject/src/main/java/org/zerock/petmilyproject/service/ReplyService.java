@@ -8,11 +8,11 @@ public interface ReplyService {
 
     Long register(ReplyDTO replyDTO);
 
-    ReplyDTO read(Long rno);
+    ReplyDTO read(Long replyId);
 
     void modify(ReplyDTO replyDTO);
 
-    void remove(Long rno);
+    void remove(Long replyId);
 
-    PageResponseDTO<ReplyDTO> getListOfBoard(Long bno, PageRequestDTO pageRequestDTO);
+    PageResponseDTO<ReplyDTO> getListOfBoard(Long boardId, PageRequestDTO requestDTO);
 }
