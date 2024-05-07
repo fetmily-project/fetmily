@@ -29,4 +29,19 @@ public class Event extends BaseEntity {
     private LocalDateTime endDate;
 
     private Long cycle;
+
+    public void setContent(String content) {
+    }
+
+    public void setEventColor(String eventColor) {
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+    }
+
+    public void setCycle(Long cycle) {
+    }
 }
