@@ -15,7 +15,6 @@ import org.zerock.petmilyproject.repository.ShopRepository;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,9 +30,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public ItemDTO readOne(Long bno) {
-        Optional<Item> item = shopRepository.findById(bno);
-        ItemDTO itemDTO = modelMapper.map(item, ItemDTO.class);
-        return itemDTO;
+        return null;
     }
 
     @Override
@@ -56,24 +53,6 @@ public class ShopServiceImpl implements ShopService {
 
         List<ItemDTO> dtoList = result.getContent().stream().map(item -> modelMapper.map(item, ItemDTO.class))
                     .collect(Collectors.toList());
-
-        return PageResponseDTO.<ItemDTO>withAll()
-                .pageRequestDTO(pageRequestDTO)
-                .dtoList(dtoList)
-                .total((int)result.getTotalElements())
-                .build();
-    }
-
-    @Override
-    public PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO) {
-        Pageable pageable = PageRequest.of(pageRequestDTO.getPage() <=0? 0: pageRequestDTO.getPage() -1,
-                pageRequestDTO.getSize(),
-                Sort.by("itemId").ascending());
-
-        Page<Item> result = shopRepository.listOfSearchItem(keyword, pageable);
-
-        List<ItemDTO> dtoList = result.getContent().stream().map(item -> modelMapper.map(item, ItemDTO.class))
-                .collect(Collectors.toList());
 
         return PageResponseDTO.<ItemDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
