@@ -7,6 +7,7 @@ import org.zerock.petmilyproject.dto.PageResponseDTO;
 import org.zerock.petmilyproject.dto.ReplyDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ShopService {
 
@@ -15,4 +16,5 @@ public interface ShopService {
     void modify(ItemDTO itemDTO);
     void remove(Long bno);
     PageResponseDTO<ItemDTO> getListOfItem(PageRequestDTO pageRequestDTO);
+    PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO);
 }
