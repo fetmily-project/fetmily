@@ -56,7 +56,7 @@
             <div><img src="/assets/member/login_pw.svg"><input type="password" placeholder="비밀번호"></div>
         </div>
 
-        <button type="submit">로그인</button>
+        <button type="submit" class="login_btn">로그인</button>
         <div class="login_footer"><span class="btn-open-modal">회원가입</span>&nbsp;&nbsp;&nbsp;<span class="search_id">ID/PW 찾기</span></div>
     </div>
 </div>
@@ -68,6 +68,10 @@
 <script>
     document.querySelector('.signup_btn').addEventListener('click', (e) => {
         signup();
+    });
+
+    document.querySelector('.login_btn').addEventListener('click', () => {
+        login();
     });
 
     const modal = document.querySelector('.modal');

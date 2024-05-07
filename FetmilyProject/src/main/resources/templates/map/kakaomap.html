@@ -6,17 +6,30 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        /* 배경이미지 */
+        #mapLeftImage{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        #mapRightImage{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: -99;
+        }
+
         /* 지도 크기 지정 */
         #map {
-            width: 100%;
-            height: calc(100vh - 109px);
+            /*width: 1000px;*/
+            /*height: calc(100vh - 109px);*/
             margin-top: 48px;
         }
         /* 버튼 스타일 */
         .search-btns {
             position: absolute;
-            top: 58px;
-            right: 20px;
+            top: 100px;
+            right: 130px;
             z-index: 10;
             display: flex;
             flex-direction: column;
@@ -36,21 +49,18 @@
         }
         /* 드롭다운 */
         #dropBox{
-            width: 90px;
+            width: 80px;
             padding: 15px;
             background-color: #007BFF; /* primary color */
             border-radius: 10px;
             font-size: 1.2em;
             color: #FFFFFF; /* white color */
+            text-align: center;
         }
 
         .dropdown-content{
             display: none;
-            position: absolute;
-            top: 56px;
-            right: 10px;
-            min-width: 110px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            width: 80px;
             z-index: 1;
         }
 
@@ -59,10 +69,11 @@
         }
 
     /* 목록을 표시하는 css */
+        .map_wrap{margin: 50px auto;}
         .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
         .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
         .map_wrap {position:relative;width:100%;height:500px;}
-        #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+        #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:220px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
         .bg_white {background:#fff;}
         #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
         #menu_wrap .option{text-align: center;}
@@ -99,9 +110,13 @@
     </style>
 </head>
 <body layout:fragment="content">
+
+<img src="/assets/map/mapLeftImage.svg" id="mapLeftImage">
+<img src="/assets/map/mapRightImage.svg" id="mapRightImage">
+
 <div class="map_wrap">
 <!-- Kakao Map 컨테이너 -->
-<div id="map" style="width:100%;height:100%;position: relative;overflow: hidden;"></div>
+<div id="map" style="width: calc(70% - 50px);height: 550px;margin: 20px auto; position: relative;overflow: hidden;"></div>
 <div id="menu_wrap" class="bg_white">
     <div class="option">
 
@@ -113,11 +128,11 @@
 </div>
 <!-- 검색 버튼 컨테이너-->
 <div class="search-btns">
-    <span id="dropBox">DropBox</span>
+    <div id="dropBox">DropBox</div>
     <div class="dropdown-content">
-        <button id="cafeBtn" type="button">애견카페 ☕️</button>
-        <button id="hospitalBtn" type="button">동물병원 🧑‍⚕️</button>
-        <button id="hotelBtn" type="button">애견호텔 🏨</button>
+        <button id="cafeBtn" type="button">애견카페 ☕️</button><br>
+        <button id="hospitalBtn" type="button">동물병원 🧑‍⚕️</button><br>
+        <button id="hotelBtn" type="button">애견호텔 🏨</button><br>
     </div>
 </div>
 <!-- kakao 지도 API 불러오기 -->
