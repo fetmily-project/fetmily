@@ -4,13 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.petmilyproject.domain.Member;
-import org.zerock.petmilyproject.dto.member.MemberDTO;
-import org.zerock.petmilyproject.dto.member.RequestDTO;
-import org.zerock.petmilyproject.exception.CustomException;
+import org.zerock.petmilyproject.dto.MemberDTO;
 import org.zerock.petmilyproject.repository.LogRepository;
-import org.zerock.petmilyproject.common.enums.Error;
 
 @Log4j2
 @Service
@@ -27,11 +23,11 @@ public class LogServiceImpl implements LogService{
         return memberId;
     }
 
-    @ResponseBody
     @Override
-    public MemberDTO login(RequestDTO requestDTO){
-        Member loginMember = logRepository.login(requestDTO.getEmail(), requestDTO.getPassword())
-                .orElseThrow(() -> new CustomException(Error.NOT_FOUND.getStatus(), Error.NOT_FOUND.getMessage()));
+    public MemberDTO login(MemberDTO memberDTO){
+        Member member = modelMapper.map(memberDTO, Member.class);
+        Member loginMember = logRepository.login(member.getEmail(), member.getPassword())
+                .orElseThrow();
 
         MemberDTO loginMemberDTO = MemberDTO.builder()
                 .memberId(loginMember.getMemberId())

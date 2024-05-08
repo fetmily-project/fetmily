@@ -1,4 +1,4 @@
-package org.zerock.petmilyproject.dto.member;
+package org.zerock.petmilyproject.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

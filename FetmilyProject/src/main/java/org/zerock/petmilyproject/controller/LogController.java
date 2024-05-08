@@ -5,16 +5,17 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.zerock.petmilyproject.dto.member.MemberDTO;
-import org.zerock.petmilyproject.dto.member.RequestDTO;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.petmilyproject.dto.MemberDTO;
 import org.zerock.petmilyproject.service.LogService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @Log4j2
 @Controller
@@ -41,11 +42,12 @@ public class LogController {
     public void loginGET(){}
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MemberDTO> login(@RequestBody RequestDTO requestDTO, HttpServletRequest req) throws BindException{
+    public ResponseEntity<MemberDTO> login(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException{
+        if(bindingResult.hasErrors()){
+            throw new BindException(bindingResult);
+        }
 
-        MemberDTO loginMemberDTO = logService.login(requestDTO);
-        HttpSession session = req.getSession();
-        session.setAttribute("loginInfo", loginMemberDTO);
+        MemberDTO loginMemberDTO = logService.login(memberDTO);
 
         return ResponseEntity.ok(loginMemberDTO);
     }

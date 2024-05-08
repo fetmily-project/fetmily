@@ -1,12 +1,11 @@
 package org.zerock.petmilyproject.service;
 
-import org.zerock.petmilyproject.dto.member.MemberDTO;
-import org.zerock.petmilyproject.dto.member.RequestDTO;
+import org.zerock.petmilyproject.dto.MemberDTO;
 
 public interface LogService {
     Long register(MemberDTO memberDTO);
     MemberDTO readOne(Long memberId);
-    MemberDTO login(RequestDTO requestDTO);
+    MemberDTO login(MemberDTO memberDTO);
     void modify(MemberDTO memberDTO);
     void remove(Long bno);
 }

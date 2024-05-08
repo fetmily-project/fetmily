@@ -20,19 +20,20 @@ async function signup(){
 }
 
 async function login(){
-    const email = document.querySelector('.login_email').value;
-    const password = document.querySelector(".login_password").value;
-    console.log(email)
-    console.log(password)
-   await axios.post("/member/login", {
-        email: email,
-        password: password
-    }).then(result => {
-   }).catch(e => {
-       alert(e.response.data.status + e.response.data.message);
-   });
+    const email = document.querySelector(".email").value;
+    const password = document.querySelector(".password").value;
 
-
+     await axios.post("/member/login", {
+       email: email,
+       password: password
+    }).then(response => {
+         if(response.data.memberId !== null){
+             localStorage.setItem('memberId', response.data.memberId);
+             localStorage.setItem('nickname', response.data.nickname);
+         }else{
+             alert('이메일 또는 패스워드가 일치하지 않습니다.')
+         }
+     });
 }
 
 async function memberDelete(){

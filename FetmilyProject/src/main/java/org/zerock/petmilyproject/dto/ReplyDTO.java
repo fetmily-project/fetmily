@@ -1,5 +1,7 @@
 package org.zerock.petmilyproject.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -14,16 +17,22 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ReplyDTO {
 
-    private Long replyId;
+    private Long replyid;
 
     @NotNull
-    private Long boardId;
+    private Long boardid;
 
-    private Long memberId;
-
-    private String content;
+    @NotNull
+    private Long memberid;
+    private String nickname;
 
     @NotEmpty
-    private String replyText;
+    private String content;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime regDate;
+
+    @JsonIgnore
+    private LocalDateTime modDate;
 
 }

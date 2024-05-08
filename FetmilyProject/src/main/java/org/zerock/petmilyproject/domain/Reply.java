@@ -5,6 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Reply", indexes = {
+        @Index(name = "idx_reply_board_boardId", columnList = "boardId")
+})
 @Getter
 @Builder
 @AllArgsConstructor
