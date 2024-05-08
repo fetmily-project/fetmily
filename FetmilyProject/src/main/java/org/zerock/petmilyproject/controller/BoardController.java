@@ -55,7 +55,7 @@ public class BoardController {
     }
 
     @PostMapping("/register")
-    public String registerPost(@Valid BoardDTO boardDTO, BindingResult bindingResult,
+    public String registerPost(BoardDTO boardDTO, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes){
 
         log.info("board POST register......");
@@ -82,16 +82,16 @@ public class BoardController {
 
         log.info(boardDTO);
 
-        boardServiceImpl.updateViewCnt(boardId);
+//        boardServiceImpl.updateViewCnt(boardId);
 
         model.addAttribute("dto", boardDTO);
     }
 
     @PostMapping("/modify")
-    public String modify( @Valid BoardDTO boardDTO,
-                          BindingResult bindingResult,
-                          PageRequestDTO pageRequestDTO,
-                          RedirectAttributes redirectAttributes){
+    public String modify(BoardDTO boardDTO,
+                         BindingResult bindingResult,
+                         PageRequestDTO pageRequestDTO,
+                         RedirectAttributes redirectAttributes){
 
         log.info("board modify post......." + boardDTO);
 

@@ -16,8 +16,8 @@
                 </div>
                 <div class="card-body">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Bno</span>
-                        <input type="text" class="form-control" th:value="${dto.boradId}" readonly>
+                        <span class="input-group-text">BoardId</span>
+                        <input type="text" class="form-control" th:value="${dto.boardId}" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Title</span>
@@ -29,10 +29,10 @@
                         <textarea class="form-control col-sm-5" rows="5" readonly>[[${dto.content}]]</textarea>
                     </div>
 
-<!--                    <div class="input-group mb-3">-->
-<!--                        <span class="input-group-text">Writer</span>-->
-<!--                        <input type="text" class="form-control" th:value="${dto.writer}" readonly>-->
-<!--                    </div>-->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">nickname</span>
+                        <input type="text" class="form-control" th:value="${dto.nickname}" readonly>
+                    </div>
 
                     <div class="input-group mb-3">
                         <span class="input-group-text">RegDate</span>
@@ -93,12 +93,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Reply Text</span>
-                            <input type="text" class="form-control replyText" >
+                            <span class="input-group-text">content</span>
+                            <input type="text" class="form-control content" >
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Replyer</span>
-                            <input type="text" class="form-control replyer" >
+                            <span class="input-group-text">Nickname</span>
+                            <input type="text" class="form-control nickname" >
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -143,7 +143,7 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    const bno = [[${dto.bno}]]
+    const boardId = [[${dto.boardId}]]
 
     const replyList = document.querySelector('.replyList') //댓글 목록 DOM
     const replyPaging = document.querySelector('.replyPaging') //페이지 목록 DOM
@@ -157,8 +157,8 @@
 
                 str += `<li class="list-group-item d-flex replyItem">
                       <span class="col-2">${dto.replyId}</span>
-                      <span class="col-6" data-rno="${dto.replyId}">${dto.replyText}</span>
-<!--                      <span class="col-2">${dto.replyer}</span>-->
+                      <span class="col-6" data-replyId="${dto.replyId}">${dto.content}</span>
+<!--                      <span class="col-2">${dto.nickname}</span>-->
                       <span class="col-2">${dto.regDate} </span>
                     </li>`
             }
@@ -188,7 +188,7 @@
 
     function printReplies(page,size,goLast){
 
-        getList({bno, page,size, goLast}).then(
+        getList({boardId, page,size, goLast}).then(
             data => {
                 printList(data.dtoList) //목록 처리
                 printPages(data) //페이지 처리
@@ -205,8 +205,8 @@
     const registerModal = new bootstrap.Modal(document.querySelector(".registerModal"))
     //registerModel
     const registerBtn = document.querySelector(".registerBtn")
-    const replyText = document.querySelector(".replyText")
-    const replyer = document.querySelector(".replyer")
+    const content = document.querySelector(".content")
+    const nickname = document.querySelector(".nickname")
     const closeRegisterBtn = document.querySelector(".closeRegisterBtn")
 
 
@@ -220,15 +220,15 @@
 
     registerBtn.addEventListener("click", function(e){
         const replyObj = {
-            bno:bno,
-            replyText:replyText.value,
-            replyer:replyer.value}
+            boardId:boardId,
+            content:content.value,
+            nickname:nickname.value}
 
         addReply(replyObj).then(result => {
-            alert(result.rno)
+            alert(result.replyId)
             registerModal.hide()
-            replyText.value = ''
-            replyer.value =''
+            content.value = ''
+            nickname.value =''
             printReplies(1,10, true) //댓글 목록 갱신
         }).catch(e => {
             alert("Exception...")
@@ -279,16 +279,16 @@
             return
         }
 
-        const rno = target.getAttribute("data-rno")
+        const replyId = target.getAttribute("data-replyId")
 
-        if(!rno){
+        if(!replyId){
             return
         }
 
-        getReply(rno).then(reply => { //댓글의 내용을 모달창에 채워서 보여주는
+        getReply(replyId).then(reply => { //댓글의 내용을 모달창에 채워서 보여주는
 
             console.log(reply)
-            replyHeader.innerHTML = reply.rno
+            replyHeader.innerHTML = reply.replyId
             modifyText.value = reply.replyText
             modifyModal.show()
 
@@ -300,12 +300,12 @@
     modifyBtn.addEventListener("click", function(e) {
 
         const replyObj = {
-            bno:bno,
-            rno:replyHeader.innerHTML,
+            boardId:boardId,
+            replyId:replyHeader.innerHTML,
             replyText:modifyText.value}
 
         modifyReply(replyObj).then(result => {
-            alert(result.rno+' 댓글이 수정되었습니다.')
+            alert(result.replyId+' 댓글이 수정되었습니다.')
             replyText.value = ''
             modifyModal.hide()
             printReplies(page, size)
@@ -325,7 +325,7 @@
 
         removeReply(replyHeader.innerHTML).then(result => {
 
-            alert(result.rno +' 댓글이 삭제되었습니다.')
+            alert(result.replyId +' 댓글이 삭제되었습니다.')
             replyText.value = ''
             modifyModal.hide()
 

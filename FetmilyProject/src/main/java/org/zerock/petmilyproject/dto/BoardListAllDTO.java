@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,9 +17,12 @@ public class BoardListAllDTO {
 
     private Long boardId;
 
-    private String title;
+    @NotEmpty
+    private Long memberId;
 
-    private String member;
+    private String nickname;
+
+    private String title;
 
     private LocalDateTime regDate;
 
