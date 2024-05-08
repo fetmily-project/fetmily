@@ -3,6 +3,7 @@ package org.zerock.petmilyproject.controller;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,7 @@ public class CalendarController {
     @RequestMapping(value = "/schedules")
     // @RequestMapping: 클래스 레벨에서 URL을 매핑할 경로를 지정합니다.
     public String schedulesController(){
-        return "/event/Event";
+        return "/event/calendar";
     }
 
     @PostMapping("/add")
@@ -49,19 +50,18 @@ public class CalendarController {
 
 
 
-    // @PutMapping: PUT 요청을 처리하는 메서드를 지정합니다.
-    @PutMapping("/schedules")
-    // updateEvent 메서드, PUT 요청을 받아들이고 eventId와 EventDTO 객체를 받아서 처리합니다.
-    public void updateEvent(@PathVariable Long eventId, @RequestBody EventDTO eventDTO) {
-        // 받은 eventId와 EventDTO를 사용하여 이벤트를 업데이트하는 서비스 메서드를 호출합니다.
+    @PostMapping("/update/{eventId}")
+    public String updateEvent(@PathVariable Long eventId, @RequestBody EventDTO eventDTO) {
         eventService.updateEvent(eventId, eventDTO);
+
+        return "redirect:/schedules";
     }
 
-    // @DeleteMapping: DELETE 요청을 처리하는 메서드를 지정합니다.
-    @DeleteMapping("/schedules")
-    // deleteEvent 메서드, DELETE 요청을 받아들이고 eventId를 받아서 처리합니다.
-    public void deleteEvent(@PathVariable Long eventId) {
+
+    @PostMapping("/delete/{eventId}")
+    public String deleteEvent(@PathVariable Long eventId) {
         // 받은 eventId를 사용하여 이벤트를 삭제하는 서비스 메서드를 호출합니다.
         eventService.deleteEvent(eventId);
+        return "redirect:/schedules";
     }
 }
