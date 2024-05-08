@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/member/mypage.css">
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <title>Title</title>
+</head>
+<body layout:fragment="content">
+<div class="container">
+    <div class="header">마이페이지</div>
+    <div class="body">
+        <div class="nav">
+            <ul>
+                <div class="nav_title">쇼핑</div>
+                <li>주문내역</li>
+                <li>배송지 관리</li>
+                <li>좋아요 누른 상품</li>
+                <li>고객센터</li>
+            </ul>
+            <ul>
+                <div class="nav_title">커뮤니티</div>
+                <li>내가 쓴 게시글</li>
+                <li>댓글 단 게시글</li>
+                <li>좋아요 누른 게시글</li>
+            </ul>
+            <ul>
+                <div class="nav_title">동물</div>
+                <li>내 반려동물</li>
+                <li>후원중인 동물</li>
+            </ul>
+        </div>
+        <div class="content">
+            <span class="content_title">주문내역</span>
+            <div class="content_body">
+                <div class="etc"></div>
+                <div class="delivery">
+                    <input type="text" id="sample4_postcode" placeholder="우편번호">
+                    <input type="button" class="btn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                    <input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
+                    <span id="guide" style="color:#999;display:none"></span>
+                    <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+                    <input type="text" id="sample4_extraAddress" placeholder="참고항목">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/member/mypage.js"></script>
+<script src="/js/member/addr.js"></script>
+</body>
+
+</html>

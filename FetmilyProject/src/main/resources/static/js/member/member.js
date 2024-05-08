@@ -72,3 +72,42 @@ async function memberInfo(){
             return result.data;
         })
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const checkList= document.querySelectorAll('.check');
+
+    checkList.forEach((e) => {
+        e.addEventListener('click', (e) => {
+            console.log(e.children)
+            if(e.children.getAttribute('src') === '/assets/member/smallCheck.svg'){
+                e.children.setAttribute('src', '/assets/member/small_check_true.svg');
+            }else{
+                e.children.setAttribute('src', '/assets/member/smallCheck.svg');
+            }
+        });
+    });
+
+    document.querySelector('.all_check').addEventListener('click', () => {
+
+    });
+
+    document.querySelector('.signup_btn').addEventListener('click', (e) => {
+        signup();
+    });
+
+    document.querySelector('.login_btn').addEventListener('click', () => {
+        login();
+    });
+
+    const modal = document.querySelector('.modal');
+    const btnOpenModal=document.querySelector('.btn-open-modal');
+
+    btnOpenModal.addEventListener("click", ()=>{
+        modal.style.display="flex";
+    });
+
+    document.querySelector('.modal_delete').addEventListener('click', () => {
+        modal.style.display="none";
+    })
+})
+
