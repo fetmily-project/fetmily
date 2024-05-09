@@ -1,0 +1,236 @@
+.noto-sans-hebrew-title{
+    font-family: "Noto Sans Hebrew", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-variation-settings:
+            "wdth" 100;
+}
+
+.container{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+}
+
+.bg_right{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bg_left{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    background-size: contain;
+    z-index: -99;
+}
+
+.bg_line{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    background-size: contain;
+    z-index: -999;
+}
+
+
+.login_form{
+    display: flex;
+    flex-direction: column;
+
+    position:absolute;
+    top:50%;
+    left: 50%;
+
+    width:350px;
+    height:500px;
+
+    padding:0 50px;
+
+    border-radius:10px;
+
+    transform:translate(-50%, -50%);
+
+    text-align: center;
+
+}
+
+.login_form_bg_blur{
+    position: absolute;
+
+    width:350px;
+    height:500px;
+
+    left:50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #A9B6FD;
+    filter: blur(100px);
+    border-radius: 10px;
+}
+
+
+.login_form_bg1{
+    display: flex;
+    flex-direction: column;
+
+    position:absolute;
+    top:48.5%;
+    left: 51%;
+
+    width:350px;
+    height:500px;
+
+    padding:0 50px;
+
+    border-radius:10px;
+    box-shadow:2px 2px 5px 0 rgba(0, 0, 0, 0.25);
+
+    transform:translate(-50%, -50%);
+
+    background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);
+}
+
+.login_form_bg2{
+    display: flex;
+    flex-direction: column;
+
+    position:absolute;
+    top:50%;
+    left: 50%;
+
+    width:350px;
+    height:500px;
+
+    padding:0 50px;
+
+    border-radius:10px;
+
+
+    transform:translate(-50%, -50%);
+
+    background: linear-gradient(72.53deg, rgba(12, 165, 255, 0.3) -5.72%, rgba(255, 255, 255, 0.15) 51.27%, rgba(252, 190, 253, 0.3) 108.26%);
+
+    border: 3px solid transparent;
+
+    border-image: linear-gradient(35.19deg, rgba(0, 157, 251, 0.145) -9.95%, rgba(0, 151, 240, 0.125) 12.98%, rgba(255, 255, 255, 0.25) 47.38%, rgba(255, 255, 255, 0.015) 68.59%, rgba(250, 142, 255, 0.125) 96.11%, rgba(250, 152, 250, 0.125) 104.71%);
+    box-shadow: -20px 20px 100px 0px rgba(138, 188, 247, 0.15);
+}
+
+.login_form_bg3{
+    display: flex;
+    flex-direction: column;
+
+    position:absolute;
+    top:51.5%;
+    left: 49%;
+
+    width:350px;
+    height:500px;
+
+    padding:0 50px;
+
+    border-radius:10px;
+
+    background-color: rgb(255,255,255);
+
+    transform:translate(-50%, -50%);
+    box-shadow: -20px 20px 100px 0px rgba(138, 188, 247, 0.15);
+
+    background: rgba(255, 255, 255, 0.3);
+    border: 3px solid transparent;
+
+    border-image: linear-gradient(20.5deg, rgba(0, 157, 251, 0.145) -54.19%, rgba(0, 151, 240, 0.125) -20.27%, rgba(255, 255, 255, 0.25) 30.6%, rgba(255, 255, 255, 0.015) 61.97%, rgba(250, 142, 255, 0.125) 102.66%, rgba(250, 152, 250, 0.125) 115.38%);
+}
+
+.main_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: bold;
+    background: linear-gradient(90deg,rgba(7, 164, 255, 1), rgba(249, 190, 253, 1));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.sub_title{
+    margin-bottom: 60px;
+    color: rgba(79, 125, 179, 1);
+}
+
+.login_input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+
+.login_input > div {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    margin: 5px 0;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 3px 3px 1px 0 inset rgba(100, 171, 255, 0.2);
+
+}
+
+.login_input > * > input{
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(3, 69, 147, 1);
+}
+
+.login_input > * > input :focus {
+    outline: none;
+}
+
+input::placeholder{
+    color: rgba(3, 69, 147, 1);
+}
+
+.login_input > * > img {
+    margin-right: 10px;
+}
+
+button{
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 2px 2px 0px rgba(0, 117, 255, 0.2);
+    margin-bottom: 20px;
+    color: rgba(3, 69, 147, 1);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login_footer{
+    font-weight: bold;
+    color: rgba(3, 69, 147, 1);
+}
+
+.login_footer:hover{
+    cursor: pointer;
+}
+.signup{
+    margin-right: 20px;
+}

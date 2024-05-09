@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
+<html lang="en">
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/homeless/homeless.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="/css/homeless/homeless.css" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+<div id="load">
+    <img src="/assets/homeless/Running%20dog.gif" alt="loading">
+</div>
+<img src="/assets/homeless/homelessLeftImage.svg" alt="img" id="homelessLeftImage">
+<img src="/assets/homeless/homelessRigthImage.svg" alt="img" id="homelessRigthImage">
+
+<ul id="homelessCategory">
+    <li id="homelessCategoryList">
+<!--        <div class="post-container">-->
+<!--          <p class="post-number">1</p>-->
+<!--          <p class="post-title">title</p>-->
+<!--        </div>-->
+    </li>
+</ul>
+<div class="pagination-container">
+    <div class="prev-button"></div>
+    <div class="number-button-wrapper"><span class="number-button"></span></div>
+    <div class="next-button"></div>
+</div>
+
+
+</div>
+</body>
+
+</html>

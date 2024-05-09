@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
+<html lang="en">
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/homeless/homelessDetail.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="/css/homeless/homelessDetail.css" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+<img src="/assets/homeless/homelessLeftImage.svg" alt="img" id="homelessLeftImage">
+<img src="/assets/homeless/homelessRigthImage.svg" alt="img" id="homelessRigthImage">
+<ul id="homelessDetail-ul">
+    <li>
+        <div class="detail-container">
+            <!-- <p class="post-number">1</p>
+            <p class="post-title">title</p> -->
+        </div>
+        <div class="category">
+            <div class="category-button">목록</div>
+        </div>
+    </li>
+</ul>
+
+<!-- <div class="pagination-container">
+  <div class="prev-button">이전</div>
+  <div class="number-button-wrapper"><span class="number-button">1</span></div>
+  <div class="next-button">이후</div>
+</div> -->
+
+</div>
+</body>
+</html>
