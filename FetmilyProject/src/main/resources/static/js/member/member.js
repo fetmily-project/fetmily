@@ -67,7 +67,7 @@ async function memberUpdate(){
 
 async function memberInfo(){
     const memberId = localStorage.getItem('memberId');
-    await axios.get(`/member?memberId=${memberId}`)
+    await  axios.get(`/member?memberId=${memberId}`)
         .then((result) => {
             return result.data;
         })
@@ -75,19 +75,33 @@ async function memberInfo(){
 
 document.addEventListener('DOMContentLoaded', () => {
     const check1= document.querySelector('.check1');
+    const check2= document.querySelector('.check2');
+    const check3= document.querySelector('.check3');
     const allCheck = document.querySelector('.all_check');
 
-    checkList.forEach((e) => {
-        e.addEventListener('click', (e) => {
-            if(e.target.childNodes[0].attributes[0].value === '/assets/member/smallCheck.svg'){
-                e.target.childNodes[0].attributes[0].value = '/assets/member/small_check_true.svg';
-            }else{
-                e.target.childNodes[0].attributes[0].value = '/assets/member/smallCheck.svg';
-            }
-        });
+    check1.addEventListener('click', (e) => {
+        if(e.target.childNodes[0].attributes[0].value === '/assets/member/smallCheck.svg'){
+            e.target.childNodes[0].attributes[0].value = '/assets/member/small_check_true.svg';
+        }else{
+            e.target.childNodes[0].attributes[0].value = '/assets/member/smallCheck.svg';
+        }
     });
 
+    check2.addEventListener('click', (e) => {
+        if(e.target.childNodes[0].attributes[0].value === '/assets/member/smallCheck.svg'){
+            e.target.childNodes[0].attributes[0].value = '/assets/member/small_check_true.svg';
+        }else{
+            e.target.childNodes[0].attributes[0].value = '/assets/member/smallCheck.svg';
+        }
+    });
 
+    check3.addEventListener('click', (e) => {
+        if(e.target.childNodes[0].attributes[0].value === '/assets/member/smallCheck.svg'){
+            e.target.childNodes[0].attributes[0].value = '/assets/member/small_check_true.svg';
+        }else{
+            e.target.childNodes[0].attributes[0].value = '/assets/member/smallCheck.svg';
+        }
+    });
 
     allCheck.addEventListener('click', (e) => {
         if(e.target.childNodes[0].attribute[0].value === 'assets/member/bigCheck.svg'){
