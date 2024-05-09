@@ -2,6 +2,8 @@ package org.zerock.petmilyproject.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +15,9 @@ import org.zerock.petmilyproject.dto.EventDTO;
 import org.zerock.petmilyproject.service.EventService;
 
 // @RestController: 해당 클래스가 RESTful 웹 서비스의 컨트롤러임을 나타냅니다.
-@RestController
+@Controller
 @Log4j2
-// @RequestMapping: 클래스 레벨에서 URL을 매핑할 경로를 지정합니다.
-@RequestMapping("/schedules")
+
 public class CalendarController {
 
     private final EventService eventService;
@@ -29,37 +30,38 @@ public class CalendarController {
     }
 
     @GetMapping("/schedules")
-    public void schedulesController(){
-
+    @RequestMapping(value = "/schedules")
+    // @RequestMapping: 클래스 레벨에서 URL을 매핑할 경로를 지정합니다.
+    public String schedulesController(){
+        return "/event/calendar";
     }
 
-    @PostMapping("/schedules")
-    // addEvent 메서드, Post 요청을 받아들이고 EventDTO 객체를 받아서 처리합니다.
-    public void addEvent(@RequestBody EventDTO eventDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
-        if(bindingResult.hasErrors()){
+    @PostMapping("/add")
+    public String addData(@RequestBody EventDTO eventDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
             log.info("has errors......");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-
         }
         log.info(eventDTO);
-        // 받은 EventDTO를 사용하여 이벤트를 추가하는 서비스 메서드를 호출합니다.
         eventService.addEvent(eventDTO);
+
+        return "redirect:/schedules";
     }
 
-    // @PutMapping: PUT 요청을 처리하는 메서드를 지정합니다.
-    @PutMapping("/schedules")
-    // updateEvent 메서드, PUT 요청을 받아들이고 eventId와 EventDTO 객체를 받아서 처리합니다.
-    public void updateEvent(@PathVariable Long eventId, @RequestBody EventDTO eventDTO) {
-        // 받은 eventId와 EventDTO를 사용하여 이벤트를 업데이트하는 서비스 메서드를 호출합니다.
+
+
+    @PostMapping("/update/{eventId}")
+    public String updateEvent(@PathVariable Long eventId, @RequestBody EventDTO eventDTO) {
         eventService.updateEvent(eventId, eventDTO);
+
+        return "redirect:/schedules";
     }
 
-    // @DeleteMapping: DELETE 요청을 처리하는 메서드를 지정합니다.
-    @DeleteMapping("/schedules")
-    // deleteEvent 메서드, DELETE 요청을 받아들이고 eventId를 받아서 처리합니다.
-    public void deleteEvent(@PathVariable Long eventId) {
+
+    @PostMapping("/delete/{eventId}")
+    public String deleteEvent(@PathVariable Long eventId) {
         // 받은 eventId를 사용하여 이벤트를 삭제하는 서비스 메서드를 호출합니다.
         eventService.deleteEvent(eventId);
+        return "redirect:/schedules";
     }
 }

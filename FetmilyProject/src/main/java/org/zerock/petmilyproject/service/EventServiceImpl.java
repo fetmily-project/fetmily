@@ -1,11 +1,13 @@
 package org.zerock.petmilyproject.service;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Event;
 import org.zerock.petmilyproject.dto.EventDTO;
 import org.zerock.petmilyproject.repository.EventRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,14 +49,15 @@ class EventServiceImpl implements EventService {
             event.setStartDate(eventDTO.getStartDate());
             event.setEndDate(eventDTO.getEndDate());
             event.setCycle(eventDTO.getCycle());
-
-            // 엔티티 업데이트
             eventRepository.save(event);
+            // 변경 사항은 트랜잭션 커밋 시점에 자동으로 반영됨
         } else {
             // 해당 이벤트가 존재하지 않는 경우 처리
             throw new IllegalArgumentException("Event with ID " + eventId + " not found");
         }
     }
+
+
 
     @Override
     public void deleteEvent(Long eventId) {
@@ -81,5 +84,9 @@ class EventServiceImpl implements EventService {
             // 해당 이벤트가 존재하지 않는 경우 처리
             throw new IllegalArgumentException("Event with ID " + eventId + " not found");
         }
+
+
     }
+
 }
+

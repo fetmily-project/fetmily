@@ -8,13 +8,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
-import org.zerock.petmilyproject.domain.Board;
-import org.zerock.petmilyproject.domain.QBoard;
-import org.zerock.petmilyproject.domain.QReply;
+import org.zerock.petmilyproject.domain.*;
 import org.zerock.petmilyproject.dto.BoardImageDTO;
 import org.zerock.petmilyproject.dto.BoardListAllDTO;
 import org.zerock.petmilyproject.dto.BoardListReplyCountDTO;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -161,9 +160,11 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
 
         QBoard board = QBoard.board;
         QReply reply = QReply.reply;
+        QMember member = QMember.member;    // 회원정보를 가져오기 위해 추가
 
         JPQLQuery<Board> boardJPQLQuery = from(board);
         boardJPQLQuery.leftJoin(reply).on(reply.board.eq(board)); //left join
+        boardJPQLQuery.leftJoin(board.member, member);  // 회원 정보 가져오기
 
         if( (types != null && types.length > 0) && keyword != null ){
 
@@ -189,17 +190,21 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
 
 
 
-        JPQLQuery<Tuple> tupleJPQLQuery = boardJPQLQuery.select(board, reply.countDistinct());
+        JPQLQuery<Tuple> tupleJPQLQuery = boardJPQLQuery.select(board, reply.countDistinct(), member);
 
         List<Tuple> tupleList = tupleJPQLQuery.fetch();
 
         List<BoardListAllDTO> dtoList = tupleList.stream().map(tuple -> {
 
             Board board1 = (Board) tuple.get(board);
+            Member member1 = (Member) tuple.get(member);
+
             long replyCount = tuple.get(1,Long.class);
 
             BoardListAllDTO dto = BoardListAllDTO.builder()
                     .boardId(board1.getBoardId())
+                    .memberId(member1.getMemberId())
+                    .nickname(member1.getNickname())
                     .title(board1.getTitle())
                     .regDate(board1.getRegDate())
                     .replyCount(replyCount)
