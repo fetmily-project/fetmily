@@ -1,5 +1,6 @@
 package org.zerock.petmilyproject.service;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Event;
@@ -59,6 +60,8 @@ class EventServiceImpl implements EventService {
         }
     }
 
+
+
     @Override
     public void deleteEvent(Long eventId) {
         // 이벤트 ID로 이벤트 삭제
@@ -84,6 +87,8 @@ class EventServiceImpl implements EventService {
             // 해당 이벤트가 존재하지 않는 경우 처리
             throw new IllegalArgumentException("Event with ID " + eventId + " not found");
         }
+
+
     }
 
     @Override
@@ -98,6 +103,10 @@ class EventServiceImpl implements EventService {
                         .cycle(event.getCycle())
                         .build())
                 .collect(Collectors.toList());
+    }
+    @Override
+    public List<EventDTO> getAllEvents() {
+        return null;
     }
 
 }
