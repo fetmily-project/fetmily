@@ -74,20 +74,28 @@ async function memberInfo(){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const checkList= document.querySelectorAll('.check');
+    const check1= document.querySelector('.check1');
+    const allCheck = document.querySelector('.all_check');
 
     checkList.forEach((e) => {
         e.addEventListener('click', (e) => {
-            console.log(e.children)
-            if(e.children.getAttribute('src') === '/assets/member/smallCheck.svg'){
-                e.children.setAttribute('src', '/assets/member/small_check_true.svg');
+            if(e.target.childNodes[0].attributes[0].value === '/assets/member/smallCheck.svg'){
+                e.target.childNodes[0].attributes[0].value = '/assets/member/small_check_true.svg';
             }else{
-                e.children.setAttribute('src', '/assets/member/smallCheck.svg');
+                e.target.childNodes[0].attributes[0].value = '/assets/member/smallCheck.svg';
             }
         });
     });
 
-    document.querySelector('.all_check').addEventListener('click', () => {
+
+
+    allCheck.addEventListener('click', (e) => {
+        if(e.target.childNodes[0].attribute[0].value === 'assets/member/bigCheck.svg'){
+            e.target.childNodes[0].attribute[0].value = 'assets/member/big_check_true.svg';
+        }else{
+            e.target.childNodes[0].attribute[0].value = 'assets/member/bigCheck.svg';
+        }
+
 
     });
 
