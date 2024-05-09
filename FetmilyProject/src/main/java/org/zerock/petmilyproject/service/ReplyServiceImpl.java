@@ -77,6 +77,7 @@ public class ReplyServiceImpl implements ReplyService{
 
         List<ReplyDTO> dtoList = result.getContent().stream().map(reply -> modelMapper.map(reply, ReplyDTO.class))
                 .collect(Collectors.toList());
+        log.info(dtoList);
 
         return PageResponseDTO.<ReplyDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)

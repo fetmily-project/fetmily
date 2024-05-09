@@ -1,6 +1,6 @@
-async function get1(bno) {
+async function get1(boardId) {
 
-    const result = await axios.get(`/replies/list/${bno}`)
+    const result = await axios.get(`/replies/list/${boardId}`)
 
     //console.log(result)
 
@@ -16,15 +16,15 @@ async function get1(bno) {
 // }
 
 
-async function getList({bno, page, size, goLast}){
+async function getList({boardId, page, size, goLast}){
 
-    const result = await axios.get(`/replies/list/${bno}`, {params: {page, size}})
+    const result = await axios.get(`/replies/list/${boardId}`, {params: {page, size}})
 
     if(goLast){
         const total = result.data.total
         const lastPage = parseInt(Math.ceil(total/size))
 
-        return getList({bno:bno, page:lastPage, size:size})
+        return getList({boardId:boardId, page:lastPage, size:size})
 
     }
 
@@ -37,18 +37,18 @@ async function addReply(replyObj) {
     return response.data
 }
 
-async function getReply(rno) {
-    const response = await axios.get(`/replies/${rno}`)
+async function getReply(replyId) {
+    const response = await axios.get(`/replies/${replyId}`)
     return response.data
 }
 
 async function modifyReply(replyObj) {
 
-    const response = await axios.put(`/replies/${replyObj.rno}`, replyObj)
+    const response = await axios.put(`/replies/${replyObj.replyId}`, replyObj)
     return response.data
 }
 
-async function removeReply(rno) {
-    const response = await axios.delete(`/replies/${rno}`)
+async function removeReply(replyId) {
+    const response = await axios.delete(`/replies/${replyId}`)
     return response.data
 }

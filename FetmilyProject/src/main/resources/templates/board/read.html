@@ -156,9 +156,9 @@
             for (const dto of dtoList) {
 
                 str += `<li class="list-group-item d-flex replyItem">
-                      <span class="col-2">${dto.replyId}</span>
-                      <span class="col-6" data-replyId="${dto.replyId}">${dto.content}</span>
-<!--                      <span class="col-2">${dto.nickname}</span>-->
+                      <span class="col-2">${dto.replyid}</span>
+                      <span class="col-6" data-replyId="${dto.replyid}">${dto.content}</span>
+                      <span class="col-2">${dto.nickname}</span>
                       <span class="col-2">${dto.regDate} </span>
                     </li>`
             }
@@ -267,7 +267,7 @@
     const removeBtn = document.querySelector(".removeBtn")
     const closeModifyBtn = document.querySelector(".closeModifyBtn")
 
-
+    // 일단 이게 안먹으니까 주석처리 해둠
     replyList.addEventListener("click", function (e){
 
         e.preventDefault()
