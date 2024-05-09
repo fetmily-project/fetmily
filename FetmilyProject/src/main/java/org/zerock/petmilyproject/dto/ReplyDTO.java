@@ -22,8 +22,10 @@ public class ReplyDTO {
     @NotNull
     private Long boardid;
 
+//    @NotNull
+//    private Long memberid;
+//
     @NotNull
-    private Long memberid;
     private String nickname;
 
     @NotEmpty
