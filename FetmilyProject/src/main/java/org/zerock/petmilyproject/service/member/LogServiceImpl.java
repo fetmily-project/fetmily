@@ -1,8 +1,11 @@
 package org.zerock.petmilyproject.service.member;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Member;
@@ -19,7 +22,7 @@ public class LogServiceImpl implements LogService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void register(MemberDTO memberDTO) {
+    public Long register(MemberDTO memberDTO) {
         Member member = Member.builder()
                 .email(memberDTO.getEmail())
                 .password(bCryptPasswordEncoder.encode(memberDTO.getPassword()))
@@ -29,10 +32,10 @@ public class LogServiceImpl implements LogService {
         Boolean isExist = logRepository.existsByEmail(member.getEmail());
 
         if(isExist){
-            return;
+            return null;
         }
 
-        logRepository.save(member);
+        return logRepository.save(member).getMemberId();
     }
 
     @Override

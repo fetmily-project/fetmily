@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.zerock.petmilyproject.dto.MemberDTO;
 import org.zerock.petmilyproject.service.member.LogService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Log4j2
 @Controller
 @RequestMapping("/member")
@@ -21,8 +24,14 @@ public class LogController {
     public void signupGET(){}
 
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO){
-        logService.register(memberDTO);
+    public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
+        Long memberId = logService.register(memberDTO);
+        if(memberId == null){
+            return ResponseEntity.ok(0);
+        }
+
+        HttpSession session = httpServletRequest.getSession(true);
+        session.setAttribute("memberId", memberId);
 
         return ResponseEntity.ok(1);
     }
