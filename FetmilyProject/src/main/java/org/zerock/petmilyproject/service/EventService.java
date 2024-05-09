@@ -9,5 +9,5 @@ public interface EventService {
     void updateEvent(Long eventId, EventDTO eventDTO);
     void deleteEvent(Long eventId);
     EventDTO getEvent(Long eventId);
+    List<EventDTO> getAllEvents(); // getAllEvents 메서드 추가
 }
-
