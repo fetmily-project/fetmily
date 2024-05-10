@@ -8,49 +8,62 @@ document.querySelectorAll('li').forEach((element) => {
 
 const contentLoad = (text) => {
   const content_body = document.querySelector('.etc');
-  const del = document.querySelector('.delivery');
+
   switch(text){
     case '주문내역':
+      content_body.innerHTML = '';
       orderHistory(content_body);
-      del.style.display = 'none';
       break;
     case '배송지 관리':
       content_body.innerHTML = '';
-      del.style.display = 'block';
+      delivery(content_body);
       break;
     case '좋아요 누른 상품':
+      content_body.innerHTML = '';
       likeProduct(content_body);
-      del.style.display = 'none';
       break;
     case '고객센터':
+      content_body.innerHTML = '';
       serviceCenter(content_body);
-      del.style.display = 'none';
       break;
     case '내가 쓴 게시글':
+      content_body.innerHTML = '';
       myPost(content_body);
-      del.style.display = 'none';
       break;
     case '댓글 단 게시글':
+      content_body.innerHTML = '';
       myReview(content_body);
-      del.style.display = 'none';
       break;
     case '좋아요 누른 게시글':
+      content_body.innerHTML = '';
       likePost(content_body);
-      del.style.display = 'none';
       break;
     case '내 반려동물':
+      content_body.innerHTML = '';
       myPet(content_body);
-      del.style.display = 'none';
       break;
     case '후원중인 동물':
+      content_body.innerHTML = '';
       supportPet(content_body);
-      del.style.display = 'none';
       break;
   }
 }
 
 const orderHistory = (content_body) => {
   content_body.innerHTML = `<div>주문내역입니다.</div>`;
+}
+
+const delivery = (content_body) => {
+  content_body.innerHTML = `<div class="delivery">
+                    <input type="text" id="sample4_postcode" placeholder="우편번호">
+                    <input type="button" class="btn" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+                    <input type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
+                    <span id="guide" style="color:#999;display:none"></span>
+                    <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+                    <input type="text" id="sample4_extraAddress" placeholder="참고항목">
+                    <button class="del_submit_btn">저장</button>
+                </div>`;
 }
 
 const likeProduct = (content_body) => {
