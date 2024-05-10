@@ -1,6 +1,8 @@
 package org.zerock.petmilyproject.controller;
 
 import io.swagger.annotations.ApiOperation;
+
+import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.MediaType;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.zerock.petmilyproject.domain.Reply;
 import org.zerock.petmilyproject.dto.PageRequestDTO;
 import org.zerock.petmilyproject.dto.PageResponseDTO;
 import org.zerock.petmilyproject.dto.ReplyDTO;
@@ -24,6 +27,11 @@ import java.util.Map;
 public class ReplyController {
 
     private final ReplyService replyService;
+
+//    @GetMapping("/list")
+//    public void RepliesList(PageRequestDTO pageRequestDTO) {
+//
+//    }
 
     @ApiOperation(value = "Replies POST", notes = "POST 방식으로 댓글 등록")
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -52,6 +60,7 @@ public class ReplyController {
                                              PageRequestDTO pageRequestDTO) {
 
         PageResponseDTO<ReplyDTO> responseDTO = replyService.getListOfBoard(boardId, pageRequestDTO);
+
 
         return responseDTO;
     }

@@ -52,11 +52,10 @@ public class LogController {
         return ResponseEntity.ok(loginMemberDTO);
     }
 
-    @GetMapping(value = {"/info", "/update" })
-    public ResponseEntity<MemberDTO> memberGET(@RequestParam("memberId") Long memberId){
+    @GetMapping(value = {"/info"})
+    public void memberGET(@RequestParam("memberId") Long memberId, Model model){
         MemberDTO memberDTO = logService.readOne(memberId);
-
-        return ResponseEntity.ok(memberDTO);
+        model.addAttribute("memberDTO", memberDTO);
     }
 
     @DeleteMapping("/delete")

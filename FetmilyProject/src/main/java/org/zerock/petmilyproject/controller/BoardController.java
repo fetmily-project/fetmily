@@ -18,6 +18,7 @@ import org.zerock.petmilyproject.dto.*;
 import org.zerock.petmilyproject.repository.BoardRepository;
 import org.zerock.petmilyproject.service.BoardService;
 import org.zerock.petmilyproject.service.BoardServiceImpl;
+import org.zerock.petmilyproject.service.ReplyService;
 
 import javax.validation.Valid;
 import java.io.File;
@@ -35,6 +36,9 @@ public class BoardController {
     private String uploadPath;
 
     private final BoardService boardService;
+    private final ReplyService replyService;
+
+
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model){
@@ -75,6 +79,15 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
+
+//    @GetMapping("/read/{boardId}")
+//    public void readGet(@PathVariable Long boardId, PageRequestDTO pageRequestDTO, Model model){
+//        ReplyDTO replyDTO = replyService.read(boardId);
+//        log.info(replyDTO);
+//
+//        model.addAttribute("dto", replyDTO);
+//
+//    }
 
     @GetMapping({"/read", "/modify"})
     public void read(Long boardId, PageRequestDTO pageRequestDTO, Model model){
