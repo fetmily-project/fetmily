@@ -48,9 +48,12 @@ public class LogController {
     public void loginGET(){}
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
+    public ResponseEntity<?> login(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
         MemberDTO loginMemberDTO = logService.login(memberDTO);
 
+        if(loginMemberDTO == null){
+            return ResponseEntity.ok(0);
+        }
         HttpSession session = httpServletRequest.getSession(true);
         session.setAttribute("memberId", loginMemberDTO.getMemberId());
 
@@ -58,7 +61,7 @@ public class LogController {
     }
 
     @GetMapping(value = {"/info"})
-    public void memberGET(@RequestParam("memberId") Long memberId, Model model){
+    public void memberGET(@RequestParam("memberId") Long memberId, Model model, HttpServletRequest httpServletRequest){
         MemberDTO memberDTO = logService.readOne(memberId);
         model.addAttribute("memberDTO", memberDTO);
     }

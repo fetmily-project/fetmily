@@ -31,14 +31,17 @@ async function signup(){
 }
 
 async function login(){
-    const email = document.querySelector(".email").value;
-    const password = document.querySelector(".password").value;
+    const email = document.querySelector(".login_email").value;
+    const password = document.querySelector(".login_password").value;
 
      await axios.post("/member/login", {
        email: email,
        password: password
     }).then(response => {
-         if(response.data.memberId !== null) {
+         if(response.data === 0) {
+             alert('이메일 또는 패스워드가 일치하지 않습니다.')
+         }else{
+             alert('로그인 성공')
              localStorage.setItem('memberId', response.data.memberId);
              localStorage.setItem('nickname', response.data.nickname);
          }
