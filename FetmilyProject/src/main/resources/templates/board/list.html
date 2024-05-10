@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/board/board.css">
+    <!--    <link rel="stylesheet" href="/css/board/board.css">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
@@ -16,14 +16,31 @@
 
 <body>
 
-
 <div layout:fragment="content">
 
 
+    <img src="/assets/board/cloudicon.svg" alt="" class="cloud1">
+    <img src="/assets/board/cloudicon2.svg" alt="" class="cloud2">
+    <img src="/assets/board/cloudicon3.svg" alt="" class="cloud3">
+    <img src="/assets/board/cloudicon4.svg" alt="" class="cloud4">
+    <img src="/assets/board/cloudicon5.svg" alt="" class="cloud5">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree1">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree2">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree3">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree4">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree5">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <div class="row mt-3">
         <form action="/board/list" method="get">
             <div class="col">
+                <h1 class="viewAll">전체글보기</h1>
                 <div class="input-group">
                     <div>
                         <button class="btn btn-outline-secondary registerBtn" type="button" th:onclick="'javascript:window.location.href = \'/board/register\''">글쓰기</button>
@@ -33,18 +50,19 @@
                             <option value="t" th:selected="${pageRequestDTO.type =='t'}">제목</option>
                             <option value="c" th:selected="${pageRequestDTO.type =='c'}">내용</option>
                             <option value="tc" th:selected="${pageRequestDTO.type =='tc'}">제목+내용</option>
+                            <option value="n" th:selected="${pageRequestDTO.type == 'n'}">닉네임</option>
                         </select>
                     </div>
                     <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
+                        <button class="btn btn-outline-secondary searchBtn" type="submit">검색</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 
-
+    <div class = "half-background">
 
     <div class="row mt-3">
         <div class="col">
@@ -73,11 +91,11 @@
 
                     </table>
 
-                    <div class="float-end">
+                    <div class="float-none">
                         <ul class="pagination flex-wrap">
 
                             <li class="page-item" th:if="${responseDTO.prev}">
-                                <a class="page-link" th:data-num="${responseDTO.start -1}">Previous</a>
+                                <a class="page-link" th:data-num="${responseDTO.start -1}">< 이전</a>
                             </li>
 
                             <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
@@ -87,7 +105,7 @@
                             </th:block>
 
                             <li class="page-item" th:if="${responseDTO.next}">
-                                <a class="page-link"  th:data-num="${responseDTO.end + 1}">Next</a>
+                                <a class="page-link"  th:data-num="${responseDTO.end + 1}">다음 ></a>
                             </li>
                         </ul>
                     </div>
@@ -96,29 +114,30 @@
                 </div><!--end card body-->
             </div><!--end card-->
         </div><!-- end col-->
+
+
     </div><!-- end row-->
-
- <!--    <div class="modal" tabindex="-1">-->
- <!--        <div class="modal-dialog">-->
- <!--            <div class="modal-content">-->
- <!--                <div class="modal-header">-->
- <!--                    <h5 class="modal-title">Modal title</h5>-->
- <!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
- <!--                </div>-->
- <!--                <div class="modal-body">-->
- <!--                    <p>Modal body text goes here.</p>-->
- <!--                </div>-->
- <!--                <div class="modal-footer">-->
- <!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
- <!--                    <button type="button" class="btn btn-primary">Save changes</button>-->
- <!--                </div>-->
- <!--            </div>-->
- <!--        </div>-->
- <!--    </div>-->
-
-
-
+        <img src="/assets/board/banner.svg" alt="" class="banner">
+    <!--    <div class="modal" tabindex="-1">-->
+    <!--        <div class="modal-dialog">-->
+    <!--            <div class="modal-content">-->
+    <!--                <div class="modal-header">-->
+    <!--                    <h5 class="modal-title">Modal title</h5>-->
+    <!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+    <!--                </div>-->
+    <!--                <div class="modal-body">-->
+    <!--                    <p>Modal body text goes here.</p>-->
+    <!--                </div>-->
+    <!--                <div class="modal-footer">-->
+    <!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+    <!--                    <button type="button" class="btn btn-primary">Save changes</button>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    </div>
 </div>
+
 
 </body>
 
@@ -147,8 +166,6 @@
 
     },false)
 
-    // 밑에는 쓰는 곳이 없어서 지워도 될듯
-
     // document.querySelector(".clearBtn").addEventListener("click", function (e){
     //     e.preventDefault()
     //     e.stopPropagation()
@@ -159,9 +176,9 @@
 
     //show modal
     // const result = [[${result}]]
-
+    //
     // const modal = new bootstrap.Modal(document.querySelector(".modal"))
-
+    //
     // if(result){
     //     modal.show()
     // }
