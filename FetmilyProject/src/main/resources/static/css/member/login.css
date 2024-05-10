@@ -225,6 +225,10 @@ button{
     font-weight: bold;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 .login_footer{
     font-weight: bold;
     color: rgba(3, 69, 147, 1);

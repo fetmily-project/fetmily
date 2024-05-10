@@ -2,6 +2,7 @@ async function signup(){
     let email = document.querySelector(".email").value;
     let password = document.querySelector(".password").value;
     let nickname = document.querySelector(".nickname").value;
+    let password_check = document.querySelector(".password_check").value;
 
     await axios.post("/member/signup", {
         email: email,
@@ -11,8 +12,18 @@ async function signup(){
         if(response.data === 1){
             alert("회원가입이 완료되었습니다");
             document.querySelector('.modal').style.display = 'none';
-        }else{
+            document.querySelector(".email").value = '';
+            document.querySelector(".password").value = '';
+            document.querySelector(".nickname").value = '';
+            document.querySelector(".password_check").value = '';
+            document.querySelector('.check1').childNodes[0].attributes[0].nodeValue = '/assets/member/smallCheck.svg';
+            document.querySelector('.check2').childNodes[0].attributes[0].nodeValue = '/assets/member/smallCheck.svg';
+            document.querySelector('.check3').childNodes[0].attributes[0].nodeValue = '/assets/member/smallCheck.svg';
+            document.querySelector('.all_check').childNodes[0].attributes[0].nodeValue = '/assets/member/bigCheck.svg';
+        }else if(response.data === 2){
             alert("이미 가입된 이메일입니다");
+        }else if(response.data === 3){
+            alert("이미 존재하는 닉네임입니다");
         }
     }).catch((error) => {
         alert("잠시후 다시 시도해주세요");

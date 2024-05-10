@@ -15,6 +15,7 @@ public interface BoardRepository extends JpaRepository<Board, Long>, BoardSearch
     @Query("select b from Board b where b.boardId =:boardId")
     Optional<Board> findByIdWithImages(Long boardId);
 
+
     @Modifying
     @Query("update Board p set p.viewCnt = p.viewCnt + 1 where p.boardId = :boardId")
     int updateViewCnt(Long boardId);
