@@ -22,8 +22,9 @@ public class BoardImage implements Comparable<BoardImage> {
 
     private int ord;
 
+
+//    @JoinColumn(name = "board_id")
     @ManyToOne
-    @JoinColumn(name = "board_id")
     private Board board;
 
 
