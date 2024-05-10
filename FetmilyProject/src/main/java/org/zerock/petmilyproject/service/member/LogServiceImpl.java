@@ -1,17 +1,13 @@
 package org.zerock.petmilyproject.service.member;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Member;
 import org.zerock.petmilyproject.dto.MemberDTO;
 import org.zerock.petmilyproject.repository.LogRepository;
-import org.zerock.petmilyproject.service.member.LogService;
 
 @Log4j2
 @Service

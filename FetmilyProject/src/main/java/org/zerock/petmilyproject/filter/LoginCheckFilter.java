@@ -2,8 +2,8 @@ package org.zerock.petmilyproject.filter;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.util.PatternMatchUtils;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.util.PatternMatchUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +45,8 @@ public class LoginCheckFilter implements Filter {
     }
 
     private boolean isLoginCheckPath(String requestURI) {
-        return PatternMatchUtils.simpleMatch(blackList, requestURI);
+        return false;
+//        return PatternMatchUtils.simpleMatch(blackList, requestURI);
     }
 
 }
