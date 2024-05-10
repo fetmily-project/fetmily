@@ -43,16 +43,19 @@ public class LogServiceImpl implements LogService {
     @Override
     public MemberDTO login(MemberDTO memberDTO){
         Member member = modelMapper.map(memberDTO, Member.class);
-        Member loginMember = logRepository.login(member.getEmail(), member.getPassword())
+
+        Member loginMember = logRepository.findByEmail(member.getEmail())
                 .orElseThrow();
 
-        MemberDTO loginMemberDTO = MemberDTO.builder()
-                .memberId(loginMember.getMemberId())
-                .build();
+        if(bCryptPasswordEncoder.matches(member.getPassword(), loginMember.getPassword())){
+            MemberDTO loginMemberDTO = MemberDTO.builder()
+                    .memberId(loginMember.getMemberId())
+                    .build();
 
-        log.info(loginMemberDTO);
+            return loginMemberDTO;
+        }
 
-        return loginMemberDTO;
+        return null;
     }
 
     @Override

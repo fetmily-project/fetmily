@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface LogRepository extends JpaRepository<Member, Long> {
     Optional<Member> findByMemberId(Long memberId);
 
+    Optional<Member> findByEmail(String email);
+
     Boolean existsByEmail(String email);
 
     Boolean existsByNickname(String nickname);
