@@ -35,4 +35,8 @@ public class Member {
 
     @Column(length = 500)
     private String nickname;
+
+    public void changeAddr(String addr){
+        this.addr = addr;
+    }
 }

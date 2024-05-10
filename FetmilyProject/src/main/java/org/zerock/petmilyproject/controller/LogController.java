@@ -74,8 +74,9 @@ public class LogController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> memberUpdate(@RequestBody MemberDTO memberDTO){
-
+    public ResponseEntity<?> memberUpdate(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession();
+        memberDTO.setMemberId((Long) session.getAttribute("memberId"));
         logService.modify(memberDTO);
 
         return ResponseEntity.ok(1);

@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('li').forEach((element) => {
   element.addEventListener('click', (e) => {
     const text = e.target.innerText;
@@ -62,7 +63,7 @@ const delivery = (content_body) => {
                     <span id="guide" style="color:#999;display:none"></span>
                     <input type="text" id="sample4_detailAddress" placeholder="상세주소">
                     <input type="text" id="sample4_extraAddress" placeholder="참고항목">
-                    <button class="del_submit_btn">저장</button>
+                    <button class="del_submit_btn" onclick='updateAddr()'>저장</button>
                 </div>`;
 }
 
@@ -93,4 +94,24 @@ const myPet = (content_body) => {
 const supportPet = (content_body) => {
   content_body.innerHTML = `<div>후원중인 동물입니다.</div>`;
 }
+})
 
+const updateAddr = () => {
+  const postcode = document.querySelector('#sample4_postcode').value;
+  const roadAddress = document.querySelector('#sample4_roadAddress').value;
+  const jibunAddress = document.querySelector('#sample4_jibunAddress').value;
+  const detailAddress = document.querySelector('#sample4_detailAddress').value;
+  const extraAddress = document.querySelector('#sample4_extraAddress').value;
+
+  const addr = `${postcode}_${roadAddress}_${jibunAddress}_${detailAddress}_${extraAddress}`;
+
+  axios.put('/member/update', {
+    addr: addr
+  }).then((result) => {
+    if(result.data === 1){
+      alert("저장되었습니다.");
+    }
+  }).catch((error)=> {
+    alert('잠시후 다시 시도해주세요.')
+  })
+}
