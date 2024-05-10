@@ -18,7 +18,7 @@ public class ReplyServiceTests {
 
         ReplyDTO replyDTO = ReplyDTO.builder()
                 .content("ReplyDTO Text")
-                .memberid(9L)
+//                .memberid(9L)
                 .boardid(226L)
                 .build();
 
