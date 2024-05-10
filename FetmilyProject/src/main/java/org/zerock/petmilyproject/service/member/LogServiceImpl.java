@@ -76,7 +76,9 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public void modify(MemberDTO memberDTO) {
+        // memberId값으로 db에서 정보 가져와서 addr값만 change
         Member member = modelMapper.map(memberDTO, Member.class);
+
         logRepository.save(member);
     }
 
