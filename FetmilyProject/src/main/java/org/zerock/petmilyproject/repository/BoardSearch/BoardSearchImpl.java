@@ -179,6 +179,8 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
                     case "c":
                         booleanBuilder.or(board.content.contains(keyword));
                         break;
+                    case "n":
+                        booleanBuilder.or(board.member.nickname.contains(keyword));
                 }
             }//end for
             boardJPQLQuery.where(booleanBuilder);

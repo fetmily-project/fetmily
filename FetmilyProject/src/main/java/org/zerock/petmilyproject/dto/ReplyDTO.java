@@ -17,15 +17,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ReplyDTO {
 
-    private Long replyid;
+    private Long replyId;
 
     @NotNull
-    private Long boardid;
+    private Long boardId;
 
-//    @NotNull
-//    private Long memberid;
-//
     @NotNull
+    private Long memberId;
     private String nickname;
 
     @NotEmpty

@@ -4,16 +4,39 @@
       layout:decorate="~{layout/basic.html}">
 
 <head>
-    <title>Board Read</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--    <link rel="stylesheet" href="/css/board/board.css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
+<body>
 <div layout:fragment="content">
+
+    <img src="/assets/board/cloudicon.svg" alt="" class="cloud1">
+    <img src="/assets/board/cloudicon2.svg" alt="" class="cloud2">
+    <img src="/assets/board/cloudicon3.svg" alt="" class="cloud3">
+    <img src="/assets/board/cloudicon4.svg" alt="" class="cloud4">
+    <img src="/assets/board/cloudicon5.svg" alt="" class="cloud5">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree1">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree2">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree3">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree4">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree5">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="row mt-3">
         <div class="col">
             <div class="card">
-                <div class="card-header">
-                    Board Read
-                </div>
                 <div class="card-body">
                     <div class="input-group mb-3">
                         <span class="input-group-text">BoardId</span>
@@ -140,7 +163,7 @@
     </div>
 </div><!-- layout fragment end -->
 
-
+</body>
 <script layout:fragment="script" th:inline="javascript">
 
     const boardId = [[${dto.boardId}]]

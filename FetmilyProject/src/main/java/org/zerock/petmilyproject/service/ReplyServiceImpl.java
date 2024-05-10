@@ -50,7 +50,7 @@ public class ReplyServiceImpl implements ReplyService{
     @Override
     public void modify(ReplyDTO replyDTO) {
 
-        Optional<Reply> replyOptional = replyRepository.findById(replyDTO.getReplyid());
+        Optional<Reply> replyOptional = replyRepository.findById(replyDTO.getReplyId());
 
         Reply reply = replyOptional.orElseThrow();
 

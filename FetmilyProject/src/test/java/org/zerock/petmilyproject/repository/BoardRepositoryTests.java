@@ -87,7 +87,7 @@ public class BoardRepositoryTests {
     @Test
     public void testSearchReplyCount() {
 
-        String[] types = {"t", "c"};
+        String[] types = {"t", "c", "n"};
 
         String keyword = "1";
 
