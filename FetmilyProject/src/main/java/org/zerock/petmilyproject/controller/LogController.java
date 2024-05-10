@@ -6,16 +6,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindException;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.petmilyproject.dto.MemberDTO;
-import org.zerock.petmilyproject.service.LogService;
+import org.zerock.petmilyproject.service.member.LogService;
 
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Log4j2
 @Controller
@@ -28,12 +24,14 @@ public class LogController {
     public void signupGET(){}
 
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> signup(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException{
-        if(bindingResult.hasErrors()){
-            throw new BindException(bindingResult);
+    public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
+        Long memberId = logService.register(memberDTO);
+        if(memberId == null){
+            return ResponseEntity.ok(0);
         }
 
-        logService.register(memberDTO);
+        HttpSession session = httpServletRequest.getSession(true);
+        session.setAttribute("memberId", memberId);
 
         return ResponseEntity.ok(1);
     }
@@ -42,11 +40,7 @@ public class LogController {
     public void loginGET(){}
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MemberDTO> login(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException{
-        if(bindingResult.hasErrors()){
-            throw new BindException(bindingResult);
-        }
-
+    public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO){
         MemberDTO loginMemberDTO = logService.login(memberDTO);
 
         return ResponseEntity.ok(loginMemberDTO);
@@ -66,10 +60,7 @@ public class LogController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> memberUpdate(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException{
-        if(bindingResult.hasErrors()){
-            throw new BindException(bindingResult);
-        }
+    public ResponseEntity<?> memberUpdate(@RequestBody MemberDTO memberDTO){
 
         logService.modify(memberDTO);
 

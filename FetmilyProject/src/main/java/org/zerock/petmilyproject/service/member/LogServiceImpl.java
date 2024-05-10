@@ -1,8 +1,9 @@
-package org.zerock.petmilyproject.service;
+package org.zerock.petmilyproject.service.member;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Member;
 import org.zerock.petmilyproject.dto.MemberDTO;
@@ -11,16 +12,26 @@ import org.zerock.petmilyproject.repository.LogRepository;
 @Log4j2
 @Service
 @RequiredArgsConstructor
-public class LogServiceImpl implements LogService{
+public class LogServiceImpl implements LogService {
     private final ModelMapper modelMapper;
     private final LogRepository logRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public Long register(MemberDTO memberDTO) {
-        Member member = modelMapper.map(memberDTO, Member.class);
-        Long memberId = logRepository.save(member).getMemberId();
-        log.info(member);
-        return memberId;
+        Member member = Member.builder()
+                .email(memberDTO.getEmail())
+                .password(bCryptPasswordEncoder.encode(memberDTO.getPassword()))
+                .nickname(memberDTO.getNickname())
+                .build();
+
+        Boolean isExist = logRepository.existsByEmail(member.getEmail());
+
+        if(isExist){
+            return null;
+        }
+
+        return logRepository.save(member).getMemberId();
     }
 
     @Override
@@ -31,7 +42,6 @@ public class LogServiceImpl implements LogService{
 
         MemberDTO loginMemberDTO = MemberDTO.builder()
                 .memberId(loginMember.getMemberId())
-                .nickname(loginMember.getNickname())
                 .build();
 
         log.info(loginMemberDTO);
