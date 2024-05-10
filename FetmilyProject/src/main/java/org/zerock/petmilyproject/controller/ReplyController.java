@@ -91,7 +91,7 @@ public class ReplyController {
     @PutMapping(value = "/{replyId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Long> modify(@PathVariable("replyId") Long replyId, @RequestBody ReplyDTO replyDTO) {
 
-        replyDTO.setReplyid(replyId);
+        replyDTO.setReplyId(replyId);
 
         replyService.modify(replyDTO);
 

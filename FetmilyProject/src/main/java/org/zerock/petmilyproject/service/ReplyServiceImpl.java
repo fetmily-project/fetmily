@@ -31,12 +31,15 @@ public class ReplyServiceImpl implements ReplyService{
     public Long register(ReplyDTO replyDTO) {
 
         Reply reply = modelMapper.map(replyDTO, Reply.class);
+        log.info(reply);
+        log.info("ReplyServiceImpl reply 확인");
 
         Long replyId = replyRepository.save(reply).getReplyId();
+        log.info(replyId);
+        log.info("ReplyServiceImpl replyId 확인");
 
         return replyId;
     }
-
     @Override
     public ReplyDTO read(Long replyId) {
 
@@ -50,7 +53,7 @@ public class ReplyServiceImpl implements ReplyService{
     @Override
     public void modify(ReplyDTO replyDTO) {
 
-        Optional<Reply> replyOptional = replyRepository.findById(replyDTO.getReplyid());
+        Optional<Reply> replyOptional = replyRepository.findById(replyDTO.getReplyId());
 
         Reply reply = replyOptional.orElseThrow();
 
