@@ -6,12 +6,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.zerock.petmilyproject.dto.MemberDTO;
 import org.zerock.petmilyproject.service.member.LogService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Log4j2
 @Controller
@@ -24,14 +27,19 @@ public class LogController {
     public void signupGET(){}
 
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> signup(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
-        Long memberId = logService.register(memberDTO);
-        if(memberId == null){
-            return ResponseEntity.ok(0);
+    public ResponseEntity<?> signup(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException {
+        String result = logService.register(memberDTO);
+        if(bindingResult.hasErrors()){
+            throw new BindException(bindingResult);
         }
 
-        HttpSession session = httpServletRequest.getSession(true);
-        session.setAttribute("memberId", memberId);
+        if("emailExist".equals(result)){
+            return ResponseEntity.ok(2);
+        }
+
+        if("nicknameExist".equals(result)){
+            return ResponseEntity.ok(3);
+        }
 
         return ResponseEntity.ok(1);
     }
@@ -40,8 +48,11 @@ public class LogController {
     public void loginGET(){}
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO){
+    public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
         MemberDTO loginMemberDTO = logService.login(memberDTO);
+
+        HttpSession session = httpServletRequest.getSession(true);
+        session.setAttribute("memberId", loginMemberDTO.getMemberId());
 
         return ResponseEntity.ok(loginMemberDTO);
     }
