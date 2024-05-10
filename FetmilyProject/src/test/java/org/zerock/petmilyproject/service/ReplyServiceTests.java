@@ -18,9 +18,8 @@ public class ReplyServiceTests {
 
         ReplyDTO replyDTO = ReplyDTO.builder()
                 .content("ReplyDTO Text")
-//                .memberId(2L)
-//                .boardId(226L)
-
+                .memberId(2L)
+                .boardId(226L)
                 .build();
 
         log.info(replyService.register(replyDTO));
