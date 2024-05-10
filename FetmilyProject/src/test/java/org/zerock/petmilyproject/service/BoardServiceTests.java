@@ -27,12 +27,13 @@ public class BoardServiceTests {
         BoardDTO boardDTO = BoardDTO.builder()
                 .title("Sample Title...")
                 .content("Sample Content...")
-                .memberId(8L)
+                .memberId(1L)
                 .build();
 
         Long boardId = boardService.register(boardDTO);
 
         log.info("boardId: " + boardId);
+        log.info("memberId: " + boardDTO.getMemberId());
     }
 
     @Test

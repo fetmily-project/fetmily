@@ -22,7 +22,7 @@ public class ReplyRepositoryTests {
     @Test
     public void testInsert() {
 
-        Long boardId = 226L;
+        Long boardId = 8L;
 
 
         Board board = Board.builder().boardId(boardId).build();
@@ -31,7 +31,7 @@ public class ReplyRepositoryTests {
                 .board(board)
                 .content("댓글 test2.... ")
                 .member(Member.builder()
-                        .memberId(8L)
+                        .memberId(2L)
                         .build())
                 .build();
 
