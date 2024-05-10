@@ -104,9 +104,4 @@ class EventServiceImpl implements EventService {
                         .build())
                 .collect(Collectors.toList());
     }
-//    @Override
-//    public List<EventDTO> getAllEvents() {
-//        return null;
-//    }
-
 }

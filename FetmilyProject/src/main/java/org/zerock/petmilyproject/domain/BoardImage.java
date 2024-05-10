@@ -23,7 +23,7 @@ public class BoardImage implements Comparable<BoardImage> {
     private int ord;
 
     @ManyToOne
-    @JoinColumn(name = "board_id")
+    @JoinColumn(name = "boardId")
     private Board board;
 
 

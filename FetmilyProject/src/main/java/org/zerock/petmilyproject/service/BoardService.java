@@ -1,6 +1,7 @@
 package org.zerock.petmilyproject.service;
 
 import org.zerock.petmilyproject.domain.Board;
+import org.zerock.petmilyproject.domain.Member;
 import org.zerock.petmilyproject.dto.*;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public interface BoardService {
                 .boardId(boardDTO.getBoardId())
                 .title(boardDTO.getTitle())
                 .content(boardDTO.getContent())
+                .member(Member.builder()
+                        .memberId(boardDTO.getMemberId())
+                        .build())
                 .build();
 
         if(boardDTO.getFileNames() != null){

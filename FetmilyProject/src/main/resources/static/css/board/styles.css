@@ -2257,7 +2257,7 @@ progress {
   opacity: 1;
 }
 .form-control:disabled, .form-control[readonly] {
-  background-color: #e9ecef;
+  background-color: white;
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button {
@@ -3144,9 +3144,8 @@ textarea.form-control-lg {
 }
 
 .btn-info {
-  color: #000;
-  background-color: #0dcaf0;
-  border-color: #0dcaf0;
+  color: white;
+  background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);;
 }
 .btn-info:hover {
   color: #000;
@@ -4860,9 +4859,8 @@ textarea.form-control-lg {
 }
 .page-item.active .page-link {
   z-index: 3;
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  color: white;
+  background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);;
 }
 .page-item.disabled .page-link {
   color: #6c757d;
@@ -5124,6 +5122,8 @@ textarea.form-control-lg {
   text-decoration: none;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-left: 300px;
+  margin-right: 300px;
 }
 .list-group-item:first-child {
   border-top-left-radius: inherit;
@@ -11463,6 +11463,32 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   .registerBtn2 {
     margin-left: auto;
     margin-right: 300px;
+  }
+
+  .addReplyBtn {
+
+    margin-left: 300px;
+
+  }
+
+  .replyBtnBtn {
+    background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);
+    z-index: 3;
+
+    order: -1;
+
+    border:none;
+
+    color:white;
+
+    padding: 7px 12px;
+  }
+
+  .input-group-add {
+    position: relative;
+    display: flex;
+    /*flex-wrap: wrap;*/
+    /*align-items: stretch;*/
   }
 
 }

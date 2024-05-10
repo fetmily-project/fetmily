@@ -15,10 +15,10 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private String email;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private String password;
 
     @Column(length = 500)
@@ -33,6 +33,6 @@ public class Member {
     @Column(length = 500)
     private String addr;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500)
     private String nickname;
 }
