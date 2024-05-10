@@ -18,20 +18,26 @@ public class LogServiceImpl implements LogService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public Long register(MemberDTO memberDTO) {
+    public String register(MemberDTO memberDTO) {
         Member member = Member.builder()
                 .email(memberDTO.getEmail())
                 .password(bCryptPasswordEncoder.encode(memberDTO.getPassword()))
                 .nickname(memberDTO.getNickname())
                 .build();
 
-        Boolean isExist = logRepository.existsByEmail(member.getEmail());
+        Boolean isExistEmail = logRepository.existsByEmail(member.getEmail());
+        Boolean isExistNickname = logRepository.existsByNickname(member.getNickname());
 
-        if(isExist){
-            return null;
+        if(isExistEmail){
+            return "emailExist";
         }
 
-        return logRepository.save(member).getMemberId();
+        if(isExistNickname){
+            return "nicknameExist";
+        }
+
+        logRepository.save(member);
+        return "ok";
     }
 
     @Override
