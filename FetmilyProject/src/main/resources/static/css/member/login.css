@@ -100,6 +100,7 @@
     transform:translate(-50%, -50%);
 
     background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);
+    backdrop-filter: blur(15px);
 }
 
 .login_form_bg2{
@@ -126,6 +127,7 @@
 
     border-image: linear-gradient(35.19deg, rgba(0, 157, 251, 0.145) -9.95%, rgba(0, 151, 240, 0.125) 12.98%, rgba(255, 255, 255, 0.25) 47.38%, rgba(255, 255, 255, 0.015) 68.59%, rgba(250, 142, 255, 0.125) 96.11%, rgba(250, 152, 250, 0.125) 104.71%);
     box-shadow: -20px 20px 100px 0px rgba(138, 188, 247, 0.15);
+    backdrop-filter: blur(15px);
 }
 
 .login_form_bg3{
@@ -147,7 +149,7 @@
 
     transform:translate(-50%, -50%);
     box-shadow: -20px 20px 100px 0px rgba(138, 188, 247, 0.15);
-
+    backdrop-filter: blur(15px);
     background: rgba(255, 255, 255, 0.3);
     border: 3px solid transparent;
 
@@ -221,6 +223,10 @@ button{
     color: rgba(3, 69, 147, 1);
     font-size: 20px;
     font-weight: bold;
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 .login_footer{

@@ -4,81 +4,109 @@
       layout:decorate="~{layout/basic.html}">
 
 <head>
-    <title>Board Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--    <link rel="stylesheet" href="/css/board/board.css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
+<body>
+
 <div layout:fragment="content">
+
+    <img src="/assets/board/cloudicon.svg" alt="" class="cloud1">
+    <img src="/assets/board/cloudicon2.svg" alt="" class="cloud2">
+    <img src="/assets/board/cloudicon3.svg" alt="" class="cloud3">
+    <img src="/assets/board/cloudicon4.svg" alt="" class="cloud4">
+    <img src="/assets/board/cloudicon5.svg" alt="" class="cloud5">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree1">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree2">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree3">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree4">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree5">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="row mt-3">
         <div class="col">
+
+            <h1 class="viewAll">글쓰기</h1>
+            <div class = "register">
+                <div class = "registerBtn2">
+                        <button type="submit" class="btn btn-primary submitBtn">완료</button>
+                <button type="reset" class="btn btn-secondary" onclick="window.location.href='http://localhost:12000/board/list'">취소</button>
+            </div>
+            </div>
+
+
+            <div class = "half-background">
+
             <div class="card">
-                <div class="card-header">
-                    Board Register
-                </div>
                 <div class="card-body">
                     <form action="/board/register" method="post">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Title</span>
-                            <input type="text" name="title" class="form-control" placeholder="Title">
+                        <div class="input-register mb-3">
+                            <input type="text" name="title" class="form-control" placeholder="제목을 입력해주세요.">
                         </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Content</span>
-                            <textarea class="form-control col-sm-5" rows="5" name="content"></textarea>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">memberId</span>
+                        <div class="input-register mb-3">
                             <input type="text" name="memberId" class="form-control" placeholder="memberId">
-
                         </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Images</span>
+                        <div class="input-register mb-3">
+                            <textarea class="form-control" rows="20" name="content" placeholder="내용을 입력해주세요."></textarea>
+                        </div>
+
+
+
+                        <div class="input-register mb-3">
                             <div class="float-end uploadHidden">
-                                <button type="button" class="btn btn-primary uploadFileBtn">ADD Files</button>
+                                <button type="button" class="btn btn-primary uploadFileBtn">사진첨부</button>
                             </div>
                         </div>
 
-                        <div class="my-4">
-                            <div class="float-end">
-                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
-                            </div>
-                        </div>
+
 
 
                     </form>
                 </div><!--end card body-->
 
             </div><!--end card-->
-        </div><!-- end col-->
-    </div><!-- end row-->
+        <!-- end col-->
+        <!-- end row-->
 
     <!—- 첨부 파일 섬네일을 보여줄 부분 -->
-    <div class="row mt-3">
         <div class="col ">
             <div class="container-fluid d-flex uploadResult" style="flex-wrap: wrap;">
             </div>
         </div>
-    </div>
+
 
     <!—- 첨부파일 추가를 위한 모달창 -->
     <div class="modal uploadModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Upload File</h5>
+                    <h5 class="modal-title">사진첨부</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="input-group mb-3">
+                    <div class="input-group-add mb-3">
                         <input type="file" name="files" class="form-control" multiple >
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary uploadBtn">Upload</button>
-                    <button type="button" class="btn btn-outline-dark closeUploadBtn" >Close</button>
+                    <button type="button" class="btn btn-outline-dark closeUploadBtn" data-bs-dismiss="modal">Close</button>
                 </div>
+
             </div>
         </div>
     </div><!-- register modal -->
@@ -87,7 +115,13 @@
 
     <script src="/js/upload.js"></script>
 
+        <img src="/assets/board/banner.svg" alt="" class="banner">
+                </div>
+</div>
 </div><!-- layout fragment end -->
+</div>
+
+</body>
 
 
 <script layout:fragment="script" th:inline="javascript">

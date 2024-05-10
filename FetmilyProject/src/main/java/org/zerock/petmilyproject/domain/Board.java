@@ -29,7 +29,7 @@ public class Board extends BaseEntity{
     @Column(length = 500, nullable = false)
     private String content;
 
-    @Column(columnDefinition = "integer default 0", nullable = false)
+    @Column(columnDefinition = "integer default 0")
     private Long viewCnt;
 
     @ColumnDefault("0")

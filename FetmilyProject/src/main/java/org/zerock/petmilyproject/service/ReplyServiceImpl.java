@@ -69,7 +69,7 @@ public class ReplyServiceImpl implements ReplyService{
     public PageResponseDTO<ReplyDTO> getListOfBoard(Long boardId, PageRequestDTO pageRequestDTO) {
 
         Pageable pageable = PageRequest.of(pageRequestDTO.getPage() <=0? 0:
-                pageRequestDTO.getPage() -1,
+                        pageRequestDTO.getPage() -1,
                 pageRequestDTO.getSize(),
                 Sort.by("replyId").ascending());
 

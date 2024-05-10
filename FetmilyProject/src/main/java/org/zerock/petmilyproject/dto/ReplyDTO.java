@@ -22,7 +22,7 @@ public class ReplyDTO {
     @NotNull
     private Long boardid;
 
-//    @NotNull
+    //    @NotNull
 //    private Long memberid;
 //
     @NotNull

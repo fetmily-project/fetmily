@@ -76,37 +76,6 @@
 
       <button type="submit">Add Event</button>
     </form>
-
-    <!-- 이벤트 수정 폼 -->
-    <form id="updateEventForm">
-      <label for="eventId">Event ID:</label>
-      <input type="number" id="eventId" name="eventId" required><br><br>
-
-      <label for="updateContent">New Content:</label>
-      <input type="text" id="updateContent" name="updateContent" required><br><br>
-
-      <label for="updateEventColor">New Event Color:</label>
-      <input type="text" id="updateEventColor" name="updateEventColor" ><br><br>
-
-      <label for="updateStartDate">New Start Date:</label>
-      <input type="datetime-local" id="updateStartDate" name="updateStartDate" required><br><br>
-
-      <label for="updateEndDate">New End Date:</label>
-      <input type="datetime-local" id="updateEndDate" name="updateEndDate" required><br><br>
-
-      <label for="updateCycle">New Cycle:</label>
-      <input type="number" id="updateCycle" name="updateCycle" required><br><br>
-
-      <button type="submit">Update Event</button>
-    </form>
-
-    <!-- 이벤트 삭제 폼 -->
-    <form id="deleteEventForm">
-      <label for="deleteEventId">Event ID:</label>
-      <input type="number" id="deleteEventId" name="deleteEventId" required><br><br>
-
-      <button type="submit">Delete Event</button>
-    </form>
   </div>
 </div>
 
@@ -129,8 +98,9 @@
 
 
 <script>
-  $('.modal .close_btn').click(function(){
-    $('.modal').css('display', 'none'); // 모달 활성화 클래스 제거
+  // jQuery를 사용하여 모달을 닫는 이벤트 핸들러
+  $('.close_btn').click(function(){
+    $('.modal').hide(); // 모달 숨기기
   });
 
   // 전역 변수로 calendar 선언
@@ -141,9 +111,14 @@
       // 서버에서 이벤트 데이터를 가져오는 함수
       axios.get('/events/all')
               .then(function (response) {
-
                 var data = response.data;
-                console.log(data)
+
+                // 만약 데이터가 배열이 아니라면 배열로 변환
+                if (!Array.isArray(data)) {
+                  data = [data];
+                }
+
+                console.log(data);
                 // calendar element 취득
                 var calendarEl = document.getElementById('calendar');
                 // full-calendar 생성하기
@@ -240,11 +215,15 @@
                 backgroundColor: eventData.eventColor
                 // 다른 필드들도 필요에 따라 추가 가능
               });
+              // 모달 닫기
+              $('.modal').hide(); // jQuery를 이용한 모달 숨기기
             })
             .catch(error => {
               console.error('Error adding event', error);
             });
   });
+
+
 
 
   // 메모 추가 폼 이벤트 핸들러
@@ -285,6 +264,9 @@
             .catch(error => {
               console.error('Error updating event', error);
             });
+
+    // 모달 닫기
+    $('#updateEventForm').hide(); // 모달 숨기기
   });
 
   // 이벤트 삭제 폼 이벤트 핸들러
@@ -304,6 +286,8 @@
               console.error('Error deleting event', error);
             });
 
+    // 모달 닫기
+    $('#deleteEventForm').hide(); // 모달 숨기기
   });
 </script>
 </body>

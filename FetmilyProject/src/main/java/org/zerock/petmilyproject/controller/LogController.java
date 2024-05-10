@@ -9,13 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.petmilyproject.dto.MemberDTO;
-import org.zerock.petmilyproject.service.LogService;
+import org.zerock.petmilyproject.service.member.LogService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 @Log4j2
 @Controller
@@ -28,12 +27,19 @@ public class LogController {
     public void signupGET(){}
 
     @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> signup(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException{
+    public ResponseEntity<?> signup(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException {
+        String result = logService.register(memberDTO);
         if(bindingResult.hasErrors()){
             throw new BindException(bindingResult);
         }
 
-        logService.register(memberDTO);
+        if("emailExist".equals(result)){
+            return ResponseEntity.ok(2);
+        }
+
+        if("nicknameExist".equals(result)){
+            return ResponseEntity.ok(3);
+        }
 
         return ResponseEntity.ok(1);
     }
@@ -42,21 +48,19 @@ public class LogController {
     public void loginGET(){}
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MemberDTO> login(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException{
-        if(bindingResult.hasErrors()){
-            throw new BindException(bindingResult);
-        }
-
+    public ResponseEntity<MemberDTO> login(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
         MemberDTO loginMemberDTO = logService.login(memberDTO);
+
+        HttpSession session = httpServletRequest.getSession(true);
+        session.setAttribute("memberId", loginMemberDTO.getMemberId());
 
         return ResponseEntity.ok(loginMemberDTO);
     }
 
-    @GetMapping(value = {"/info", "/update" })
-    public ResponseEntity<MemberDTO> memberGET(@RequestParam("memberId") Long memberId){
+    @GetMapping(value = {"/info"})
+    public void memberGET(@RequestParam("memberId") Long memberId, Model model){
         MemberDTO memberDTO = logService.readOne(memberId);
-
-        return ResponseEntity.ok(memberDTO);
+        model.addAttribute("memberDTO", memberDTO);
     }
 
     @DeleteMapping("/delete")
@@ -67,10 +71,7 @@ public class LogController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> memberUpdate(@RequestBody @Valid MemberDTO memberDTO, BindingResult bindingResult) throws BindException{
-        if(bindingResult.hasErrors()){
-            throw new BindException(bindingResult);
-        }
+    public ResponseEntity<?> memberUpdate(@RequestBody MemberDTO memberDTO){
 
         logService.modify(memberDTO);
 

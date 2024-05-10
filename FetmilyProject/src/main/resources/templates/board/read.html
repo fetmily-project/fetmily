@@ -4,44 +4,74 @@
       layout:decorate="~{layout/basic.html}">
 
 <head>
-    <title>Board Read</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--    <link rel="stylesheet" href="/css/board/board.css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
+<body>
 <div layout:fragment="content">
+
+    <img src="/assets/board/cloudicon.svg" alt="" class="cloud1">
+    <img src="/assets/board/cloudicon2.svg" alt="" class="cloud2">
+    <img src="/assets/board/cloudicon3.svg" alt="" class="cloud3">
+    <img src="/assets/board/cloudicon4.svg" alt="" class="cloud4">
+    <img src="/assets/board/cloudicon5.svg" alt="" class="cloud5">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree1">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree2">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree3">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree4">
+    <img src="/assets/board/treeicon.svg" alt="" class="tree5">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h1 class="viewAll">전체글보기</h1>
+    <br>
+
+
+    <div class = "half-background">
+
     <div class="row mt-3">
         <div class="col">
             <div class="card">
-                <div class="card-header">
-                    Board Read
-                </div>
                 <div class="card-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">BoardId</span>
+                    <div class="input-register mb-3">
                         <input type="text" class="form-control" th:value="${dto.boardId}" readonly>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Title</span>
-                        <input type="text" class="form-control" th:value="${dto.title}" readonly>
-                    </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Content</span>
-                        <textarea class="form-control col-sm-5" rows="5" readonly>[[${dto.content}]]</textarea>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">nickname</span>
+                    <div class="input-register mb-3">
                         <input type="text" class="form-control" th:value="${dto.nickname}" readonly>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">RegDate</span>
+
+                    <div class="input-register mb-3">
+                        <span class="input-group-text">작성일</span>
                         <input type="text" class="form-control" th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">ModDate</span>
+                    <div class="input-register mb-3">
+                        <span class="input-group-text">수정일</span>
                         <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
                     </div>
+
+                    <div class="input-register mb-3">
+                        <input type="text" class="form-control" th:value="${dto.title}" readonly>
+                    </div>
+
+                    <div class="input-register mb-3">
+                        <textarea class="form-control" rows="20" readonly>[[${dto.content}]]</textarea>
+                    </div>
+
+
+
 
                     <div class="my-4">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
@@ -88,22 +118,22 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Register Reply</h5>
+                        <h5 class="modal-title">댓글등록하기</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="input-group mb-3">
+                        <div class="input-group-add mb-3">
                             <span class="input-group-text">content</span>
                             <input type="text" class="form-control content" >
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Nickname</span>
-                            <input type="text" class="form-control nickname" >
+                        <div class="input-group-add mb-3">
+                            <span class="input-group-text">memberId</span>
+                            <input type="text" class="form-control memberId" >
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary registerBtn">Register</button>
-                        <button type="button" class="btn btn-outline-dark closeRegisterBtn" >Close</button>
+                        <button type="button" class="btn btn-primary replyBtn">댓글쓰기</button>
+                        <button type="button" class="btn btn-outline-dark closeRegisterBtn" >취소</button>
                     </div>
                 </div>
             </div>
@@ -137,10 +167,12 @@
 
         <script src="/js/reply.js"></script>
 
+        <img src="/assets/board/banner.svg" alt="" class="banner">
     </div>
 </div><!-- layout fragment end -->
+</div>
 
-
+</body>
 <script layout:fragment="script" th:inline="javascript">
 
     const boardId = [[${dto.boardId}]]
@@ -156,9 +188,9 @@
             for (const dto of dtoList) {
 
                 str += `<li class="list-group-item d-flex replyItem">
-                      <span class="col-2">${dto.replyid}</span>
-                      <span class="col-6" data-replyId="${dto.replyid}">${dto.content}</span>
+                      <span class="col-2">${dto.replyId}</span>
                       <span class="col-2">${dto.nickname}</span>
+                      <span class="col-6" data-replyId="${dto.replyId}">${dto.content}</span>
                       <span class="col-2">${dto.regDate} </span>
                     </li>`
             }
