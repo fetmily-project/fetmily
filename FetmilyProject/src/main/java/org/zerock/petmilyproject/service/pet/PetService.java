@@ -1,4 +1,4 @@
-package org.zerock.petmilyproject.service;
+package org.zerock.petmilyproject.service.pet;
 
 import org.zerock.petmilyproject.dto.PetDTO;
 
