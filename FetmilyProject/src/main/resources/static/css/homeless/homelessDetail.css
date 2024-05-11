@@ -55,6 +55,10 @@ li {
     background-image: linear-gradient(90deg, rgba(0, 151, 240, 0.25), rgba(0, 87, 138, 0.25));
 }
 
+.category:hover{
+    background-image: linear-gradient(90deg, rgba(0, 151, 240, 0.5), rgba(0, 87, 138, 0.5));
+}
+
 
 .post-title {
     font-size: 20px;
