@@ -46,7 +46,7 @@ public class PetController {
         return ResponseEntity.ok(1);
     }
 
-    @PostMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> petUpdate(@RequestBody @Valid PetDTO petDTO, BindingResult bindingResult) throws BindException {
         if(bindingResult.hasErrors()){
             throw new BindException(bindingResult);
