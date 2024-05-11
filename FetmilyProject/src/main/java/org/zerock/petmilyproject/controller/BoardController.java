@@ -20,6 +20,8 @@ import org.zerock.petmilyproject.service.BoardService;
 import org.zerock.petmilyproject.service.BoardServiceImpl;
 import org.zerock.petmilyproject.service.ReplyService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Files;
@@ -62,7 +64,13 @@ public class BoardController {
 
     @PostMapping("/register")
     public String registerPost(BoardDTO boardDTO, BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes){
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest httpServletRequest){
+
+        HttpSession session = httpServletRequest.getSession(false);
+        Long loginMemberId = (Long)session.getAttribute("memberId");
+
+        boardDTO.setMemberId(loginMemberId);
 
         log.info("board POST register......");
 

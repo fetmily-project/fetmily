@@ -25,7 +25,6 @@ public class ReplyDTO {
     @NotNull
     private Long memberId;
 
-    @NotNull
     private String nickname;
 
     @NotEmpty

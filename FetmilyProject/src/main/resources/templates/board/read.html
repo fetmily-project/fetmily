@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       layout:decorate="~{layout/basic.html}">
 
 <head>
@@ -75,11 +76,11 @@
 
                     <div class="my-4">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
-                            <a th:href="|@{/board/list}?${link}|" class="text-decoration-none">
-                                <button type="button" class="btn btn-primary">List</button>
-                            </a>
                             <a th:href="|@{/board/modify(boardId=${dto.boardId})}&${link}|" class="text-decoration-none">
-                                <button type="button" class="btn btn-secondary">Modify</button>
+                                <button type="button" class="btn btn-secondary">수정하기</button>
+                            </a>
+                            <a th:href="|@{/board/list}?${link}|" class="text-decoration-none">
+                                <button type="button" class="btn btn-primary">목록으로</button>
                             </a>
                         </div>
                     </div>
@@ -100,7 +101,7 @@
         <div class="row mt-3">
             <div class="col-md-12">
                 <div class="my-4 ">
-                    <button class="btn btn-info  addReplyBtn">ADD REPLY</button>
+                    <button class="btn btn-info  addReplyBtn">댓글추가</button>
                 </div>
                 <ul class="list-group replyList">
                 </ul>
@@ -126,13 +127,9 @@
                             <span class="input-group-text">content</span>
                             <input type="text" class="form-control content" >
                         </div>
-                        <div class="input-group-add mb-3">
-                            <span class="input-group-text">memberId</span>
-                            <input type="text" class="form-control memberId" >
-                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary registerBtn">댓글쓰기</button>
+                        <button type="button" class="btn btn-primary replyBtn">댓글쓰기</button>
                         <button type="button" class="btn btn-outline-dark closeRegisterBtn" >취소</button>
                     </div>
                 </div>
@@ -236,9 +233,9 @@
     //댓글 등록 모달
     const registerModal = new bootstrap.Modal(document.querySelector(".registerModal"))
     //registerModel
-    const registerBtn = document.querySelector(".registerBtn")
+    const replyBtn = document.querySelector(".replyBtn")
     const content = document.querySelector(".content")
-    const nickname = document.querySelector(".nickname")
+    // const nickname = document.querySelector(".nickname")
     const closeRegisterBtn = document.querySelector(".closeRegisterBtn")
 
 
@@ -250,17 +247,19 @@
         registerModal.hide()
     },false)
 
-    registerBtn.addEventListener("click", function(e){
+    replyBtn.addEventListener("click", function(e){
         const replyObj = {
             boardId:boardId,
-            content:content.value,
-            nickname:nickname.value}
+            content:content.value
+            // , nickname:nickname.value
+        }
 
         addReply(replyObj).then(result => {
             alert(result.replyId)
             registerModal.hide()
             content.value = ''
-            nickname.value =''
+
+            // nickname.value =''
             printReplies(1,10, true) //댓글 목록 갱신
         }).catch(e => {
             alert("Exception...")
