@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.zerock.petmilyproject.dto.PetDTO;
 import org.zerock.petmilyproject.service.pet.PetService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -22,17 +24,22 @@ public class PetController {
     private final PetService petService;
 
     @GetMapping("/list")
-    public ResponseEntity<List<PetDTO>> petList(@RequestParam("memberId") Long memberId){
-        List<PetDTO> petlist = petService.petList(memberId);
+    public ResponseEntity<List<PetDTO>> petList(HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession(false);
+
+        List<PetDTO> petlist = petService.petList((Long) session.getAttribute("memberId"));
 
         return ResponseEntity.ok(petlist);
     }
 
     @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> petInsert(@RequestBody @Valid PetDTO petDTO, BindingResult bindingResult) throws BindException {
+    public ResponseEntity<?> petInsert(@RequestBody @Valid PetDTO petDTO, BindingResult bindingResult, HttpServletRequest httpServletRequest) throws BindException {
         if(bindingResult.hasErrors()){
             throw new BindException(bindingResult);
         }
+
+        HttpSession session = httpServletRequest.getSession(false);
+        petDTO.setMemberId((Long) session.getAttribute("memberId"));
 
         petService.register(petDTO);
 

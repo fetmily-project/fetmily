@@ -88,7 +88,23 @@ const likePost = (content_body) => {
 }
 
 const myPet = (content_body) => {
-  content_body.innerHTML = `<div>내 반려동물입니다.</div>`;
+  content_body.innerHTML = `<div class="pet_regist_form">
+    <span class="label">반려동물 이름</span>
+    <input type="text" name="" class="pet_name">
+    <span class="label">반려동물 종</span>
+    <input type="text" name="" class="pet_type">
+    <span class="label">생년월일</span>
+    <input type="date" name="" class="pet_birth">
+    <span class="label">몸무게</span>
+    <span><input type="text" class="pet_weight" style="text-align: right;">&nbsp;kg</span>
+    <span class="label">성별</span>
+    <div><input type="checkbox" class="m" onclick="sexCheckBoxListener(this)">남<input type="checkbox" class="w" onclick="sexCheckBoxListener(this)">여</div>
+    <span class="label">중성화 유무</span>
+    <div><input type="checkbox" class="t" onclick="neutCheckBoxListener(this)">O<input type="checkbox" class="f" onclick="neutCheckBoxListener(this)">X</div>
+    <span class="label">특이사항</span>
+    <textarea name="" class="pet_etc" cols="30" rows="10"></textarea>
+    <button class="pet_regist_btn" onclick="registPet()">등록</button>
+  </div>`;
 }
 
 const supportPet = (content_body) => {
@@ -113,5 +129,63 @@ const updateAddr = () => {
     }
   }).catch((error)=> {
     alert('잠시후 다시 시도해주세요.')
+  })
+}
+
+const sexCheckBoxListener = (e) => {
+  const m = document.querySelector('.m');
+  const w = document.querySelector('.w');
+  w.checked = false;
+  m.checked = false;
+  e.checked = true;
+}
+
+const neutCheckBoxListener = (e) => {
+  const t = document.querySelector('.t');
+  const f = document.querySelector('.f');
+  t.checked = false;
+  f.checked = false;
+  e.checked = true;
+}
+
+const registPet = () => {
+  const petName = document.querySelector('.pet_name').value;
+  const petType = document.querySelector('.pet_type').value;
+  const birth = document.querySelector('.pet_birth').value;
+  const weight = document.querySelector('.pet_weight').value;
+  let sex;
+  let neut;
+  const etc = document.querySelector('.pet_etc').value;
+  
+  if (document.querySelector('.m').checked) {
+    sex = '남';
+  } else if (document.querySelector('.w').checked) {
+    sex = '여';
+  }else{
+    sex = '';
+  }
+
+  if (document.querySelector('.t').checked) {
+    neut = 'O';
+  } else if (document.querySelector('.f').checked) {
+    neut = 'X';
+  }else{
+    neut = '';
+  }
+
+  axios.post('/pet/insert', {
+    petName: petName,
+    petType: petType,
+    birth: birth,
+    weight: weight,
+    sex: sex,
+    neut: neut,
+    etc: etc,
+  }).then((result) => {
+    if(result.data === 1){
+      alert('등록되었습니다.');
+    }
+  }).catch((error) => {
+    alert('잠시후 다시 시도해주세요.');
   })
 }

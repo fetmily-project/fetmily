@@ -73,3 +73,32 @@
 .delivery > * :focus{
   outline-style: none;
 }
+
+.pet_regist_form{
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+.label{
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.pet_regist_form > input[type=text]{
+  margin-bottom: 20px;
+  height: 36px;
+  font-size: 18px;
+  text-indent: 10px;
+}
+
+.pet_regist_form > input[type=date]{
+  height: 24px;
+  border-radius: 50px;
+  text-indent: 10px;
+  margin-bottom: 20px;
+}
+
+.pet_regist_form > input[type=checkbox]{
+  margin-bottom: 20px;
+}
