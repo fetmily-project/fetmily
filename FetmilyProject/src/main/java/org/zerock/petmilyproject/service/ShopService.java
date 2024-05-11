@@ -15,6 +15,16 @@ public interface ShopService {
     ItemDTO readOne(Long bno);
     void modify(ItemDTO itemDTO);
     void remove(Long bno);
-    PageResponseDTO<ItemDTO> getListOfItem(PageRequestDTO pageRequestDTO);
+//    PageResponseDTO<ItemDTO> getListOfItem(PageRequestDTO pageRequestDTO);
+
+    List<ItemDTO> ListOfItemAll();
+    List<ItemDTO> ListOfItemByKind(String kind);
+
+    List<ItemDTO> ListOfItemByBrand();
     PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO);
+//    PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO);
+//
+//    List<ItemDTO> getCategoryListOfItem(String category, String kind);
+//    List<ItemDTO> getBrandListOfItem(ItemDTO itemDTO);
+//    List<ItemDTO> getListOfNewItem(ItemDTO itemDTO);
 }
