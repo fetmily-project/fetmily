@@ -9,11 +9,18 @@ li {
 
 }
 
+.body-div{
+    width: 1600px;
+    margin: 0 auto;
+}
+
 #homelessCategory{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-
+    justify-items: center;
+    justify-content: space-evenly;
+    gap: 0px 0px;
 }
 
 /* 카테고리 구현 */
@@ -22,13 +29,41 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 10px;
     border: 2px solid #d7d7d7;
     margin: 15px;
     background-image: linear-gradient(90deg, rgba(0, 151, 240, 0.25), rgba(0, 87, 138, 0.25));
     width: 350px;
     height: 436px;
     border-radius: 100px;
+    position: relative;
+}
+.post-container > img{
+
+    margin: auto 0;
+}
+.post-container-expl{
+    position: absolute;
+    width: 350px;
+    height: 436px;
+    border-radius: 100px;
+    align-items: center;
+    text-align: center;
+    padding-top: 130px;
+    background-color: rgba(0,0,0,0.3);
+    margin: auto 0;
+    bottom: -50px;
+    color: white;
+    opacity: 0;
+    transition: 0.5s;
+
+}
+
+.post-container:hover{
+    background-image: linear-gradient(90deg, rgba(0, 151, 240, 0.5), rgba(0, 87, 138, 0.5));
+}
+.post-container:hover .post-container-expl{
+    opacity: 1;
+    transform: translateY(-50px);
 }
 
 .post-title {
@@ -52,7 +87,8 @@ li {
 .next-button:hover,
 .number-button:hover {
     font-weight: 800;
-    color: red;
+    color: white;
+    background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);
 }
 
 .pagination-container {
@@ -61,8 +97,9 @@ li {
 
 .selected {
     font-weight: 800;
-    font-size: 1.1rem;
-    color: dodgerblue;
+    font-size: 1rem;
+    color: white;
+    background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);
 }
 
 /* loading 구현 */

@@ -19,14 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
             homelessList = _.uniqBy(homelessList, 'noticeNo');
 
             homelessList.forEach((item) => {
+
                 let info_str = '';
-                info_str += `<img src="${item.popfile}" width="250" height="200" style="border-radius: 20px;"><br>`;
+                info_str += `<img src="${item.popfile}" width="300" height="300" style="border-radius: 20px;"><br>`;
+                info_str += `<div class="post-container-expl" data-noticeNo="${item.noticeNo}">`; // 백틱 제거
                 item.sexCd === "F" ? info_str += `성별: 여<br>` : info_str += `성별: 남<br>`;
                 info_str += `나이: ${item.age}<br>`;
                 info_str += `품종: ${item.kindCd}<br>`;
                 info_str += `체중: ${item.weight}<br>`;
                 info_str += `색상: ${item.colorCd}<br>`;
                 item.neuterYn === "Y" ? info_str += `중성화여부: 완료<br>` : info_str += `중성화여부: 미완료<br>`;
+                info_str += `</div>`
                 info_list.push(info_str);
 
                 let infoDetail_str = '';
@@ -62,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setPageButtons();
             setPageOf(currentPage);
+
             /**
              * 페이지 번호 버튼 클릭 리스너
              */
@@ -119,21 +123,27 @@ document.addEventListener("DOMContentLoaded", () => {
             const postContainer = document.createElement('div');
             postContainer.className = 'post-container';
             // 공고번호를 data-noticeNo 속성으로 추가
-            postContainer.setAttribute('data-noticeNo', homelessList[i].noticeNo);
+            // postContainer.setAttribute('data-noticeNo', homelessList[i].noticeNo);
             postContainer.innerHTML = info_list[i];
+            console.log(postContainer);
             li.append(postContainer);
             ul.append(li);
         }
     }
-// post-container를 클릭했을 때 다른 페이지로 이동하는 클릭 이벤트 핸들러 추가
+// post-container-expl를 클릭했을 때 다른 페이지로 이동하는 클릭 이벤트 핸들러 추가
     document.addEventListener('click', (e) => {
         // 클릭된 요소가 post-container인지 확인
-        if (e.target.classList.contains('post-container')) {
-            // post-container를 클릭한 경우
+        if (e.target.classList.contains('post-container-expl')) {
+            // post-container-expl를 클릭한 경우
             const noticeNo = e.target.getAttribute('data-noticeNo'); // 공고번호 가져오기
 
+            console.log(noticeNo);
             // noticeNo를 가지고 있는 detail을 찾아라
+            // const index = homelessList.findIndex((item) => item.noticeNo === noticeNo);
+            //
+            // const infoDetail = index !== -1 ? infoDetail_list[index] : null; // 인덱스로부터 자세한 정보 가져오기
             const infoDetail = infoDetail_list.find((detail) => detail.includes(noticeNo));
+            console.log(infoDetail);
 
             const jsonData = {
                 noticeNo: noticeNo,
