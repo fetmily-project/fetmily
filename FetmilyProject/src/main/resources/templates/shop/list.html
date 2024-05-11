@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/shop/shop.css">
+  <title>Item List</title>
+</head>
+
+
+<body layout:fragment="content">
+<h1>Item List</h1>
+
+<h2>카테고리별</h2>
+<div id="categoryList"><!DOCTYPE html>
+
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/shop/shop.css">
+    <title>Item List</title>
+  </head>
+  <body>
+  <div class="pg___main">
+    <section class="event_banner"><div class="event_banner"><span class="event_text">05/01 ~ 05/31 신규 가입 쿠폰 혜택 이벤트 🎁</span></div></section>
+    <section class="header"><img src="/assets/shop/header.svg" alt=""></section>
+    <section class="top">
+      <div class="banner"></div>
+    </section>
+
+    <section class="category___icon">
+      <ul class="icon_list">
+        <li class="icon_item"><img src="/assets/shop/category_icon_all.svg" class="icon_item_img icon_all"></li>
+        <li class="icon_item"><img src="/assets/shop/category_icon_dog.svg" class="icon_item_img icon_dog"></li>
+        <li class="icon_item"><img src="/assets/shop/category_icon_cat.svg" class="icon_item_img icon_cat"></li>
+      </ul>
+    </section>
+
+    <div class="search_box">
+      <input type="text" class="input_search" placeholder="검색어를 입력하세요.">
+      <img src="/assets/shop/search__glass.svg" class="search_glass">
+    </div>
+
+    <!-- 이번 주 신상품 -->
+    <section class="new_item category">
+      <span class="text12">NEW</span><br>
+      <span class="text20bold">이번 주 신상품</span>
+      <!-- 동적으로 추가할 신상품 리스트 -->
+      <div class="item_list item_list_new_item" alt="new">
+
+      </div>
+      <!-- end -->
+    </section>
+
+    <section class="mid_banner">
+      <img src="/assets/shop/mid_banner.svg" alt="">
+    </section>
+
+
+    <!-- 브랜드별 사료 -->
+    <section class="new_item category_item">
+      <span class="text12">BRAND</span><br>
+      <span class="text20bold">브랜드별 사료</span>
+      <!-- 동적으로 추가할 브랜드별 리스트 -->
+      <div class="item_list category_item_list">
+
+      </div>
+      <!-- end -->
+
+      <section class="bot_banner">
+        <img src="/assets/shop/mid_banner.svg" alt="">
+      </section>
+
+
+      <!-- 장난감 리스트 -->
+      <section class="new_item toy_item">
+        <span class="text12">TOY</span><br>
+        <span class="text20bold">장난감🧸</span>
+        <!-- 동적으로 추가할 장난감 리스트 -->
+        <div class="item_list item_list_category_toy">
+
+        </div>
+      </section>
+      <!-- 사료 리스트 -->
+      <section class="new_item toy_item">
+        <span class="text12">MEAL</span>
+        <ul class="food_category">
+          <li><span class="text20bold">브랜드별 사료</span></li>
+        </ul>
+        <!-- 동적으로 추가할 장난감 리스트 -->
+        <div class="item_list item_list_category_meal">
+        </div>
+      </section>
+
+      <!-- 간식 리스트 -->
+      <section class="new_item toy_item">
+        <span class="text12">SNACK</span><br>
+        <span class="text20bold">간식🦴</span>
+        <!-- 동적으로 추가할 장난감 리스트 -->
+        <div class="item_list item_list_category_snack">
+
+        </div>
+      </section>
+    </section>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/shop/shop.js"></script>
+  </body>
+
+  </html>
+
+
+
+
+

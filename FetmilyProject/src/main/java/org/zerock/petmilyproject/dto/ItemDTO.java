@@ -1,5 +1,6 @@
 package org.zerock.petmilyproject.dto;
 
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,9 @@ public class ItemDTO {
     private Long price;
     private Long cnt;
     private String category;
+    private String itemImage;
+    private String kind;
+    private String brand;
+    private LocalDateTime regdate;
+    private LocalDateTime moddate;
 }
