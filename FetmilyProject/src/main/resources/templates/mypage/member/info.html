@@ -39,28 +39,28 @@
             </ul>
         </div>
         <div class="content">
+            <span class="content_title">회원 정보<a href="/mypage/member/update">수정</a></span>
+            <div class="content_body">
+                <div class="member_info">
+                    <div class="email elem"><span class="elem_title">이메일</span><span>[[${memberDTO.email}]]</span></div>
+                    <div class="nickname elem"><span class="elem_title">닉네임</span><span>[[${memberDTO.nickname}]]</span></div>
+                    <div class="password elem"><span class="elem_title">비밀번호</span><span>********</span></div>
+                </div>
+            </div>
+
+            <span class="content_title">기본 배송지 정보</span>
+            <div class="content_body">
+                <div class="default_addr">
+                    <div class="name elem"><span class="elem_title">이름</span><span>[[${memberDTO.name}]]</span></div>
+                    <div class="phone elem"><span class="elem_title">휴대전화</span><span>[[${memberDTO.phone}]]</span></div>
+                    <div class="addr elem"><span class="elem_title">주소</span><span>[[${memberDTO.addr}]]</span></div>
+                </div>
+            </div>
+
             <span class="content_title">내 반려동물</span>
             <div class="content_body">
-                <div class="pet_list">
-                    <div class="pet_info" th:each="pet:${petListDTO}">
-                        <div class="img_info">
-                            <div class="img">이미지</div>
-                            <div class="info">
-                                <div class="pet_id">[[${pet.petId}]]</div>
-                                <div class="pet_name">[[${pet.petName}]]</div>
-                                <div class="pet_type">품종 : [[${pet.petType}]]</div>
-                                <div class="birth">생일 : [[${pet.birth}]]</div>
-                                <div class="weight">몸무게 : [[${pet.weight}]]kg</div>
-                                <div class="sex_neut"><span>성별 : [[${pet.sex}]]</span><span>중성화 여부 : [[${pet.neut}]]</span></div>
-                            </div>
-                        </div>
-                        <div class="etc">
-                            [[${pet.etc}]]
-                        </div>
-                        <div class="btn_set">
-                            <button>수정</button><button>삭제</button>
-                        </div>
-                    </div>
+                <div class="pet">
+
                 </div>
             </div>
         </div>
