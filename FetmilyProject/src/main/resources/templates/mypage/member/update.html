@@ -39,13 +39,13 @@
       </ul>
     </div>
     <div class="content">
-      <span class="content_title">내 정보 수정</span>
+      <span class="content_title">회원 정보 수정</span>
       <div class="content_body">
-        <div class="member_info_update">
-          <div>이메일 : <input type="text" th:value="${memberDTO.email}" readonly></div>
-          <div>닉네임 : <input type="text" th:value="${memberDTO.nickname}" class="nickname"></div>
-          <div>현재 비밀번호 : <input type="text" class="cur_password"></div>
-          <div>변경할 비밀번호 : <input type="text" class="change_password"></div>
+        <div class="member_info">
+          <div class="email elem"><span class="elem_title">이메일</span><span>[[${memberDTO.email}]]</span></div>
+          <div class="nickname elem"><span class="elem_title">닉네임</span><span>[[${memberDTO.nickname}]]</span></div>
+          <div class="password elem"><span class="elem_title">변경된 비밀번호</span><input type="password" class="cur_password"></div>
+          <div class="password elem"><span class="elem_title">비밀번호 확인</span><input type="password" class="change_password"><button class="change_btn">수정</button></div>
         </div>
       </div>
     </div>
@@ -53,6 +53,11 @@
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/member/mypage.js"></script>
+<script>
+  document.querySelector('.change_btn').addEventListener('click', () => {
+    changePassword();
+  })
+</script>
 </body>
 
 </html>

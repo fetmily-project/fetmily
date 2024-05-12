@@ -79,16 +79,6 @@ async function memberUpdate(){
         .catch((error) => {});
 }
 
-async function memberInfo(){
-    const memberId = localStorage.getItem('memberId');
-    await  axios.get(`/member?memberId=${memberId}`)
-        .then((result) => {
-            return result.data;
-        })
-}
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const check1= document.querySelector('.check1');
     const check2= document.querySelector('.check2');

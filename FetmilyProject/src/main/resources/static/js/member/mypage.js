@@ -11,72 +11,29 @@ const delivery = (content_body) => {
                 </div>`;
 }
 
-document.querySelector('.m').addEventListener('click', (e) => {
-  if (e.target.checked) {
-    document.querySelector('.w').checked = false;
-  }
-});
 
-document.querySelector('.w').addEventListener('click', (e) => {
-  if (e.target.checked) {
-    document.querySelector('.m').checked = false;
-  }
-});
 
-document.querySelector('.t').addEventListener('click', (e) => {
-  if (e.target.checked) {
-    document.querySelector('.f').checked = false;
-  }
-});
+// 비밀번호 수정
+const changePassword = () => {
+  const curPassword = document.querySelector('.cur_password').value;
+  const password = document.querySelector('.change_password').value;
 
-document.querySelector('.f').addEventListener('click', (e) => {
-  if (e.target.checked) {
-    document.querySelector('.t').checked = false;
+  if(curPassword === password){
+    axios.patch('/mypage/member/update', {
+      password: password
+    }).then((result) => {
+      if(result.data === 1){
+        alert('수정되었습니다.');
+      }
+    }).catch((error) => {
+      alert('잠시후 다시 시도해주세요.');
+    })
+  } else {
+    alert("비밀번호가 일치하지 않습니다.");
   }
-});
-
-const registPet = () => {
-  const petName = document.querySelector('.pet_name').value;
-  const petType = document.querySelector('.pet_type').value;
-  const birth = document.querySelector('.pet_birth').value;
-  const weight = document.querySelector('.pet_weight').value;
-  let sex;
-  let neut;
-  const etc = document.querySelector('.pet_etc').value;
-  
-  if (document.querySelector('.m').checked) {
-    sex = '남';
-  } else if (document.querySelector('.w').checked) {
-    sex = '여';
-  }else{
-    sex = '';
-  }
-
-  if (document.querySelector('.t').checked) {
-    neut = 'O';
-  } else if (document.querySelector('.f').checked) {
-    neut = 'X';
-  }else{
-    neut = '';
-  }
-
-  axios.post('/pet/insert', {
-    petName: petName,
-    petType: petType,
-    birth: birth,
-    weight: weight,
-    sex: sex,
-    neut: neut,
-    etc: etc,
-  }).then((result) => {
-    if(result.data === 1){
-      alert('등록되었습니다.');
-    }
-  }).catch((error) => {
-    alert('잠시후 다시 시도해주세요.');
-  })
 }
 
+// 주소 수정
 const updateAddr = () => {
   const postcode = document.querySelector('#sample4_postcode').value;
   const roadAddress = document.querySelector('#sample4_roadAddress').value;
@@ -94,23 +51,5 @@ const updateAddr = () => {
     }
   }).catch((error)=> {
     alert('잠시후 다시 시도해주세요.')
-  })
-}
-
-const updateMemberInfo = () => {
-  const nickname = document.querySelector('.nickname').value;
-  const curPassword = document.querySelector('.cur_password').value;
-  const changePassword = document.querySelector('.change_password').value;
-
-  axios.patch('/mypage/member/update', {
-    nickname: nickname,
-    curPassword: curPassword,
-    changePassword: changePassword
-  }).then((result) => {
-    if(result.data === 1){
-      alert('수정되었습니다.');
-    }
-  }).catch((error) => {
-    alert('잠시후 다시 시도해주세요.');
   })
 }

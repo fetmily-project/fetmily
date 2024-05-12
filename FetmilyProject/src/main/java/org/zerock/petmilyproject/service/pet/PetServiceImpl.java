@@ -3,12 +3,12 @@ package org.zerock.petmilyproject.service.pet;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Member;
 import org.zerock.petmilyproject.domain.Pet;
 import org.zerock.petmilyproject.dto.PetDTO;
 import org.zerock.petmilyproject.repository.PetRepository;
-import org.zerock.petmilyproject.service.pet.PetService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,7 +50,7 @@ public class PetServiceImpl implements PetService {
     @Override
     public List<PetDTO> petList(Long memberId) {
 
-        List<PetDTO> petList = petRepository.searchAll(memberId).stream().map(
+        List<PetDTO> petList = petRepository.searchAllByMemberId(memberId).stream().map(
                 pet -> modelMapper.map(pet, PetDTO.class)
         ).collect(Collectors.toList());
         log.info(petList);
