@@ -27,11 +27,20 @@ public class MemberController {
         model.addAttribute("memberDTO", memberDTO);
     }
 
-    @PatchMapping("/update")
-    public ResponseEntity<?> memberUpdate(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
+    @PutMapping("/updateAddr")
+    public ResponseEntity<?> updateAddr(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
         HttpSession session = httpServletRequest.getSession();
         memberDTO.setMemberId((Long) session.getAttribute("memberId"));
-        logService.modify(memberDTO);
+        logService.modifyAddr(memberDTO);
+
+        return ResponseEntity.ok(1);
+    }
+
+    @PutMapping("/updatePassword")
+    public ResponseEntity<?> updatePassword(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession();
+        memberDTO.setMemberId((Long) session.getAttribute("memberId"));
+        logService.modifyPassword(memberDTO);
 
         return ResponseEntity.ok(1);
     }
