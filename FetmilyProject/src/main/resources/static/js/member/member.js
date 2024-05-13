@@ -10,7 +10,11 @@ async function signup(){
         nickname: nickname
     }).then((response) => {
         if(response.data === 1){
-            alert("회원가입이 완료되었습니다");
+            Swal.fire({
+                title: "회원가입이 완료되었습니다",
+                icon: "success"
+            });
+            // alert("회원가입이 완료되었습니다");
             document.querySelector('.modal').style.display = 'none';
             document.querySelector(".email").value = '';
             document.querySelector(".password").value = '';
@@ -21,12 +25,24 @@ async function signup(){
             document.querySelector('.check3').childNodes[0].attributes[0].nodeValue = '/assets/member/smallCheck.svg';
             document.querySelector('.all_check').childNodes[0].attributes[0].nodeValue = '/assets/member/bigCheck.svg';
         }else if(response.data === 2){
-            alert("이미 가입된 이메일입니다");
+            // alert("이미 가입된 이메일입니다");
+            Swal.fire({
+                title: "이미 가입된 이메일입니다",
+                icon: "error"
+            });
         }else if(response.data === 3){
-            alert("이미 존재하는 닉네임입니다");
+            // alert("이미 존재하는 닉네임입니다");
+            Swal.fire({
+                title: "이미 존재하는 닉네임입니다",
+                icon: "error"
+            });
         }
     }).catch((error) => {
-        alert("잠시후 다시 시도해주세요");
+        // alert("잠시후 다시 시도해주세요");
+        Swal.fire({
+            title: "잠시후 다시 시도해주세요",
+            icon: "error"
+        });
     });
 }
 
@@ -39,14 +55,26 @@ async function login(){
        password: password
     }).then(response => {
          if(response.data === 0) {
-             alert('이메일 또는 패스워드가 일치하지 않습니다.')
+             // alert('이메일 또는 패스워드가 일치하지 않습니다.')
+             Swal.fire({
+                 title:"이메일 또는 패스워드가 일치하지 않습니다",
+                 icon: "error"
+             });
          }else{
-             alert('로그인 성공')
+             // alert('로그인 성공')
+             Swal.fire({
+                 title: "로그인 성공",
+                 icon: "success"
+             })
              localStorage.setItem('memberId', response.data.memberId);
              localStorage.setItem('nickname', response.data.nickname);
          }
      }).catch((error) => {
-         alert('이메일 또는 패스워드가 일치하지 않습니다.')
+         // alert('이메일 또는 패스워드가 일치하지 않습니다.')
+         Swal.fire({
+             title: "이메일 또는 패스워드가 일치하지 않습니다",
+             icon: "error"
+         });
      });
 }
 
@@ -150,7 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if(checkCnt === 3){
             signup();
         }else{
-            alert('이용약관을 체크해주세요.');
+            // alert('이용약관을 체크해주세요.');
+            Swal.fire({
+                title: "이용약관을 체크해주세요",
+                icon: "warning"
+            });
         }
 
     });
