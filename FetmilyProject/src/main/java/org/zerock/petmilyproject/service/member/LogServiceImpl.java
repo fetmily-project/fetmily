@@ -65,10 +65,12 @@ public class LogServiceImpl implements LogService {
 
         MemberDTO memberDTO = MemberDTO.builder()
                 .memberId(member.getMemberId())
+                .email(member.getEmail())
                 .nickname(member.getNickname())
                 .addr(member.getAddr())
                 .name(member.getName())
                 .phone(member.getPhone())
+                .socialNumber(member.getSocialNumber())
                 .build();
 
         return memberDTO;
@@ -79,7 +81,7 @@ public class LogServiceImpl implements LogService {
         // memberId값으로 db에서 정보 가져와서 addr값만 change
         Member member = logRepository.findByMemberId(memberDTO.getMemberId())
                 .orElseThrow();
-        member.changeAddr(memberDTO.getAddr());
+
 
         logRepository.save(member);
     }

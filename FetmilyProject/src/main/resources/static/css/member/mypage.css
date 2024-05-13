@@ -1,11 +1,9 @@
+/*마이페이지 공통 css*/
+
 .container{
   display: flex;
   flex-direction: column;
-  width: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-items: center;
 }
 
 .body{
@@ -16,12 +14,11 @@
   font-size: 26px;
   font-weight: bold;
   padding: 50px 0;
+  width: 1160px;
 }
 
 .nav{
-  display: flex;
-  flex-direction: column;
-  margin-right: 15%;
+  margin-right: 100px;
 }
 
 .nav_title{
@@ -52,11 +49,36 @@
   flex-direction: column;
   margin: 46px 0;
   font-weight: bold;
+  width: 900px;
 }
 
 .content_title{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgray;
 }
+
+.content_title > a{
+  float: right;
+}
+
+.content_body{
+  padding-bottom: 50px;
+}
+
+/*회원 기본정보 페이지 css*/
+.elem{
+  width: 100%;
+  margin: 10px;
+}
+
+.elem_title{
+  display: inline-block;
+  width: 150px;
+}
+
+
+/*쇼핑 페이지 css*/
 
 .delivery > *{
   padding: 10px;
@@ -72,4 +94,102 @@
 
 .delivery > * :focus{
   outline-style: none;
+}
+
+/*반려동물 등록 페이지 css*/
+
+.pet_regist_form{
+  display: flex;
+  flex-direction: column;
+}
+
+.label{
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.pet_regist_form > input[type=text]{
+  margin-bottom: 20px;
+  height: 36px;
+  font-size: 18px;
+  text-indent: 10px;
+  margin-top: 5px;
+}
+
+.pet_regist_form > input[type=date]{
+  height: 24px;
+  border-radius: 50px;
+  text-indent: 10px;
+  margin-bottom: 20px;
+}
+
+.pet_regist_form > input[type=checkbox]{
+  margin-bottom: 20px;
+}
+
+.pet_regist_form > textarea{
+  margin-top: 5px;
+}
+
+/*반려동물 정보 리스트 페이지 css*/
+
+.pet_list{
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.pet_list>* {
+  margin: 20px 10px;
+}
+
+.pet_info{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 250px;
+  width: 500px;
+  padding: 10px;
+}
+
+.img_info{
+  display: flex;
+}
+
+.img{
+  width: 200px;
+  height: 200px;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.info > * {
+  margin-bottom: 15px;
+}
+
+.pet_id{
+  display: none;
+}
+
+.pet_name{
+  font-size: 24px;
+}
+
+.sex_neut > *{
+  margin: 0 30px;
+}
+
+.btn_set{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn_set > * {
+  margin: 0 10px;
 }
