@@ -1,0 +1,42 @@
+.order_item{
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+
+.img{
+    width: 120px;
+    height: 130px;
+}
+
+.order_item_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 500px;
+    margin: 0 60px;
+}
+
+.order_info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.item_name{
+    font-size: 20px;
+}
+
+.order_status{
+    font-size: 15px;
+}
+
+.order_date{
+    font-size: 13px;
+    color: gray;
+}
