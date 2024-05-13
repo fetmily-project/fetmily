@@ -133,6 +133,10 @@
         <button id="cafeBtn" type="button">애견카페 ☕️</button><br>
         <button id="hospitalBtn" type="button">동물병원 🧑‍⚕️</button><br>
         <button id="hotelBtn" type="button">애견호텔 🏨</button><br>
+        <button id="hairshopBtn" type="button">애견미용 💇</button>
+        <button id="kindergardenBtn" type="button">애견유치원 👶</button>
+        <button id="suppliesBtn" type="button">애견용품 🏪</button>
+<!--        <button id="playgroundBtn" type="button">애견운동장 🥏</button>-->
     </div>
 </div>
 <!-- kakao 지도 API 불러오기 -->
@@ -148,6 +152,7 @@
         // 버튼 클릭 이벤트 추가
         document.getElementById('cafeBtn').addEventListener('click', function() {
             ps.keywordSearch("애견카페", placesSearchCB, {
+                // 반경 2km
                 radius : 2000,
                 location: new kakao.maps.LatLng(lat, long)
             });
@@ -164,6 +169,30 @@
                 location: new kakao.maps.LatLng(lat, long)
             });
         });
+        document.getElementById('hairshopBtn').addEventListener('click', function () {
+            ps.keywordSearch("애견미용", placesSearchCB, {
+                radius : 2000,
+                location: new kakao.maps.LatLng(lat, long)
+            });
+        });
+        document.getElementById('kindergardenBtn').addEventListener('click', function () {
+            ps.keywordSearch("애견유치원", placesSearchCB, {
+                radius : 2000,
+                location: new kakao.maps.LatLng(lat, long)
+            });
+        });
+        document.getElementById('suppliesBtn').addEventListener('click', function () {
+            ps.keywordSearch("애견용품", placesSearchCB, {
+                radius: 2000,
+                location: new kakao.maps.LatLng(lat, long)
+            });
+        });
+        // document.getElementById('playgroundBtn').addEventListener('click', function () {
+        //     ps.keywordSearch("애견운동장", placesSearchCB, {
+        //         radius : 2000,
+        //         location: new kakao.maps.LatLng(lat, long)
+        //     });
+        // });
         let lat;
         let long;
         // 현재 위치 가져오기
