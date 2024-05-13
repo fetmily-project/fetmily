@@ -190,7 +190,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-
+    /*
+    로딩할 때 나오는 gif
+     */
     const loading_page=document.getElementById("load");
     window.onload = function(){
         setTimeout(function() {
