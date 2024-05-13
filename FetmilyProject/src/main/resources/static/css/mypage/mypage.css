@@ -160,6 +160,7 @@
 .img{
   width: 200px;
   height: 200px;
+  background-size: cover;
 }
 
 .info{
@@ -192,4 +193,10 @@
 
 .btn_set > * {
   margin: 0 10px;
+}
+
+.card-img-top{
+  width: 200px;
+  height: 200px;
+  background-size: cover;
 }

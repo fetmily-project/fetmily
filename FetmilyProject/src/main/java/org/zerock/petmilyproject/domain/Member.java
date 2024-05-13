@@ -39,4 +39,5 @@ public class Member {
     public void changeAddr(String addr){
         this.addr = addr;
     }
+    public void changePassword(String password){this.password = password;}
 }
