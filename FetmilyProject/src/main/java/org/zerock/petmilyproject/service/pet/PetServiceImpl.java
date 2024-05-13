@@ -30,6 +30,7 @@ public class PetServiceImpl implements PetService {
                 .sex(petDTO.getSex())
                 .weight(petDTO.getWeight())
                 .etc(petDTO.getEtc())
+                .petImage(petDTO.getPetImage())
                 .member(Member.builder()
                         .memberId(petDTO.getMemberId())
                         .build())

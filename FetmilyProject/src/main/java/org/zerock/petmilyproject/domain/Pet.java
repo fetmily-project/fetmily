@@ -41,4 +41,7 @@ public class Pet {
 
     @Column(length = 1000)
     private String etc;
+
+    @Column(length = 1000)
+    private String petImage;
 }

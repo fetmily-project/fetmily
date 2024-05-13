@@ -1,0 +1,17 @@
+.content_body{
+    margin-left: 10px;
+}
+input[type=text]{
+    width: 400px;
+}
+input[type=date]{
+    width: 400px;
+}
+textarea{
+    width: 400px;
+}
+.pet_regist_btn{
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+}

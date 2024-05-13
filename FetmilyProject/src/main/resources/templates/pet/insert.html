@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/mypage/mypage.css">
+    <link rel="stylesheet" href="/css/mypage/pet/insert.css">
     <title>Title</title>
 </head>
 <body layout:fragment="content">
@@ -56,6 +57,7 @@
                     <div><input type="checkbox" class="t">O<input type="checkbox" class="f">X</div>
                     <span class="label">특이사항</span>
                     <textarea name="" class="pet_etc" cols="30" rows="10"></textarea>
+                    <input type="file" name="files" class="form-control" multiple >
                     <button class="pet_regist_btn">등록</button>
                 </div>
             </div>
@@ -63,6 +65,7 @@
     </div>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/board/upload.js"></script>
 <script src="/js/member/pet.js"></script>
 <script>
     document.querySelector('.m').addEventListener('click', (e) => {

@@ -4,6 +4,7 @@ const registPet = () => {
     const petType = document.querySelector('.pet_type').value;
     const birth = document.querySelector('.pet_birth').value;
     const weight = document.querySelector('.pet_weight').value;
+    let petImage;
     let sex;
     let neut;
     const etc = document.querySelector('.pet_etc').value;
@@ -24,21 +25,38 @@ const registPet = () => {
         neut = '';
     }
 
-    axios.post('/pet/insert', {
-        petName: petName,
-        petType: petType,
-        birth: birth,
-        weight: weight,
-        sex: sex,
-        neut: neut,
-        etc: etc,
-    }).then((result) => {
-        if(result.data === 1){
-            alert('등록되었습니다.');
-            window.location.href="/pet/list";
-        }
-    }).catch((error) => {
-        alert('잠시후 다시 시도해주세요.');
+    const formObj = new FormData();
+
+    const fileInput = document.querySelector("input[name='files']")
+
+    console.log(fileInput.files)
+
+    const files = fileInput.files
+
+    for (let i = 0; i < files.length; i++) {
+        formObj.append("files", files[i]);
+    }
+
+    uploadToServer(formObj).then(result => {
+        petImage = `${result[0].uuid}_${result[0].fileName}`;
+        console.log(petImage)
+        axios.post('/pet/insert', {
+            petName: petName,
+            petType: petType,
+            birth: birth,
+            weight: weight,
+            sex: sex,
+            neut: neut,
+            etc: etc,
+            petImage: petImage
+        }).then((result) => {
+            if(result.data === 1){
+                alert('등록되었습니다.');
+                // window.location.href="/pet/list";
+            }
+        }).catch((error) => {
+            alert('잠시후 다시 시도해주세요.');
+        })
     })
 }
 

@@ -44,7 +44,11 @@
                 <div class="pet_list">
                     <div class="pet_info" th:each="pet:${petListDTO}">
                         <div class="img_info">
-                            <div class="img">이미지</div>
+                            <div class="img">
+                                <img class="card-img-top"
+                                     th:each="fileName: ${pet.petImage}"
+                                     th:src="|/view/${pet.petImage}|">
+                            </div>
                             <div class="info">
                                 <div class="pet_id">[[${pet.petId}]]</div>
                                 <div class="pet_name">[[${pet.petName}]]</div>

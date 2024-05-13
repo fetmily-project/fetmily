@@ -22,4 +22,5 @@ public class PetDTO {
     private String neut;
     private String sex;
     private String etc;
+    private String petImage;
 }
