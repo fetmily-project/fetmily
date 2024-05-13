@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      layout:decorate="~{layout/basic.html}">
+      layout:decorate="~{layout/layout1.html}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--    <link rel="stylesheet" href="/css/board/board.css">-->
+    <link th:href="@{/css/board/styles.css}" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
@@ -45,22 +45,22 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <div class="input-register mb-3">
-                        <input type="text" class="form-control" th:value="${dto.boardId}" readonly>
-                    </div>
+<!--                    <div class="input-register mb-3">-->
+<!--                        <input type="text" class="form-control" th:value="${dto.boardId}" readonly>-->
+<!--                    </div>-->
 
                     <div class="input-register mb-3">
                         <input type="text" class="form-control" th:value="${dto.nickname}" readonly>
                     </div>
 
 
+<!--                    <div class="input-register mb-3">-->
+<!--                        <span class="input-group-text">작성일</span>-->
+<!--                        <input type="text" class="form-control" th:value="${#temporals.format(dto.regDate, 'yyyy.MM.dd HH:mm:ss')}" readonly>-->
+<!--                    </div>-->
                     <div class="input-register mb-3">
                         <span class="input-group-text">작성일</span>
-                        <input type="text" class="form-control" th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
-                    </div>
-                    <div class="input-register mb-3">
-                        <span class="input-group-text">수정일</span>
-                        <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+                        <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy.MM.dd HH:mm:ss')}" readonly>
                     </div>
 
                     <div class="input-register mb-3">
@@ -145,14 +145,14 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Reply Text</span>
+                        <div class="input-group-add mb-3">
+                            <span class="input-group-text">댓글수정</span>
                             <input type="text" class="form-control modifyText" >
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-info modifyBtn">Modify</button>
-                        <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                        <button type="button" class="btn btn-info modifyBtn">수정하기</button>
+                        <button type="button" class="btn btn-danger removeBtn">댓글삭제</button>
                         <button type="button" class="btn btn-outline-dark closeModifyBtn">Close</button>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <script src="/js/reply.js"></script>
+        <script src="/js/board/reply.js"></script>
 
         <img src="/assets/board/banner.svg" alt="" class="banner">
     </div>
@@ -185,7 +185,7 @@
             for (const dto of dtoList) {
 
                 str += `<li class="list-group-item d-flex replyItem">
-                      <span class="col-2">${dto.replyId}</span>
+<!--                      <span class="col-2">${dto.replyId}</span>-->
                       <span class="col-2">${dto.nickname}</span>
                       <span class="col-6" data-replyId="${dto.replyId}">${dto.content}</span>
                       <span class="col-2">${dto.regDate} </span>
@@ -243,6 +243,19 @@
         registerModal.show()
     },false)
 
+    // 댓글 추가 버튼 클릭 이벤트 리스너
+    // document.querySelector(".addReplyBtn").addEventListener("click", function (e) {
+    //     // 클라이언트 측에서 로그인 상태 확인
+    //     if (!isUserLoggedIn()) {
+    //         // 로그인되지 않은 경우, 로그인 페이지로 리디렉션
+    //         window.location.href = "/member/login"; // 로그인 페이지 URL로 수정
+    //         return;
+    //     }
+    //     // 사용자가 로그인한 경우, 댓글 등록 모달 표시
+    //     registerModal.show();
+    // }, false);
+
+
     closeRegisterBtn.addEventListener("click", function (e){
         registerModal.hide()
     },false)
@@ -255,7 +268,7 @@
         }
 
         addReply(replyObj).then(result => {
-            alert(result.replyId)
+            alert('댓글이 등록되었습니다.')
             registerModal.hide()
             content.value = ''
 
@@ -336,8 +349,7 @@
             replyText:modifyText.value}
 
         modifyReply(replyObj).then(result => {
-            alert(result.replyId+' 댓글이 수정되었습니다.')
-            replyText.value = ''
+            alert('댓글이 수정되었습니다.')
             modifyModal.hide()
             printReplies(page, size)
 
@@ -352,22 +364,21 @@
 
     }, false)
 
-    removeBtn.addEventListener("click", function(e) {
+        removeBtn.addEventListener("click", function(e) {
 
-        removeReply(replyHeader.innerHTML).then(result => {
+            removeReply(replyHeader.innerHTML).then(result => {
 
-            alert(result.replyId +' 댓글이 삭제되었습니다.')
-            replyText.value = ''
-            modifyModal.hide()
+                alert('댓글이 삭제되었습니다.')
+                modifyModal.hide()
 
-            page = 1 // 이 부분이 없다면 원래 페이지로
+                page = 1 // 이 부분이 없다면 원래 페이지로
 
-            printReplies(page, size)
+                printReplies(page, size)
 
-        }).catch(e => {
-            console.log(e)
-        })
-    },false)
+            }).catch(e => {
+                console.log(e)
+            })
+        },false)
 
 
 
