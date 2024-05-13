@@ -40,7 +40,7 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public PetDTO readOne(Long memberId, Long petId) {
+    public PetDTO readOne(Long petId) {
         Pet pet = petRepository.findByPetId(petId);
         PetDTO petDTO = modelMapper.map(pet, PetDTO.class);
 

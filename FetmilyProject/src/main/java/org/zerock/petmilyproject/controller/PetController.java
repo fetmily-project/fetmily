@@ -32,6 +32,10 @@ public class PetController {
         model.addAttribute("petListDTO", petlist);
     }
 
+    @GetMapping({"/insert"})
+    public void petInsertGET(){
+    }
+
     @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> petInsert(@RequestBody @Valid PetDTO petDTO, BindingResult bindingResult, HttpServletRequest httpServletRequest) throws BindException {
         if(bindingResult.hasErrors()){
@@ -46,6 +50,12 @@ public class PetController {
         return ResponseEntity.ok(1);
     }
 
+    @GetMapping("/update")
+    public void petUpdateGET(@RequestParam Long petId, Model model){
+        PetDTO petDTO= petService.readOne(petId);
+        model.addAttribute("petDTO", petDTO);
+    }
+
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> petUpdate(@RequestBody @Valid PetDTO petDTO, BindingResult bindingResult) throws BindException {
         if(bindingResult.hasErrors()){
@@ -57,8 +67,8 @@ public class PetController {
         return ResponseEntity.ok(1);
     }
 
-    @DeleteMapping(value = "/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> petDelete(@RequestBody Long petId){
+    @DeleteMapping(value = "/delete")
+    public ResponseEntity<?> petDelete(@RequestParam Long petId){
         petService.remove(petId);
 
         return ResponseEntity.ok(1);

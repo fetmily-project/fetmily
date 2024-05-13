@@ -56,14 +56,43 @@
                     <div><input type="checkbox" class="t">O<input type="checkbox" class="f">X</div>
                     <span class="label">특이사항</span>
                     <textarea name="" class="pet_etc" cols="30" rows="10"></textarea>
-                    <button class="pet_regist_btn" onclick="registPet()">등록</button>
+                    <button class="pet_regist_btn">등록</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/js/member/mypage.js"></script>
+<script src="/js/member/pet.js"></script>
+<script>
+    document.querySelector('.m').addEventListener('click', (e) => {
+        if (e.target.checked) {
+            document.querySelector('.w').checked = false;
+        }
+    });
+
+    document.querySelector('.w').addEventListener('click', (e) => {
+        if (e.target.checked) {
+            document.querySelector('.m').checked = false;
+        }
+    });
+
+    document.querySelector('.t').addEventListener('click', (e) => {
+        if (e.target.checked) {
+            document.querySelector('.f').checked = false;
+        }
+    });
+
+    document.querySelector('.f').addEventListener('click', (e) => {
+        if (e.target.checked) {
+            document.querySelector('.t').checked = false;
+        }
+    });
+
+    document.querySelector('.pet_regist_btn').addEventListener('click', () => {
+        registPet();
+    })
+</script>
 </body>
 
 </html>

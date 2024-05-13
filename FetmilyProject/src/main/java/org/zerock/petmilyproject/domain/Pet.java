@@ -28,7 +28,7 @@ public class Pet {
     private String petType;
 
     @Column(length = 500)
-    private LocalDateTime birth;
+    private String birth;
 
     @Column(length = 500)
     private String weight;

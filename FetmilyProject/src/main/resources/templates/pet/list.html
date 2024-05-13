@@ -39,7 +39,7 @@
             </ul>
         </div>
         <div class="content">
-            <span class="content_title">내 반려동물</span>
+            <span class="content_title">내 반려동물<a href="/pet/insert">등록</a></span>
             <div class="content_body">
                 <div class="pet_list">
                     <div class="pet_info" th:each="pet:${petListDTO}">
@@ -58,7 +58,7 @@
                             [[${pet.etc}]]
                         </div>
                         <div class="btn_set">
-                            <button>수정</button><button>삭제</button>
+                            <button class="pet_update_btn"><a th:href="@{/pet/update(petId = ${pet.petId})}">수정</a></button><button class="pet_delete_btn" th:value="${pet.petId}">삭제</button>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,14 @@
     </div>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="/js/member/mypage.js"></script>
+<script src="/js/member/pet.js"></script>
+<script>
+    document.querySelectorAll('.pet_delete_btn').forEach((e) => {
+        e.addEventListener('click', () => {
+            petDelete(e.value);
+        })
+    })
+</script>
 </body>
 
 </html>
