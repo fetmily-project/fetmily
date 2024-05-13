@@ -19,7 +19,7 @@ const changePassword = () => {
   const password = document.querySelector('.change_password').value;
 
   if(curPassword === password){
-    axios.patch('/mypage/member/update', {
+    axios.patch('/mypage/member/updatePassword', {
       password: password
     }).then((result) => {
       if(result.data === 1){
@@ -43,7 +43,7 @@ const updateAddr = () => {
 
   const addr = `${postcode}_${roadAddress}_${jibunAddress}_${detailAddress}_${extraAddress}`;
 
-  axios.put('/member/update', {
+  axios.put('/mypage/member/updateAddr', {
     addr: addr
   }).then((result) => {
     if(result.data === 1){
