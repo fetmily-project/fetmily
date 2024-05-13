@@ -18,9 +18,7 @@ header{
 .center, .right{
     display: flex;
 }
-ul{
 
-}
 .center ul, .right ul{
     list-style: none;
     display: flex;
@@ -33,10 +31,26 @@ ul{
 #logo{
     width: 113px;
     height: 37px;
+    margin-left: 10px;
+}
+.right{
+    padding-top: 10px;
+}
+.right > ul > li{
+    padding-right: 10px;
 }
 
 .center ul li{
     margin: 10px;
+}
+
+.center > ul > li > a:hover{
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%);
+    border-image-slice: 1;
+    width:100%;
+    font-weight: bold;
 }
 
 
