@@ -52,6 +52,7 @@ public interface BoardService {
                 .boardId(board.getBoardId())
                 .title(board.getTitle())
                 .content(board.getContent())
+                .memberId(board.getMember().getMemberId())
                 .nickname(board.getMember().getNickname())
                 .regDate(board.getRegDate())
                 .modDate(board.getModDate())

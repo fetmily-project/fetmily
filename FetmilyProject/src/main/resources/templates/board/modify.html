@@ -47,15 +47,15 @@
                 <div class="card-body">
                     <form th:action="@{/board/modify}" method="post" id="f1">
                         <div class="input-register mb-3">
-                            <input type="text" class="form-control" th:value="${dto.boardId}" name="boardId" readonly>
+                            <input type="text" class="form-control" th:value="${dto.boardId}" name="boardId" style="display: none;" readonly>
                         </div>
                         <div class="input-register mb-3">
                             <input type="text" class="form-control" name="title" th:value="${dto.title}">
                         </div>
 
-                        <div class="input-register mb-3">
-                            <input type="text" class="form-control" th:value="${dto.nickname}" name="nickname" readonly>
-                        </div>
+<!--                        <div class="input-register mb-3">-->
+<!--                            <input type="text" class="form-control" th:value="${dto.nickname}" name="nickname" readonly>-->
+<!--                        </div>-->
 
                         <div class="input-register mb-3">
                             <textarea class="form-control" rows="20" name="content">[[${dto.content}]]</textarea>

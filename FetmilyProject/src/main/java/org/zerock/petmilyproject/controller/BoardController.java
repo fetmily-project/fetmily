@@ -34,6 +34,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardServiceImpl boardServiceImpl;
+    private final HttpServletRequest httpServletRequest;
     @Value("${org.zerock.upload.path}")
     private String uploadPath;
 
@@ -106,10 +107,12 @@ public class BoardController {
         log.info("controller boardDTO에는 image가 들어가나?");
         log.info(boardDTO);
 
+        HttpSession session = httpServletRequest.getSession(false);
 
 //        boardServiceImpl.updateViewCnt(boardId);
 
         model.addAttribute("dto", boardDTO);
+        model.addAttribute("loginMemberId", session.getAttribute("memberId"));
     }
 
     @PostMapping("/modify")
