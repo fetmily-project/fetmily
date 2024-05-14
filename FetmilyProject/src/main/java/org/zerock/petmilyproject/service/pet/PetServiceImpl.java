@@ -60,7 +60,9 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public void modify(PetDTO petDTO) {
-        Pet pet = modelMapper.map(petDTO, Pet.class);
+        Pet pet = petRepository.findByPetId(petDTO.getPetId());
+        pet.changePet(petDTO);
+
         petRepository.save(pet);
     }
 
