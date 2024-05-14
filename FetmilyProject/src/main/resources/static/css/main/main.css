@@ -1,0 +1,154 @@
+.banner-cont{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    position: relative;
+    width: 100%;
+
+}
+.banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    left: 0px;
+
+    width: 100%;
+    height: 300px;
+
+    flex-shrink: 0;
+
+    transition: left 0.15s;
+}
+.slide-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+
+    top: calc(50% - 16px);
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 100%;
+    background-color: #cccc;
+    cursor: pointer;
+}
+
+.slide-prev-button{
+    left: 10px;
+}
+
+.slide-next-button{
+    right: 10px;
+}
+
+.banner1{
+    background-image: url("static/assets/main/banner1.jpg");
+    background-size: cover;
+
+}
+.banner2{
+    background-image: url(static/assets/main/banner2.jpg);
+    background-size: cover;
+}
+.banner3{
+    background-image: url(static/assets/main/banner3.jpg);
+    background-size: cover;
+}
+
+.slide-pagination,
+.slide-pagination > li{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.slide-pagination{
+    display: flex;
+    gap: 5px;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.slide-pagination > li{
+    color: #7fb5ff88;
+    cursor: pointer;
+    font-size: 25px;
+}
+.slide-pagination > li.active{
+    color: #7fb5ff;
+
+}
+
+.menu-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.menu{
+    position: relative;
+    margin: 20px;
+    border: 1px solid;
+    text-align: center;
+    width: 519px;
+    height: 329px;
+    box-sizing: border-box;
+    background: linear-gradient(262.34deg, rgba(255, 231, 239, 0.5) 0.66%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 219, 232, 0) 99.34%);
+    box-shadow: inset 0px 10px 50px rgba(255, 255, 255, 0.5), inset 0px 4px 150px rgba(255, 0, 107, 0.2), inset -5px -5px 20px rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(-20px 20px 150px rgba(156, 1, 47, 0.15));
+    backdrop-filter: blur(15px);
+    border-radius: 890px;
+    background-size: cover;
+    background-position: center bottom;
+    transition: background-position 0.5s ease;
+}
+/* .menu-img{
+    position: absolute;
+    background-size: cover;
+    opacity: 0;
+} */
+.text{
+    font-size: xx-large;
+    background: linear-gradient(90.19deg, #00A3FF -25.96%, #FFBEFC 99.94%), linear-gradient(90deg, #61E000 -2.47%, #2CF6F9 100.15%);
+    text-shadow: 4px 4px 10px rgba(167, 165, 165, 0.25);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.menu-text{
+    margin-top: 100px;
+}
+.menu1:hover{
+    background-image: url(static/assets/main/mapIntro.png);
+    background-position: center top;
+    cursor: pointer;
+
+}
+.menu2:hover{
+    background-image: url(static/assets/main/boardIntro.png);
+    background-size: cover;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.menu3:hover{
+    background-image: url(static/assets/main/shopIntro.png);
+    background-size: cover;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.menu4:hover{
+    background-image: url(static/assets/main/homelessIntro.png);
+    background-size: cover;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
