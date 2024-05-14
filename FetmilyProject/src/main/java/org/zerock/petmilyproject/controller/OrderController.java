@@ -26,10 +26,10 @@ public class OrderController {
 //    @GetMapping("/order")
 //    public String createForm(Model model) {
 //
-//        List<Member> members = logService.findMembers();
+////        List<Member> members = logService.findMembers();
 //        List<Item> items = itemService.findItems();
 //
-//        model.addAttribute("members", members);
+////        model.addAttribute("members", members);
 //        model.addAttribute("items", items);
 //
 //        return "order/orderForm";
