@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.zerock.petmilyproject.domain.OrderItem;
 import org.zerock.petmilyproject.dto.ItemDTO;
 import org.zerock.petmilyproject.dto.OrderItemDTO;
 import org.zerock.petmilyproject.dto.PageRequestDTO;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.Optional;
 //import org.zerock.petmilyproject.service.OrderItemService;
 import org.zerock.petmilyproject.service.OrderItemService;
-import org.zerock.petmilyproject.service.OrdersService;
 
 @Controller
 @RequiredArgsConstructor
@@ -85,21 +83,19 @@ public class ShopController {
         return "shop/item_detail";
     }
 
-    @PostMapping("/cart/info")
-    public ResponseEntity<List<OrderItemDTO>> getCart(HttpServletRequest httpServletRequest){
-        HttpSession session = httpServletRequest.getSession();
-        List<OrderItemDTO> orderItemDTO = orderItemService.readList((Long) session.getAttribute("memberId"));
-
-        return ResponseEntity.ok(orderItemDTO);
-    }
+//    @PostMapping("/cart/info")
+//    public ResponseEntity<List<OrderItemDTO>> getCart(HttpServletRequest httpServletRequest){
+//        HttpSession session = httpServletRequest.getSession();
+//        List<OrderItemDTO> orderItemDTO = orderItemService.readList((Long) session.getAttribute("memberId"));
+//
+//        return ResponseEntity.ok(orderItemDTO);
+//    }
 
     @GetMapping("/cart")
-    public String getCart(HttpServletRequest httpServletRequest, Model model){
+    public void  getCart(HttpServletRequest httpServletRequest, Model model){
         HttpSession session = httpServletRequest.getSession();
         List<OrderItemDTO> orderItem = orderItemService.readList((Long) session.getAttribute("memberId"));
         model.addAttribute("cart", orderItem);
-
-        return "shop/cart";
     }
 
 }

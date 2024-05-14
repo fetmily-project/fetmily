@@ -1,9 +1,9 @@
 async function getList() {
-  var result = await axios.post(`/shop/cart/info`);
+  var result = await axios.get(`/shop/cart`);
 
   console.log(result)
   console.log(result.data)
-  renderCartItems(result.data);
+  // renderCartItems(result.data);
 }
 
 function createCartItemElement(item) {

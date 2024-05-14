@@ -106,9 +106,8 @@ public class LogServiceImpl implements LogService {
     @Override
     public void remove(Long memberId) {
         logRepository.deleteById(memberId);
-//        return 1L;
     }
-
+//
 //    @Override
 //    public List<Member> findMembers() {
 //        return logRepository.findAll();
