@@ -1,17 +1,25 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main/main.css" />
+<!--    <link rel="stylesheet" href="/css/main/main.css" />-->
+    <link rel="stylesheet" th:href="@{/css/main/main.css}"/>
     <title>Document</title>
 </head>
 <body>
+<div layout:fragment="content" class="body-div">
+    <!-- 배경이미지-->
+    <img src="/assets/main/mainLeftImage.svg" class="main-left-image">
+    <img src="/assets/main/mainRightImage.svg" class="main-right-image">
 <!--  banner 들어가는 공간  -->
 <div class="banner-cont">
-    <div class="banner banner1">1</div>
-    <div class="banner banner2">2</div>
-    <div class="banner banner3">3</div>
+    <div class="banner banner1"></div>
+    <div class="banner banner2"></div>
+    <div class="banner banner3"></div>
     <div class="slide-prev-button slide-button">◀</div>
     <div class="slide-next-button slide-button">▶</div>
     <ul class="slide-pagination"></ul>
@@ -19,32 +27,37 @@
 
 <!-- menu 들어가는 공간  -->
 <div class="menu-list">
-    <div class="menu menu1">
-        <!-- <img src="../images/mapIntro.png" alt="" class="menu-img menu1-img"> -->
+    <div class="menu menu1" onclick="location.href='/map/kakaomap'">
+         <img src="/assets/main/mapIntro.png" alt="" class="menu-img menu1-img">
         <div class="menu-text menu1-text">
             <span class="text">팻플레이스</span><br>
             <span class="text">장소가 궁금해?</span>
         </div>
     </div>
-    <div class="menu menu2">
+    <div class="menu menu2" onclick="location.href='/board/list'">
+        <img src="/assets/main/boardIntro.png" alt="" class="menu-img menu2-img">
         <div class="menu-text menu2-text">
             <span class="text">커뮤니티</span><br>
             <span class="text">정보가 궁금해?</span>
         </div>
     </div>
-    <div class="menu menu3">
+    <div class="menu menu3" onclick="location.href='/shop/list'">
+        <img src="/assets/main/shopIntro.png" alt="" class="menu-img menu3-img">
         <div class="menu-text menu3-text">
             <span class="text">쇼핑</span><br>
             <span class="text">상품이 궁금해?</span>
         </div>
     </div>
-    <div class="menu menu4">
+    <div class="menu menu4" onclick="location.href='/homeless/homeless'">
+        <img src="/assets/main/homelessIntro.png" alt="" class="menu-img menu4-img">
         <div class="menu-text menu4-text">
             <span class="text">공고</span><br>
             <span class="text">유기동물 정보가 궁금해?</span>
         </div>
     </div>
 </div>
-<script src="/js/main/main.js"></script>
+    <script src="/js/main/main.js"></script>
+</div>
 </body>
+
 </html>
