@@ -1,29 +1,23 @@
 package org.zerock.petmilyproject.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.zerock.petmilyproject.dto.ItemDTO;
-import org.zerock.petmilyproject.dto.OrderItemDTO;
 import org.zerock.petmilyproject.dto.PageRequestDTO;
 import org.zerock.petmilyproject.dto.PageResponseDTO;
 import org.zerock.petmilyproject.service.ItemService;
 
 import java.util.List;
 import java.util.Optional;
-//import org.zerock.petmilyproject.service.OrderItemService;
-import org.zerock.petmilyproject.service.OrderItemService;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/shop")
 public class ShopController {
     private final ItemService itemService;
-    private final OrderItemService orderItemService;
 
     //    @GetMapping("/list")
 //    public ResponseEntity<PageResponseDTO<ItemDTO>> shopGET(PageRequestDTO pageRequestDTO){
@@ -81,21 +75,6 @@ public class ShopController {
         ItemDTO itemDTO = itemService.readOne(id);
         model.addAttribute("item", itemDTO);
         return "shop/item_detail";
-    }
-
-//    @PostMapping("/cart/info")
-//    public ResponseEntity<List<OrderItemDTO>> getCart(HttpServletRequest httpServletRequest){
-//        HttpSession session = httpServletRequest.getSession();
-//        List<OrderItemDTO> orderItemDTO = orderItemService.readList((Long) session.getAttribute("memberId"));
-//
-//        return ResponseEntity.ok(orderItemDTO);
-//    }
-
-    @GetMapping("/cart")
-    public void  getCart(HttpServletRequest httpServletRequest, Model model){
-        HttpSession session = httpServletRequest.getSession();
-        List<OrderItemDTO> orderItem = orderItemService.readList((Long) session.getAttribute("memberId"));
-        model.addAttribute("cart", orderItem);
     }
 
 }
