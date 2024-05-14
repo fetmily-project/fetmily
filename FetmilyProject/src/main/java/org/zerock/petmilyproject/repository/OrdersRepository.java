@@ -12,4 +12,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 
         List<Orders> findOrdersByMemberId(Long memberId);
 
+        @Query("SELECT o From Orders o JOIN o.member m where m.memberId = :memberId")
+        List<Orders> findOneByMemberId(Long memberId);
+
 }

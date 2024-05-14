@@ -58,8 +58,8 @@ public class ShopController {
         return ResponseEntity.ok(itemDTO);
     }
     @GetMapping("/list/brand")
-    public ResponseEntity<List<ItemDTO>> itemListByBrand(){
-        List<ItemDTO> itemDTO = itemService.ListOfItemByBrand();
+    public ResponseEntity<List<ItemDTO>> itemListByBrand(@RequestParam String brand){
+        List<ItemDTO> itemDTO = itemService.ListOfItemByBrand(brand);
 
         return ResponseEntity.ok(itemDTO);
     }
@@ -101,5 +101,6 @@ public class ShopController {
 
         return "shop/cart";
     }
+
 
 }

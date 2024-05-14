@@ -13,6 +13,7 @@ import org.zerock.petmilyproject.domain.Member;
 @NoArgsConstructor
 public class OrderItemDTO {
     Long id;
+    Member member;
     Item item;
     int orderPrice;
     int count;

@@ -67,5 +67,11 @@ public class OrdersServiceImpl implements OrdersService {
         List<Orders> ordersList = ordersRepository.findOrdersByMemberId(memberId);
         return  ordersList;
     }
+
+    @Override
+    public List<Orders> findOneOrders(Long memberId) {
+        List<Orders> orders = ordersRepository.findOneByMemberId(memberId);
+        return orders;
+    }
 }
 

@@ -1,3 +1,5 @@
+
+
 async function getList() {
   var result = await axios.post(`/shop/cart/info`);
 
@@ -46,6 +48,8 @@ function renderCartItems(cartItems) {
     var hr = document.createElement("hr");
     cartItemsContainer.appendChild(hr);
   });
+  const totalPrice = document.querySelector("total_price")
+
 }
 
 // renderCartItems 함수를 호출하여 카트 아이템을 렌더링합니다.

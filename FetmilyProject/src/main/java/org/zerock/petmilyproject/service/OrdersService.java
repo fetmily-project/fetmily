@@ -10,6 +10,7 @@ public interface OrdersService {
     public Long order(Long memberId, long itemId, int count);
 
     public List<Orders> findOrders(Long memberId);
+    public List<Orders> findOneOrders(Long memberId);
 //    public OrdersDTO getOrder(Long orderId);
     public void cancelOrder(Long orderId);
 

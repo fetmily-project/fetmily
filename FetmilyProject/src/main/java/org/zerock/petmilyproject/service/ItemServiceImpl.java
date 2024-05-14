@@ -102,11 +102,22 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDTO> ListOfItemByBrand() {
-        List<Item> itemList = itemRepository.ListOfItemByBrand();
+    public List<ItemDTO> ListOfItemByBrand(String brand) {
+        if(brand.equals("All")){
+            List<Item> itemList = itemRepository.ListOfItemByBrandAll();
+            List<ItemDTO> itemDTOList = itemList.stream()
+                .map(vo -> modelMapper.map(vo,ItemDTO.class))
+                .collect(Collectors.toList());
+
+            return itemDTOList;
+        }
+
+        List<Item> itemList = itemRepository.ListOfItemByBrand(brand);
         List<ItemDTO> itemDTOList = itemList.stream()
             .map(vo -> modelMapper.map(vo,ItemDTO.class))
             .collect(Collectors.toList());
+
+
         return itemDTOList;
     }
 

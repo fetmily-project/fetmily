@@ -20,7 +20,7 @@ public interface ItemService {
     List<ItemDTO> ListOfItemAll();
     List<ItemDTO> ListOfItemByKind(String kind);
 
-    List<ItemDTO> ListOfItemByBrand();
+    List<ItemDTO> ListOfItemByBrand(String brand);
     PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO);
 //    PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO);
 //

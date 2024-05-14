@@ -32,7 +32,7 @@ public class OrderItem extends BaseEntity {
     @Column(name = "order_item_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "memberId")
     private Member member;
     @ManyToOne(fetch = EAGER)
@@ -40,7 +40,7 @@ public class OrderItem extends BaseEntity {
     private Item item;
 
     @JsonIgnore
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "order_id")
     private Orders orders;
 

@@ -54,7 +54,6 @@ public class Orders extends BaseEntity {
 
     public static Orders createOrders(Member member, OrderItem... orderItems) { // 주문 생성
         Orders orders = new Orders();
-        System.out.println("memberTest");
         orders.setMember(member);
         orders.setAddr(member.getAddr());
         orders.setPhone(member.getPhone());

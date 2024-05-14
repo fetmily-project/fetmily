@@ -1,176 +1,181 @@
-   * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "pretendard", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "pretendard", sans-serif;
 
-    }
+}
 
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-    img {
-        vertical-align: top;
-    }
+img {
+  vertical-align: top;
+}
 
-    li {
-        list-style: none;
-    }
-    .pg___main {
-        /* position:absolute; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+li {
+  list-style: none;
+}
+.pg___main {
+  /* position:absolute; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-    .top {
-        margin: 0 auto;
-    }
-    .event_banner {
-        width: 1920px;
-        height: 40px;
-        background: #583DA2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .event_text{
-        font-weight:normal;
-        font-size: 16px;
-        color: rgba(255,255,255, 0.8);
-    }
+.top {
+  margin: 0 auto;
+}
+.event_banner {
+  width: 1920px;
+  height: 40px;
+  background: #583DA2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.event_text{
+  font-weight:normal;
+  font-size: 16px;
+  color: rgba(255,255,255, 0.8);
+}
 
-    .banner {
-        width: 1920px;
-        height: 260px;
-        background-image: url(/assets/shop/banner_top.svg);
-    }
+.banner {
+  width: 1920px;
+  height: 260px;
+  background-image: url(/assets/shop/banner_top.svg);
+}
 
-    .category___icon {
-        position: relative;
-    }
+.category___icon {
+  position: relative;
+}
 
-    .icon_list {
-        display: flex;
-        justify-content: center;
-    }
+.icon_list {
+  display: flex;
+  justify-content: center;
+}
 
-    .icon_list>.icon_item>.icon_item_img {
-        width: 60px;
-        height: 60px;
-        margin: 70px 20px 20px 20px;
-    }
+.icon_list>.icon_item>.icon_item_img {
+  width: 60px;
+  height: 60px;
+  margin: 70px 20px 20px 20px;
+}
 
-    .input_search {
-         width: 187px;
-        height: 35px;
-        /* background: #000; */
-        border: 1px solid rgba(74, 25, 152, 0.2);
-        border-radius: 20px;
-        margin-bottom: 20px;
-        text-indent: 10px;
-    }
-    .search_box>.search_glass{
-        margin: 5px;
-        float: right;
-    }
+.itemImage > img{
+  width: 500px;
+  height: 530px;
+}
 
-    .new_item {
-        width: 1202px;
-        /*display: flex;*/
-        /*flex-direction: column;*/
-        /*align-items: center;*/
+.input_search {
+  width: 187px;
+  height: 35px;
+  /* background: #000; */
+  border: 1px solid rgba(74, 25, 152, 0.2);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-indent: 10px;
+}
+.search_box>.search_glass{
+  margin: 5px;
+  float: right;
+}
 
-    }
+.new_item {
+  width: 1202px;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
 
-   .food_category{
-     display: flex;
-     margin-bottom: 10px;
-     align-items: center;
-   }
-   .food_category > *{
-     display: inline-block;
-   }
+}
 
-   .food_brand> span{
-     /* margin: 0px 10px 0px 10px; */
-     margin-right: 5px;
+.food_category{
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.food_category > *{
+  display: inline-block;
+}
 
-     display: inline-block;
-     border: 1px solid rgba(0, 0, 0, 0.1);
-     padding: 4px 12px;
-     border-radius: 30px;
-     font-size: 12px;
-     font-weight: 500;
+.food_brand> span{
+  /* margin: 0px 10px 0px 10px; */
+  margin-right: 5px;
 
-
-
-   }
-
-   .new_item>.text12 {
-     align-self: start;
-     font-size: 12px;
-   }
-
-   .text20bold{
-     font-size: 20px;
-     font-weight: bold;
-     margin-bottom: 15px;
-     margin-right: 5px;
-     align-self: start;
-   }
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
 
 
-    .item_list{
-        width: 1200px;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
 
-        /* flex-direction: row; */
-        margin-bottom: 70px;
-        row-gap: 70px;
-        column-gap: 70px
-        /* flex-wrap: wrap; */
+}
 
-    }
+.new_item>.text12 {
+  align-self: start;
+  font-size: 12px;
+}
 
-    .item_list>* {
-        /*margin-right: 67px;*/
-    }
-   .item_list_category>*{
-       margin-right: 67px;
-   }
-    .sale_text{
-        color: #ff0000;
-        font-size: 16px;
-        font-weight: bold;
-    }
-    .item_info_brand{
-        font-size: 15px;
-        font-weight: bold;
-        margin: 8px 0px 8px 0px;
-    }
-    .item_info_name{
-        font-size: 14px;
-        width: 249px;
-        margin: 5px 0px 5px 0px;
-    }
-    .item_info_price{
-        color: rgba(0, 0, 0, 0.5);
-        text-decoration:line-through;
-    }
-    .item_info_sale_price{
-        font-size: 16px;
-        font-weight: bold;
-    }
-    .mid_banner{
-        margin: 84px 0px 154px 0px;
-    }
-    .bot_banner{
-        margin: 84px 0px 154px 0px;
-    }
+.text20bold{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  align-self: start;
+}
+
+
+.item_list{
+  width: 1200px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  /* flex-direction: row; */
+  margin-bottom: 70px;
+  row-gap: 70px;
+  column-gap: 70px
+  /* flex-wrap: wrap; */
+
+}
+
+.item_list>* {
+  /*margin-right: 67px;*/
+}
+.item_list_category>*{
+  margin-right: 67px;
+}
+.sale_text{
+  color: #ff0000;
+  font-size: 16px;
+  font-weight: bold;
+}
+.item_info_brand{
+  font-size: 15px;
+  font-weight: bold;
+  margin: 8px 0px 8px 0px;
+}
+.item_info_name{
+  font-size: 14px;
+  width: 249px;
+  margin: 5px 0px 5px 0px;
+}
+.item_info_price{
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration:line-through;
+}
+.item_info_sale_price{
+  font-size: 16px;
+  font-weight: bold;
+}
+.mid_banner{
+  margin: 84px 0px 154px 0px;
+}
+.bot_banner{
+  margin: 84px 0px 154px 0px;
+}
    

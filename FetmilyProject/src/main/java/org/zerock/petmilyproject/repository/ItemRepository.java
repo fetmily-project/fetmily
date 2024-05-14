@@ -33,8 +33,11 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     @Query("select i from Item i where i.kind = :kind")
     List<Item> ListOfItemByKind(String kind);
-    @Query("select i from Item i where i.category = 'food'")
-    List<Item> ListOfItemByBrand();
+    @Query("select i from Item i where i.category = 'meal' and i.brand = :brand")
+    List<Item> ListOfItemByBrand(String brand);
+
+    @Query("select i from Item i where i.category = 'meal'")
+    List<Item> ListOfItemByBrandAll();
 
 //
 //    @Query("select i from Item i where i.itemName like concat('%', :keyword, '%')")

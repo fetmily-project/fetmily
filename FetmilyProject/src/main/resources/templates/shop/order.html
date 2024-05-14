@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/shop/order.css">
+</head>
+
+<body>
+<section class="order__main">
+  <header>
+    <img src="/assets/shop/header.svg" alt="">
+  </header>
+  <section class="order__form" th:each="order : ${orders}">
+    <span class="cart__main__text">결제</span>
+
+
+    <section class="addr_info info">
+      <div class="addr_title title">
+        <span class="sub_title">배송지</span>
+        <hr>
+      </div>
+      <div class="info_box addr_box">
+        <ul class="addr_info_list ">
+          <li >이름</li>
+          <li >휴대전화</li>
+          <li>주소</li>
+          <li>배송 메모</li>
+        </ul>
+        <ul class="addr_info_data info_list">
+          <li th:text="${order.member.name}">정용안</li>
+          <li th:text="${order.member.phone}">010-0000-0000</li>
+          <li th:text="${order.member.addr}">서울 금천구 벚꽃로 298 대륭포스트6차 1층 103호</li>
+          <li>문 앞에 보관해 주세요.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="order_info info">
+      <div class="order_title title">
+        <span class="sub_title">구매상품</span>
+        <hr>
+      </div>
+      <div class="info_box item_box">
+        <img src="/assets/shop/cart_item_img.svg" alt="">
+        <div class="order_item_info">
+          <span th:text="${order.orderItems[0].item.brand}">벨칸도</span>
+          <div class="info_row">
+            <span th:text="${order.orderItems[0].item.itemName}">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</span>
+            <span class="info_count" th:text="${order.orderItems[0].count}">1개</span>
+            <span th:text="${order.orderItems[0].item.price*0.8*order.orderItems[0].count}">3,900원</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="info_box item_box">
+        <img src="/assets/shop/cart_item_img.svg" alt="">
+        <div class="order_item_info">
+          <span>벨칸도</span>
+          <div class="info_row">
+            <span>벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</span>
+            <span class="info_count">1개</span>
+            <span>3,900원</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="info_box item_box">
+        <img src="/assets/shop/cart_item_img.svg" alt="">
+        <div class="order_item_info">
+          <span>벨칸도</span>
+          <div class="info_row">
+            <span>벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</span>
+            <span class="info_count">1개</span>
+            <span>3,900원</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+
+    </section>
+
+
+
+    <section class="pay_info info">
+      <div class="pay_title title">
+        <span class="sub_title">결제정보</span>
+        <hr>
+      </div>
+      <div class="info_box">
+        <ul class="pay_info_list info_list">
+          <li>총 상품금액</li>
+          <li>총 할인금액</li>
+          <li>총 배송비</li>
+          <li>총 결제금액</li>
+          <li>결제방법</li>
+        </ul>
+        <ul class="pay_info_data info_list">
+          <li>14,700원</li>
+          <li>-3,000원</li>
+          <li>0원</li>
+          <li>11,700원</li>
+          <div class="pay_type">
+            <input type="radio"><span>신용카드</span>
+            <input type="radio"><span>계좌이체</span>
+          </div>
+        </ul>
+      </div>
+      <hr>
+      <div class="final_check">
+
+        <span>위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공 및 결제에 동의합니다.</span>
+        <button class="btn_item_buy">결제하기</button>
+      </div>
+
+
+    </section>
+  </section>
+  <footer>
+    <img src="/assets/shop/footer.svg" alt="">
+  </footer>
+</section>
+
+
+</body>
+</html>
