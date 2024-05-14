@@ -23,11 +23,9 @@
     <span class="cart__main__text">장바구니</span>
     <hr>
     <div class="btn_select_all">
-      <button>전체선택</button>
-      <button>전체삭제</button>
+      <button class="all_check">전체선택</button>
+      <button class="check_del">전체삭제</button>
     </div>
-
-    <script th:inline="javascript"> let total = 0;</script>
 
     <div id="cartItemsContainer" th:each="item:${cart}">
 
@@ -106,20 +104,12 @@
       if(e.target.value === "0"){
         e.target.checked = true;
         e.target.value = "1";
-        let price = priceList[i].textContent.replaceAll(',', '');
-        price = price.replace('원', '');
-        totalPrice += Number.parseInt(price) * Number.parseInt(cntList[i].textContent);
       }else{
         e.target.checked = false;
         e.target.value = "0";
-        let price = priceList[i].textContent.replaceAll(',', '');
-        price = price.replace('원', '');
-        totalPrice -= Number.parseInt(price) * Number.parseInt(cntList[i].textContent);
       }
 
-      document.querySelector('.total_price1').textContent = `${(totalPrice).toLocaleString()}원`;
-      document.querySelector('.total_sale1').textContent = `${(totalPrice*0.2).toLocaleString()}원`;
-      document.querySelector('.btn_item_buy').textContent = `총 ${(totalPrice*0.8).toLocaleString()}원 구매하기`;
+      calcTotalPrice();
     })
   }
 
@@ -127,16 +117,8 @@
     plusList[i].addEventListener('click', () => {
       cntList[i].textContent = Number.parseInt(cntList[i].textContent)+1;
 
-      if(radioList[i].checked === true){
-        let price = priceList[i].textContent.replaceAll(',', '');
-        price = price.replace('원', '');
-        totalPrice += Number.parseInt(price);
-        document.querySelector('.total_price1').textContent = `${(totalPrice).toLocaleString()}원`;
-        document.querySelector('.total_sale1').textContent = `${(totalPrice*0.2).toLocaleString()}원`;
-        document.querySelector('.btn_item_buy').textContent = `총 ${(totalPrice*0.8).toLocaleString()}원 구매하기`;
-      }
-
-    })
+      calcTotalPrice();
+    });
 
     minusList[i].addEventListener('click', () => {
       if(Number.parseInt(cntList[i].textContent) < 2){
@@ -144,16 +126,40 @@
       }
       cntList[i].textContent = Number.parseInt(cntList[i].textContent)-1;
 
+      calcTotalPrice();
+    });
+  }
+
+  document.querySelector('.all_check').addEventListener('click', () => {
+    radioList.forEach((e) => {
+      e.checked = true;
+      e.value = "1";
+    });
+
+    calcTotalPrice();
+  });
+
+  const calcTotalPrice = () => {
+    totalPrice = 0;
+
+    for(let i=0; i<radioList.length; i++){
       if(radioList[i].checked === true){
         let price = priceList[i].textContent.replaceAll(',', '');
         price = price.replace('원', '');
-        totalPrice -= Number.parseInt(price);
-        document.querySelector('.total_price1').textContent = `${(totalPrice).toLocaleString()}원`;
-        document.querySelector('.total_sale1').textContent = `${(totalPrice*0.2).toLocaleString()}원`;
-        document.querySelector('.btn_item_buy').textContent = `총 ${(totalPrice*0.8).toLocaleString()}원 구매하기`;
+        const cnt = Number.parseInt(cntList[i].textContent);
+        totalPrice += Number.parseInt(price) * cnt;
       }
-    })
+
+      document.querySelector('.total_price1').textContent = `${(totalPrice).toLocaleString()}원`;
+      document.querySelector('.total_sale1').textContent = `${(totalPrice*0.2).toLocaleString()}원`;
+      document.querySelector('.btn_item_buy').textContent = `총 ${(totalPrice*0.8).toLocaleString()}원 구매하기`;
+    }
   }
+
+  document.querySelector('.btn_item_buy').addEventListener('click', () => {
+    axios.post('/shop/')
+  });
+
 </script>
 </body>
 
