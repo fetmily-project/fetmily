@@ -43,21 +43,26 @@
             <span class="content_title">내 반려동물</span>
             <div class="content_body">
                 <div class="pet_regist_form">
-                    <span class="label">반려동물 이름</span>
-                    <input type="text" name="" class="pet_name">
-                    <span class="label">반려동물 종</span>
-                    <input type="text" name="" class="pet_type">
-                    <span class="label">생년월일</span>
-                    <input type="date" name="" class="pet_birth">
-                    <span class="label">몸무게</span>
-                    <span><input type="text" class="pet_weight" style="text-align: right;">&nbsp;kg</span>
-                    <span class="label">성별</span>
-                    <div><input type="checkbox" class="m">남<input type="checkbox" class="w">여</div>
-                    <span class="label">중성화 유무</span>
-                    <div><input type="checkbox" class="t">O<input type="checkbox" class="f">X</div>
-                    <span class="label">특이사항</span>
-                    <textarea name="" class="pet_etc" cols="30" rows="10"></textarea>
-                    <input type="file" name="files" class="form-control" multiple >
+                    <div><label>반려동물 이름</label><input type="text" name="" class="pet_name"></div>
+                    <div><label>반려동물 종</label><input type="text" name="" class="pet_type"></div>
+                    <div><label>생년월일</label><input type="date" name="" class="pet_birth"></div>
+                    <div><label>몸무게</label><input type="text" class="pet_weight" style="text-align: right;"></div>
+                    <div>
+                        <label>성별</label>
+                        <div><span>남</span><input type="checkbox" class="m"><span>여</span><input type="checkbox" class="w"></div>
+                    </div>
+                    <div>
+                        <label>중성화 유무</label>
+                        <div><span>O</span><input type="checkbox" class="t"><span>X</span><input type="checkbox" class="f"></div>
+                    </div>
+                    <div>
+                        <label>특이사항</label>
+                        <textarea name="" class="pet_etc" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <label></label>
+                        <input type="file" name="files" class="form-control" multiple >
+                    </div>
                     <button class="pet_regist_btn">등록</button>
                 </div>
             </div>
