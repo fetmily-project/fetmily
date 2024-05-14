@@ -1,6 +1,7 @@
 package org.zerock.petmilyproject.domain;
 
 import lombok.*;
+import org.zerock.petmilyproject.dto.MemberDTO;
 
 import javax.persistence.*;
 
@@ -36,8 +37,10 @@ public class Member {
     @Column(length = 500)
     private String nickname;
 
-    public void changeAddr(String addr){
-        this.addr = addr;
+    public void changeAddr(MemberDTO memberDTO){
+        this.name = memberDTO.getName();
+        this.phone = memberDTO.getPhone();
+        this.addr = memberDTO.getAddr();
     }
     public void changePassword(String password){this.password = password;}
 }

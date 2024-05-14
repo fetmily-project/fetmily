@@ -82,7 +82,7 @@ public class LogServiceImpl implements LogService {
         Member member = logRepository.findByMemberId(memberDTO.getMemberId())
                 .orElseThrow();
 
-        member.changeAddr(memberDTO.getAddr());
+        member.changeAddr(memberDTO);
 
         logRepository.save(member);
     }
