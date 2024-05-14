@@ -6,7 +6,19 @@
 }
 .main-right-image{
     position: absolute;
-    bottom: 0;
+    bottom: 100px;
+    right: 0;
+    z-index: -99;
+}
+.main-left-dog{
+    position: absolute;
+    bottom: -200px;
+    left: 0;
+    z-index: -99;
+}
+.main-right-dog{
+    position: absolute;
+    bottom: -200px;
     right: 0;
     z-index: -99;
 }
