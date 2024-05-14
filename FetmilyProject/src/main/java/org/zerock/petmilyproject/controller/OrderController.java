@@ -23,17 +23,17 @@ public class OrderController {
     private final LogService logService;
     private final ItemService itemService;
 
-    @GetMapping("/order")
-    public String createForm(Model model) {
-
-        List<Member> members = logService.findMembers();
-        List<Item> items = itemService.findItems();
-
-        model.addAttribute("members", members);
-        model.addAttribute("items", items);
-
-        return "order/orderForm";
-    }
+//    @GetMapping("/order")
+//    public String createForm(Model model) {
+//
+//        List<Member> members = logService.findMembers();
+//        List<Item> items = itemService.findItems();
+//
+//        model.addAttribute("members", members);
+//        model.addAttribute("items", items);
+//
+//        return "order/orderForm";
+//    }
 
     @PostMapping("/order")
     public String order(@RequestParam("memberId") Long memberId,
