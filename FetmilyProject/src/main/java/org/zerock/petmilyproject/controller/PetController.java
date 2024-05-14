@@ -57,10 +57,13 @@ public class PetController {
     }
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> petUpdate(@RequestBody @Valid PetDTO petDTO, BindingResult bindingResult) throws BindException {
+    public ResponseEntity<?> petUpdate(@RequestBody @Valid PetDTO petDTO, BindingResult bindingResult, HttpServletRequest httpServletRequest) throws BindException {
         if(bindingResult.hasErrors()){
             throw new BindException(bindingResult);
         }
+
+        HttpSession session = httpServletRequest.getSession(false);
+        petDTO.setMemberId((Long) session.getAttribute("memberId"));
 
         petService.modify(petDTO);
 
