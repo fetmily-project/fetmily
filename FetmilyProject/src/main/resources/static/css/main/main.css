@@ -1,3 +1,16 @@
+.main-left-image{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+}
+.main-right-image{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99;
+}
+
 .banner-cont{
     display: flex;
     flex-wrap: nowrap;
@@ -48,17 +61,17 @@
 }
 
 .banner1{
-    background-image: url("static/assets/main/banner1.jpg");
-    background-size: cover;
+    background: url("../../assets/main/banner1.jpg");
+    background-size: 100% 100%;
 
 }
 .banner2{
-    background-image: url(static/assets/main/banner2.jpg);
-    background-size: cover;
+    background-image: url(../../assets/main/banner4.jpg);
+    background-size: 100% 100%;
 }
 .banner3{
-    background-image: url(static/assets/main/banner3.jpg);
-    background-size: cover;
+    background-image: url(../../assets/main/banner5.jpg);
+    background-size: 100% 100%;
 }
 
 .slide-pagination,
@@ -93,6 +106,8 @@
     justify-items: center;
     justify-content: space-evenly;
     align-items: center;
+    width: 1440px;
+    margin: 10px auto;
 }
 .menu{
     position: relative;
@@ -107,15 +122,33 @@
     filter: drop-shadow(-20px 20px 150px rgba(156, 1, 47, 0.15));
     backdrop-filter: blur(15px);
     border-radius: 890px;
-    background-size: cover;
-    background-position: center bottom;
-    transition: background-position 0.5s ease;
+    overflow: hidden;
 }
-/* .menu-img{
+.menu-img{
     position: absolute;
+    top: 100%;
+    left: 0;
     background-size: cover;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0);
     opacity: 0;
-} */
+    transition: opacity 0.5s, transform 0.5s;
+}
+.menu-text{
+    position: relative;
+    z-index: 1;
+    margin-top: 100px;
+}
+.menu1:hover .menu1-img,
+.menu2:hover .menu2-img,
+.menu3:hover .menu3-img,
+.menu4:hover .menu4-img{
+    opacity: 1;
+    cursor: pointer;
+    transform: translateY(-100%);
+}
+
 .text{
     font-size: xx-large;
     background: linear-gradient(90.19deg, #00A3FF -25.96%, #FFBEFC 99.94%), linear-gradient(90deg, #61E000 -2.47%, #2CF6F9 100.15%);
@@ -127,28 +160,3 @@
 .menu-text{
     margin-top: 100px;
 }
-.menu1:hover{
-    background-image: url(static/assets/main/mapIntro.png);
-    background-position: center top;
-    cursor: pointer;
-
-}
-.menu2:hover{
-    background-image: url(static/assets/main/boardIntro.png);
-    background-size: cover;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.menu3:hover{
-    background-image: url(static/assets/main/shopIntro.png);
-    background-size: cover;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.menu4:hover{
-    background-image: url(static/assets/main/homelessIntro.png);
-    background-size: cover;
-    cursor: pointer;
-    transition: 0.5s;
-}
-

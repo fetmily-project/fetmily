@@ -65,9 +65,15 @@ async function login(){
              Swal.fire({
                  title: "로그인 성공",
                  icon: "success"
-             })
-             localStorage.setItem('memberId', response.data.memberId);
-             localStorage.setItem('nickname', response.data.nickname);
+             }).then((result) => {
+                 if(result.isConfirmed){
+                     localStorage.setItem('memberId', response.data.memberId);
+                     localStorage.setItem('nickname', response.data.nickname);
+                     window.location.replace('/main');
+                 }
+
+             });
+
          }
      }).catch((error) => {
          // alert('이메일 또는 패스워드가 일치하지 않습니다.')

@@ -52,6 +52,9 @@ header{
     width:100%;
     font-weight: bold;
 }
+#logo:hover{
+    cursor: pointer;
+}
 
 
 
