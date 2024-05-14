@@ -3205,6 +3205,7 @@ textarea.form-control-lg {
 .btn-danger {
   color: #fff;
   background: linear-gradient(34.98deg, rgba(255, 0, 0, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);;
+  border: 0;
 }
 .btn-danger:hover {
   color: #fff;
