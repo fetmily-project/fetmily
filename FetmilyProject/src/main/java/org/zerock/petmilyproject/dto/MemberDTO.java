@@ -18,7 +18,6 @@ public class MemberDTO {
     @NotEmpty
     private String password;
     private String name;
-    private String socialNumber;
     private String phone;
     private String addr;
     @NotEmpty

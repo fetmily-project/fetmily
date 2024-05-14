@@ -1,0 +1,23 @@
+.noto-sans-hebrew-title{
+    font-family: "Noto Sans Hebrew", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-variation-settings:
+            "wdth" 100;
+}
+
+.container{
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+}
+
+.bg-left {
+    position: absolute;
+    z-index: -1;
+}

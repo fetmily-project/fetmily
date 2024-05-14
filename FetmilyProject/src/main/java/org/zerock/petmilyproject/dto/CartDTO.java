@@ -15,4 +15,5 @@ public class CartDTO {
     private Long itemId;
     private Long cnt;
     private Long status;
+    private Long cartPrice;
 }
