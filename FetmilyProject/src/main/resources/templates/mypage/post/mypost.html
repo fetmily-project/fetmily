@@ -43,6 +43,52 @@
       <div class="content_body">
         <div class="my_post">
           내가 쓴 게시글
+
+
+
+            <div class="row mt-3">
+              <div class="col">
+                <div class="card">
+                  <div class="card-body" >
+                    <table class="table">
+                      <tbody th:with="link = ${pageRequestDTO.getLink()}">
+                      <tr th:each="dto:${responseDTO.dtoList}">
+                        <td>[[${dto.boardId}]]</td>
+                        <td>
+                          <a th:href="|@{/board/read(boardId =${dto.boardId})}&${link}|" class="text-decoration-none"> [[${dto.title}]] </a>
+                          <span>[ [[${dto.replyCount}]] ]</span>
+                        </td>
+                        <td>[[${dto.nickname}]]</td>
+                        <td>[[${#temporals.format(dto.regDate, 'yyyy.MM.dd')}]]</td>
+                      </tr>
+
+                      </tbody>
+
+
+                    </table>
+
+                    <div class="float-none">
+                      <ul class="pagination flex-wrap">
+
+                        <li class="page-item" th:if="${responseDTO.prev}">
+                          <a class="page-link" th:data-num="${responseDTO.start -1}">< 이전</a>
+                        </li>
+
+                        <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
+                          <li th:class="${responseDTO.page == i}?'page-item active':'page-item'" >
+                            <a class="page-link"  th:data-num="${i}">[[${i}]]</a>
+                          </li>
+                        </th:block>
+
+                        <li class="page-item" th:if="${responseDTO.next}">
+                          <a class="page-link"  th:data-num="${responseDTO.end + 1}">다음 ></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div><!--end card body-->
+                </div><!--end card-->
+              </div><!-- end col-->
+            </div><!-- end row-->
         </div>
       </div>
     </div>
@@ -52,4 +98,26 @@
 <script src="/js/member/mypage.js"></script>
 </body>
 
-</html>
+<script layout:fragment="script" th:inline="javascript">
+
+  document.querySelector(".pagination").addEventListener("click", function (e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    const target = e.target
+
+    if(target.tagName !== 'A') {
+      return
+    }
+
+    const num = target.getAttribute("data-num")
+
+    const formObj = document.querySelector("form")
+
+    formObj.innerHTML += `<input type='hidden' name='page' value='${num}'>`
+
+    formObj.submit();
+
+  },false)
+
+</script>

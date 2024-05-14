@@ -51,10 +51,6 @@ public class BoardController {
         PageResponseDTO<BoardListAllDTO> responseDTO =
                 boardService.listWithAll(pageRequestDTO);
 
-        log.info("controller GET /list에는 image가 들어오나?");
-        log.info(responseDTO);
-        log.info("dtoList에 BoardListAllDTO안에 boardImage로 들어오네!");
-
         model.addAttribute("responseDTO", responseDTO);
     }
 
