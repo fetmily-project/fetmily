@@ -123,6 +123,10 @@ function renderList(itemMap, keyword) {
       // if(itemList.getAttribute('alt')=="category")
       var divItem = document.createElement("div");
       divItem.classList.add("item");
+      divItem.addEventListener("click", function() {
+        window.location.href = "/shop/item/" + item.itemId;
+      })
+
 
       var img = document.createElement("img");
       img.src = "/assets/shop/"+item.itemImage+".svg";

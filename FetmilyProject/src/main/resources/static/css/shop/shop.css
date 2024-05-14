@@ -133,12 +133,13 @@
         /* flex-direction: row; */
         margin-bottom: 70px;
         row-gap: 70px;
+        column-gap: 70px
         /* flex-wrap: wrap; */
 
     }
 
     .item_list>* {
-        margin-right: 67px;
+        /*margin-right: 67px;*/
     }
    .item_list_category>*{
        margin-right: 67px;

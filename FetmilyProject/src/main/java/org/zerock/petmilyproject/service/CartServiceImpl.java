@@ -15,7 +15,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Log4j2
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
+
     private final CartRepository cartRepository;
     private final ModelMapper modelMapper;
 
@@ -35,7 +36,7 @@ public class CartServiceImpl implements CartService{
     @Override
     public void modify(CartDTO cartDTO) {
         Cart cart = cartRepository.findById(cartDTO.getCartId())
-                .orElseThrow();
+            .orElseThrow();
         cart.changeCnt(cartDTO.getCnt());
         cartRepository.save(cart);
     }
@@ -48,8 +49,14 @@ public class CartServiceImpl implements CartService{
     @Override
     public List<CartDTO> readList(Long memberId) {
         List<Cart> cartList = cartRepository.findAllByMemberId(memberId);
-        List<CartDTO> cartDTOList = cartList.stream().map(cartItem -> modelMapper.map(cartItem, CartDTO.class)).collect(Collectors.toList());
+        List<CartDTO> cartDTOList = cartList.stream()
+            .map(cartItem -> modelMapper.map(cartItem, CartDTO.class)).collect(Collectors.toList());
 
         return cartDTOList;
+    }
+
+    public int totalPrice(Long memberId){
+        List<Cart> cartList = cartRepository.findAllByMemberId(memberId);
+        return 1;
     }
 }

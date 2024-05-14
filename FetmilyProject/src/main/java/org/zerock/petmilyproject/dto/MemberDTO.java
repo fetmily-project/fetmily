@@ -24,4 +24,5 @@ public class MemberDTO {
     @NotEmpty
     private String nickname;
 
+
 }

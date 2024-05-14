@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/shop/item_detail.css">
+</head>
+
+
+<body>
+<section class="item___main">
+  <header>
+    <img src="/assets/shop/header.svg" alt="">
+  </header>
+  <section class="category___icon">
+    <ul class="icon_list">
+      <li class="icon_item"><img src="/assets/shop/category_icon_all.svg" class="icon_item_img"></li>
+      <li class="icon_item"><img src="/assets/shop/category_icon_dog.svg" class="icon_item_img"></li>
+      <li class="icon_item"><img src="/assets/shop/category_icon_cat.svg" class="icon_item_img"></li>
+    </ul>
+  </section>
+  <section class="item_detail_form">
+    <div class="item_content">
+      <div class="item_img itemImage"><img th:src="@{/assets/shop/__${item.itemImage}__.svg}" alt="Shop Image">
+       </div>
+      <div class="item_text">
+        <ul class="item_text_list">
+          <li class="item_brand" th:text="${item.brand}">벨칸도</li>
+          <li class="item_name itemName" th:text="${item.itemName}"></li>
+          <li class="sale_text">20% <span class="item_price itemPrice" th:text="${#numbers.formatInteger(item.price, 0, 'COMMA')} +'원'">4,900원</span></li>
+          <li class="item_sale_price" th:text="${#numbers.formatInteger(item.price*0.8, 0, 'COMMA')} + '원'">3,920원</li>
+          <li class="text"><img src="/assets/shop/point_token.svg" alt="" class="point_token_img" >포인트 적립</li>
+          <div class="detail">
+            <li class="text">배송</li>
+            <li class="text">택배배송</li>
+            <li class="text">제조사</li>
+            <li class="text"  th:text="${item.brand}">벨칸도</li>
+            <li class="text">용량</li>
+            <li class="text">100g</li>
+          </div>
+
+        </ul>
+
+        <div class="item_option">
+          <span>선택상품</span>
+          <span class="itemName" th:text="${item.itemName}">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</span>
+          <div class="item_cnt_option">
+            <span>-</span>
+            <span>1</span>
+            <span>+</span>
+          </div>
+          <span class="itemPrice" th:text="${#numbers.formatInteger(item.price*0.8, 0, 'COMMA')} + '원'">3,920원</span>
+        </div>
+
+
+        <div class="item_total_price">
+          <span>총 주문금액</span>
+          <span>3,920원</span>
+        </div>
+
+        <!-- 좋아요, 장바구니, 공유 버튼 -->
+        <div class="item_action_icon">
+          <img src="/assets/shop/heart.svg" alt="">
+          <img src="/assets/shop/cart.svg" alt="">
+          <img src="/assets/shop/share.svg" alt="">
+
+          <!-- 구매하기 버튼 -->
+          <button class="btn_item_buy">구매하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 광고 배너 -->
+    <section class="banner">
+      <img src="/assets/shop/give_banner.svg" alt="">
+    </section>
+
+    <section class="item_info_tap">
+      <button class="tap_btn"><span>상품설명</span></button>
+      <button class="tap_btn"><span>구매후기</span></button>
+      <button class="tap_btn"><span>상품문의</span></button>
+    </section>
+
+    <!-- 상품 상세설명 이미지  -->
+    <section class="item_info">
+      <img src="/assets/shop/belcando_info.svg" alt="">
+    </section>
+
+  </section>
+  <footer>
+    <img src="/assets/shop/footer.svg" alt="">
+  </footer>
+</section>
+</body>
+
+</html>

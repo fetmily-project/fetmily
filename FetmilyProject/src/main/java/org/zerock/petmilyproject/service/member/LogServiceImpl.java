@@ -1,5 +1,6 @@
 package org.zerock.petmilyproject.service.member;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -23,6 +24,10 @@ public class LogServiceImpl implements LogService {
                 .email(memberDTO.getEmail())
                 .password(bCryptPasswordEncoder.encode(memberDTO.getPassword()))
                 .nickname(memberDTO.getNickname())
+            .addr(memberDTO.getAddr())
+            .name(memberDTO.getName())
+            .phone(memberDTO.getPhone())
+
                 .build();
 
         Boolean isExistEmail = logRepository.existsByEmail(member.getEmail());
@@ -85,7 +90,13 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public void remove(Long memberId) {
+    public Long remove(Long memberId) {
         logRepository.deleteById(memberId);
+        return 1L;
+    }
+
+    @Override
+    public List<Member> findMembers() {
+        return logRepository.findAll();
     }
 }
