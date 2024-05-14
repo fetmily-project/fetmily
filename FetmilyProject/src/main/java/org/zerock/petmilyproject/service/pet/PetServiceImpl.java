@@ -3,11 +3,12 @@ package org.zerock.petmilyproject.service.pet;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+import org.zerock.petmilyproject.domain.Member;
 import org.zerock.petmilyproject.domain.Pet;
 import org.zerock.petmilyproject.dto.PetDTO;
 import org.zerock.petmilyproject.repository.PetRepository;
-import org.zerock.petmilyproject.service.pet.PetService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,14 +22,26 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public Long register(PetDTO petDTO) {
-        Pet pet = modelMapper.map(petDTO, Pet.class);
+        Pet pet = Pet.builder()
+                .petName(petDTO.getPetName())
+                .petType(petDTO.getPetType())
+                .birth(petDTO.getBirth())
+                .neut(petDTO.getNeut())
+                .sex(petDTO.getSex())
+                .weight(petDTO.getWeight())
+                .etc(petDTO.getEtc())
+                .petImage(petDTO.getPetImage())
+                .member(Member.builder()
+                        .memberId(petDTO.getMemberId())
+                        .build())
+                .build();
         Long petId = petRepository.save(pet).getPetId();
 
         return petId;
     }
 
     @Override
-    public PetDTO readOne(Long memberId, Long petId) {
+    public PetDTO readOne(Long petId) {
         Pet pet = petRepository.findByPetId(petId);
         PetDTO petDTO = modelMapper.map(pet, PetDTO.class);
 
@@ -37,7 +50,8 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public List<PetDTO> petList(Long memberId) {
-        List<PetDTO> petList = petRepository.searchAll(memberId).stream().map(
+
+        List<PetDTO> petList = petRepository.searchAllByMemberId(memberId).stream().map(
                 pet -> modelMapper.map(pet, PetDTO.class)
         ).collect(Collectors.toList());
         log.info(petList);
@@ -46,7 +60,9 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public void modify(PetDTO petDTO) {
-        Pet pet = modelMapper.map(petDTO, Pet.class);
+        Pet pet = petRepository.findByPetId(petDTO.getPetId());
+        pet.changePet(petDTO);
+
         petRepository.save(pet);
     }
 

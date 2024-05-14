@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.*;
+import org.zerock.petmilyproject.dto.MemberDTO;
 
 import javax.persistence.*;
 
@@ -39,6 +40,7 @@ public class Member {
     @Column(length = 500)
     private String nickname;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "member")
     private List<Orders> orders = new ArrayList<>();
@@ -46,7 +48,12 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<OrderItem> orderItem = new ArrayList<>();
 
-    public void changeAddr(String addr){
-        this.addr = addr;
+
+    public void changeAddr(MemberDTO memberDTO){
+        this.name = memberDTO.getName();
+        this.phone = memberDTO.getPhone();
+        this.addr = memberDTO.getAddr();
+
     }
+    public void changePassword(String password){this.password = password;}
 }

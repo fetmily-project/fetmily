@@ -16,6 +16,8 @@ import org.zerock.petmilyproject.dto.PageResponseDTO;
 import org.zerock.petmilyproject.dto.ReplyDTO;
 import org.zerock.petmilyproject.service.ReplyService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,16 +38,22 @@ public class ReplyController {
     @ApiOperation(value = "Replies POST", notes = "POST 방식으로 댓글 등록")
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Long> register(
-            @Valid @RequestBody ReplyDTO replyDTO,
-            BindingResult bindingResult) throws BindException {
+            @RequestBody ReplyDTO replyDTO,
+            BindingResult bindingResult,
+            HttpServletRequest httpServletRequest) throws BindException {
 
-        log.info(replyDTO);
+        HttpSession session = httpServletRequest.getSession(false);
+        Long loginMemberId = (Long)session.getAttribute("memberId");
 
         if(bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
         }
 
         Map<String, Long> resultMap = new HashMap<>();
+
+        replyDTO.setMemberId(loginMemberId);
+
+        log.info(replyDTO);
 
         Long replyId = replyService.register(replyDTO);
 

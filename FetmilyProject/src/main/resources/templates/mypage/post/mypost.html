@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/mypage/mypage.css">
+  <title>Title</title>
+</head>
+<body layout:fragment="content">
+<div class="container">
+  <div class="header">마이페이지</div>
+  <div class="body">
+    <div class="nav">
+      <ul>
+        <div class="nav_title">내 정보</div>
+        <a href="/mypage/member/info"><li>내 정보</li></a>
+        <a href="/mypage/member/update"><li>내 정보 수정</li></a>
+        <a href="/mypage/member/delete"><li>회원 탈퇴</li></a>
+      </ul>
+      <ul>
+        <div class="nav_title">쇼핑</div>
+        <a href="/mypage/buy/list"><li>주문내역</li></a>
+        <a href="/mypage/buy/addr"><li>배송지 관리</li></a>
+        <a href="/mypage/buy/like"><li>좋아요 누른 상품</li></a>
+        <a href="/mypage/buy/service"><li>고객센터</li></a>
+      </ul>
+      <ul>
+        <div class="nav_title">커뮤니티</div>
+        <a href="/mypage/post/mypost"><li>내가 쓴 게시글</li></a>
+        <a href="/mypage/post/myreview"><li>댓글 단 게시글</li></a>
+        <a href="/mypage/post/like"><li>좋아요 누른 게시글</li></a>
+      </ul>
+      <ul>
+        <div class="nav_title">동물</div>
+        <a href="/pet/list"><li>내 반려동물</li></a>
+        <a href="/pet/support"><li>후원중인 동물</li></a>
+      </ul>
+    </div>
+    <div class="content">
+      <span class="content_title">내가 쓴 게시글</span>
+      <div class="content_body">
+        <div class="my_post">
+          내가 쓴 게시글
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/member/mypage.js"></script>
+</body>
+
+</html>

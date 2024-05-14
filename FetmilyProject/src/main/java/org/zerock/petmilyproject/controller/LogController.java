@@ -60,24 +60,11 @@ public class LogController {
         return ResponseEntity.ok(loginMemberDTO);
     }
 
-    @GetMapping(value = {"/info"})
-    public void memberGET(@RequestParam("memberId") Long memberId, Model model, HttpServletRequest httpServletRequest){
-        MemberDTO memberDTO = logService.readOne(memberId);
-        model.addAttribute("memberDTO", memberDTO);
-    }
-
     @DeleteMapping("/delete")
-    public ResponseEntity<?> memberDelete(@RequestParam Long memberId){
-        logService.remove(memberId);
+    public ResponseEntity<?> memberDelete(HttpServletRequest httpServletRequest){
+        HttpSession session = httpServletRequest.getSession(false);
 
-        return ResponseEntity.ok(1);
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<?> memberUpdate(@RequestBody MemberDTO memberDTO, HttpServletRequest httpServletRequest){
-        HttpSession session = httpServletRequest.getSession();
-        memberDTO.setMemberId((Long) session.getAttribute("memberId"));
-        logService.modify(memberDTO);
+        logService.remove((Long) session.getAttribute("memberId"));
 
         return ResponseEntity.ok(1);
     }

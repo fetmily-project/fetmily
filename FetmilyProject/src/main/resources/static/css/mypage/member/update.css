@@ -1,0 +1,54 @@
+.content_body{
+    margin-left: 10px;
+}
+
+.member_info > *{
+    margin-bottom: 10px;
+}
+
+.content_body > *{
+    margin-bottom: 10px;
+}
+
+
+input[type=text]{
+    width: 400px;
+}
+
+label{
+    display: inline-block;
+    width: 200px;
+    font-size: 25px;
+}
+
+input{
+    font-size: 25px;
+    border-radius: 4px;
+    border-color: lightgray;
+}
+
+button{
+    width: 70px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.addr_btn{
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.addr > input{
+    width: 200px;
+}
+
+span{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+textarea{
+    width: 500px;
+}

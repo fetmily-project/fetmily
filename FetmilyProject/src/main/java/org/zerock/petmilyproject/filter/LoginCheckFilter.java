@@ -2,6 +2,7 @@ package org.zerock.petmilyproject.filter;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.util.PatternMatchUtils;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.util.PatternMatchUtils;
 
@@ -17,7 +18,7 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 @Log4j2
 @RequiredArgsConstructor
 public class LoginCheckFilter implements Filter {
-    private static final String[] blackList = {"/map/kakaomap"};
+    private static final String[] blackList = {"/map/kakaomap", "/board/register"};
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -25,6 +26,7 @@ public class LoginCheckFilter implements Filter {
         String requestURI = httpRequest.getRequestURI();
 
         HttpServletResponse httpResponse = (HttpServletResponse) response;
+        httpRequest.getSession(true);
 
         try{
             if (isLoginCheckPath(requestURI)) {
@@ -45,8 +47,8 @@ public class LoginCheckFilter implements Filter {
     }
 
     private boolean isLoginCheckPath(String requestURI) {
-        return false;
-//        return PatternMatchUtils.simpleMatch(blackList, requestURI);
+//        return false;
+        return PatternMatchUtils.simpleMatch(blackList, requestURI);
     }
 
 }

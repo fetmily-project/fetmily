@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.zerock.petmilyproject.domain.Board;
+import org.zerock.petmilyproject.domain.Member;
 import org.zerock.petmilyproject.domain.Reply;
 import org.zerock.petmilyproject.dto.PageRequestDTO;
 import org.zerock.petmilyproject.dto.PageResponseDTO;
@@ -30,7 +32,17 @@ public class ReplyServiceImpl implements ReplyService{
     @Override
     public Long register(ReplyDTO replyDTO) {
 
-        Reply reply = modelMapper.map(replyDTO, Reply.class);
+        Reply reply = Reply.builder()
+                        .board(Board.builder()
+                                .boardId(replyDTO.getBoardId())
+                                .build())
+                        .member(Member.builder()
+                                .memberId(replyDTO.getMemberId())
+                                .build())
+                        .content(replyDTO.getContent())
+                                .build();
+
+
         log.info(reply);
         log.info("ReplyServiceImpl reply 확인");
 

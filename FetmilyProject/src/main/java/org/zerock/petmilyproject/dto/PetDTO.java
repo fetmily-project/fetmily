@@ -17,9 +17,10 @@ public class PetDTO {
     private Long memberId;
     private String petName;
     private String petType;
-    private LocalDateTime birth;
+    private String birth;
     private String weight;
     private String neut;
     private String sex;
     private String etc;
+    private String petImage;
 }

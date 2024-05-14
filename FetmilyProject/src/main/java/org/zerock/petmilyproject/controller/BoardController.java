@@ -20,6 +20,8 @@ import org.zerock.petmilyproject.service.BoardService;
 import org.zerock.petmilyproject.service.BoardServiceImpl;
 import org.zerock.petmilyproject.service.ReplyService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
 import java.nio.file.Files;
@@ -32,6 +34,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardServiceImpl boardServiceImpl;
+    private final HttpServletRequest httpServletRequest;
     @Value("${org.zerock.upload.path}")
     private String uploadPath;
 
@@ -62,7 +65,13 @@ public class BoardController {
 
     @PostMapping("/register")
     public String registerPost(BoardDTO boardDTO, BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes){
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest httpServletRequest){
+
+        HttpSession session = httpServletRequest.getSession(false);
+        Long loginMemberId = (Long)session.getAttribute("memberId");
+
+        boardDTO.setMemberId(loginMemberId);
 
         log.info("board POST register......");
 
@@ -98,10 +107,12 @@ public class BoardController {
         log.info("controller boardDTO에는 image가 들어가나?");
         log.info(boardDTO);
 
+        HttpSession session = httpServletRequest.getSession(false);
 
 //        boardServiceImpl.updateViewCnt(boardId);
 
         model.addAttribute("dto", boardDTO);
+        model.addAttribute("loginMemberId", session.getAttribute("memberId"));
     }
 
     @PostMapping("/modify")

@@ -4,13 +4,14 @@
       layout:decorate="~{layout/layout1.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>팻플레이스</title>
     <style>
         /* 배경이미지 */
         #mapLeftImage{
             position: absolute;
             bottom: 0;
             left: 0;
+            z-index: -99;
         }
         #mapRightImage{
             position: absolute;
@@ -107,9 +108,20 @@
         #pagination a {display:inline-block;margin-right:10px;}
         #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
+        /* header 이미지 고정하기 위해 */
+        #mapHeader{
+            text-align: center;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%);
+            border-image-slice: 1;
+            width:100%;
+            font-weight: bold;
+        }
+
     </style>
 </head>
-<body layout:fragment="content">
+<body>
+<div layout:fragment="content" class="body-div">
 
 <img src="/assets/map/mapLeftImage.svg" id="mapLeftImage">
 <img src="/assets/map/mapRightImage.svg" id="mapRightImage">
@@ -128,11 +140,15 @@
 </div>
 <!-- 검색 버튼 컨테이너-->
 <div class="search-btns">
-    <div id="dropBox">DropBox</div>
+    <div id="dropBox">검색👈</div>
     <div class="dropdown-content">
         <button id="cafeBtn" type="button">애견카페 ☕️</button><br>
         <button id="hospitalBtn" type="button">동물병원 🧑‍⚕️</button><br>
         <button id="hotelBtn" type="button">애견호텔 🏨</button><br>
+        <button id="hairshopBtn" type="button">애견미용 💇</button>
+        <button id="kindergardenBtn" type="button">애견유치원 👶</button>
+        <button id="suppliesBtn" type="button">애견용품 🏪</button>
+<!--        <button id="playgroundBtn" type="button">애견운동장 🥏</button>-->
     </div>
 </div>
 <!-- kakao 지도 API 불러오기 -->
@@ -145,53 +161,80 @@
 
     document.addEventListener("DOMContentLoaded", function () {
 
-        // 버튼 클릭 이벤트 추가
-        document.getElementById('cafeBtn').addEventListener('click', function() {
-            ps.keywordSearch("애견카페", placesSearchCB, {
-                radius : 2000,
-                location: new kakao.maps.LatLng(lat, long)
-            });
-        });
-        document.getElementById('hospitalBtn').addEventListener('click', function() {
-            ps.keywordSearch("동물병원", placesSearchCB, {
-                radius : 2000,
-                location: new kakao.maps.LatLng(lat, long)
-            });
-        });
-        document.getElementById('hotelBtn').addEventListener('click', function() {
-            ps.keywordSearch("애견호텔", placesSearchCB, {
-                radius : 2000,
-                location: new kakao.maps.LatLng(lat, long)
-            });
-        });
-        let lat;
-        let long;
-        // 현재 위치 가져오기
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    var userLatLng = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    map.setCenter(userLatLng);
-                    var markerImageSrc = 'https://wepets.kokomel.com/images/favicons/favicon-96x96.png';
-                    var markerSize = new kakao.maps.Size(70, 70);
-                    var markerImage = new kakao.maps.MarkerImage(markerImageSrc, markerSize);
-                    var markerPosition = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    var marker = new kakao.maps.Marker({
-                        position: markerPosition,
-                        image: markerImage
+
+                // 버튼 클릭 이벤트 추가
+                document.getElementById('cafeBtn').addEventListener('click', function() {
+                    ps.keywordSearch("애견카페", placesSearchCB, {
+                        // 반경 2km
+                        radius : 2000,
+                        location: new kakao.maps.LatLng(lat, long)
                     });
-                    lat = position.coords.latitude;
-                    long = position.coords.longitude;
-                    marker.setMap(map);
-                },
-                function (error) {
-                    console.error(error.message);
+                });
+                document.getElementById('hospitalBtn').addEventListener('click', function() {
+                    ps.keywordSearch("동물병원", placesSearchCB, {
+                        radius : 2000,
+                        location: new kakao.maps.LatLng(lat, long)
+                    });
+                });
+                document.getElementById('hotelBtn').addEventListener('click', function() {
+                    ps.keywordSearch("애견호텔", placesSearchCB, {
+                        radius : 2000,
+                        location: new kakao.maps.LatLng(lat, long)
+                    });
+                });
+                document.getElementById('hairshopBtn').addEventListener('click', function () {
+                    ps.keywordSearch("애견미용", placesSearchCB, {
+                        radius : 2000,
+                        location: new kakao.maps.LatLng(lat, long)
+                    });
+                });
+                document.getElementById('kindergardenBtn').addEventListener('click', function () {
+                    ps.keywordSearch("애견유치원", placesSearchCB, {
+                        radius : 2000,
+                        location: new kakao.maps.LatLng(lat, long)
+                    });
+                });
+                document.getElementById('suppliesBtn').addEventListener('click', function () {
+                    ps.keywordSearch("애견용품", placesSearchCB, {
+                        radius: 2000,
+                        location: new kakao.maps.LatLng(lat, long)
+                    });
+                });
+                // document.getElementById('playgroundBtn').addEventListener('click', function () {
+                //     ps.keywordSearch("애견운동장", placesSearchCB, {
+                //         radius : 2000,
+                //         location: new kakao.maps.LatLng(lat, long)
+                //     });
+                // });
+                let lat;
+                let long;
+                // 현재 위치 가져오기
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        function (position) {
+                            var userLatLng = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            map.setCenter(userLatLng);
+                            var markerImageSrc = 'https://wepets.kokomel.com/images/favicons/favicon-96x96.png';
+                            var markerSize = new kakao.maps.Size(70, 70);
+                            var markerImage = new kakao.maps.MarkerImage(markerImageSrc, markerSize);
+                            var markerPosition = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            var marker = new kakao.maps.Marker({
+                                position: markerPosition,
+                                image: markerImage
+                            });
+                            lat = position.coords.latitude;
+                            long = position.coords.longitude;
+                            marker.setMap(map);
+                        },
+                        function (error) {
+                            console.error(error.message);
+                        }
+                    );
+                } else {
+                    console.error('Geolocation is not supported.');
                 }
-            );
-        } else {
-            console.error('Geolocation is not supported.');
-        }
-        // 검색된 장소 표시하기
+
+
     })
     var infowindow = new kakao.maps.InfoWindow({zIndex:1});
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -416,6 +459,9 @@
         }
         markers = [];
     }
+
+
 </script>
+</div>
 </body>
 </html>
