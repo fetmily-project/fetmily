@@ -74,16 +74,15 @@
 
 
 
-                    <div class="my-4">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
-                            <a th:href="|@{/board/modify(boardId=${dto.boardId})}&${link}|" class="text-decoration-none">
+                            <a th:if="${loginMemberId == dto.memberId}" th:href="|@{/board/modify(boardId=${dto.boardId})}&${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-secondary">수정하기</button>
                             </a>
                             <a th:href="|@{/board/list}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">목록으로</button>
                             </a>
                         </div>
-                    </div>
+
 
                 </div><!--end card body-->
 
@@ -275,7 +274,11 @@
             // nickname.value =''
             printReplies(1,10, true) //댓글 목록 갱신
         }).catch(e => {
-            alert("Exception...")
+            alert("로그인 후에 이용가능합니다.")
+
+            registerModal.hide()
+
+            printReplies(1,10, true) //댓글 목록 갱신
         })
     }, false)
 
@@ -332,8 +335,10 @@
         getReply(replyId).then(reply => { //댓글의 내용을 모달창에 채워서 보여주는
 
             console.log(reply)
-            replyHeader.innerHTML = reply.replyId
+            // replyHeader.innerHTML = reply.replyId
             modifyText.value = reply.replyText
+
+            console.log(modifyText.value)
             modifyModal.show()
 
         }).catch(e => alert('error'))
