@@ -10,7 +10,7 @@ public interface LogService {
     MemberDTO readOne(Long memberId);
     MemberDTO login(MemberDTO memberDTO);
 
-    void modify(MemberDTO memberDTO);
+//    void modify(MemberDTO memberDTO);
 
 
 

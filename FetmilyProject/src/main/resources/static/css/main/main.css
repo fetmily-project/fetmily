@@ -61,16 +61,28 @@
 }
 
 .banner1{
-    background: url("../../assets/main/banner1.jpg");
+    background: url("../../assets/main/petfood.jpg");
     background-size: 100% 100%;
 
 }
 .banner2{
-    background-image: url(../../assets/main/banner4.jpg);
+    background-image: url(../../assets/main/petfood2.jpg);
     background-size: 100% 100%;
 }
 .banner3{
-    background-image: url(../../assets/main/banner5.jpg);
+    background-image: url(../../assets/main/petnutrients.jpg);
+    background-size: 100% 100%;
+}
+.banner4{
+    background-image: url(../../assets/main/dogbanner.jpg);
+    background-size: 100% 100%;
+}
+.banner5{
+    background-image: url(../../assets/main/petbanner.jpg);
+    background-size: 100% 100%;
+}
+.banner6{
+    background-image: url(../../assets/main/petshop.jpg);
     background-size: 100% 100%;
 }
 
@@ -112,7 +124,6 @@
 .menu{
     position: relative;
     margin: 20px;
-    border: 1px solid;
     text-align: center;
     width: 519px;
     height: 329px;

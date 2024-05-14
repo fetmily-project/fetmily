@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.zerock.petmilyproject.service.ShopService;
+//import org.zerock.petmilyproject.service.ShopService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/mypage/buy")
 @RequiredArgsConstructor
 public class BuyController {
-    ShopService shopService;
+//    ShopService shopService;
 
     @GetMapping("/list")
     public void orderListGET(Model model, HttpServletRequest httpServletRequest){
