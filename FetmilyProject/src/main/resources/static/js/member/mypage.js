@@ -23,15 +23,24 @@ const changePassword = () => {
 
 // 주소 수정
 const updateAddr = () => {
+  const name = document.querySelector('.name').value;
+  const phone = document.querySelector('.phone').value;
   const postcode = document.querySelector('#sample4_postcode').value;
   const roadAddress = document.querySelector('#sample4_roadAddress').value;
   const jibunAddress = document.querySelector('#sample4_jibunAddress').value;
   const detailAddress = document.querySelector('#sample4_detailAddress').value;
   const extraAddress = document.querySelector('#sample4_extraAddress').value;
 
+  if(name===null||phone===null||postcode===null){
+    alert('배송정보를 입력해주세요.');
+    return;
+  }
+
   const addr = `${postcode}_${roadAddress}_${jibunAddress}_${detailAddress}_${extraAddress}`;
 
   axios.put('/mypage/member/updateAddr', {
+    name: name,
+    phone: phone,
     addr: addr
   }).then((result) => {
     if(result.data === 1){
@@ -41,6 +50,8 @@ const updateAddr = () => {
       document.querySelector('#sample4_jibunAddress').value = '';
       document.querySelector('#sample4_detailAddress').value = '';
       document.querySelector('#sample4_extraAddress').value = '';
+      document.querySelector('.name').value = '';
+      document.querySelector('.phone').value = '';
       window.location.href="/mypage/member/info";
     }
   }).catch((error)=> {
