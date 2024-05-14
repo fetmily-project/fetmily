@@ -335,8 +335,9 @@
         getReply(replyId).then(reply => { //댓글의 내용을 모달창에 채워서 보여주는
 
             console.log(reply)
-            // replyHeader.innerHTML = reply.replyId
-            modifyText.value = reply.replyText
+            replyHeader.innerHTML = reply.replyId
+
+            modifyText.value = reply.content
 
             console.log(modifyText.value)
             modifyModal.show()
@@ -351,7 +352,7 @@
         const replyObj = {
             boardId:boardId,
             replyId:replyHeader.innerHTML,
-            replyText:modifyText.value}
+            content:modifyText.value}
 
         modifyReply(replyObj).then(result => {
             alert('댓글이 수정되었습니다.')
@@ -385,6 +386,19 @@
             })
         },false)
 
+
+    // replyHeader를 숨기는 함수
+    function hideReplyHeader() {
+        const replyHeader = document.querySelector('.replyHeader'); // replyHeader 요소 선택
+        if (replyHeader) {
+            replyHeader.style.display = 'none'; // display 속성을 none으로 설정하여 숨김
+        }
+    }
+
+    // 페이지 로드 시 replyHeader 숨기기
+    window.addEventListener('DOMContentLoaded', function() {
+        hideReplyHeader();
+    });
 
 
 </script>
