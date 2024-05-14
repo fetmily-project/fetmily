@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+
+
+  <div>
+    <div>
+      <!--      <form th:object="${orderSearch}" class="form-inline">-->
+      <!--        <div class="form-group mb-2">-->
+      <!--          <input type="text" th:field="*{memberName}" class="form-control" placeholder="회원명"/>-->
+      <!--        </div>-->
+      <!--        <div class="form-group mx-sm-1 mb-2">-->
+      <!--          <select th:field="*{orderStatus}" class="form-control">-->
+      <!--            <option value="">주문상태</option>-->
+      <!--            <option th:each="status : ${T(jpabook.jpashop.domain.OrderStatus).values()}"-->
+      <!--                    th:value="${status}"-->
+      <!--                    th:text="${status}">option-->
+      <!--            </option>-->
+      <!--          </select>-->
+      <!--        </div>-->
+      <!--        <button type="submit" class="btn btn-primary mb-2">검색</button>-->
+      <!--      </form>-->
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>회원명</th>
+        <th>대표상품 이름</th>
+        <th>대표상품 주문가격</th>
+        <th>대표상품 주문수량</th>
+        <th>상태</th>
+        <th>일시</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+
+
+
+      <tr th:each="order : ${orders}">
+        <td th:text="${order.orderId}"></td> <!-- 주문번호 -->
+        <td th:text="${order.member.nickname}"></td> <!-- 회원명 -->
+        <td th:text="${order.orderItems[0].item.itemName}"></td>
+        <td th:text="${order.orderItems[0].orderPrice}"></td>
+        <td th:text="${order.orderItems[0].count}"></td>
+        <td th:text="${order.phone}"></td> <!-- 전화번호 -->
+        <td th:text="${order.addr}"></td> <!-- 주소 -->
+        <td th:text="${order.totalPrice}"></td> <!-- 총 주문 가격 -->
+        <td th:text="${order.status}"></td> <!-- 주문 상태 -->
+        <!--  <td th:text="${order.moddate}"></td> &lt;!&ndash; 주문 상태 &ndash;&gt;-->
+        <!--  <td th:text="${#temporals.format(order.moddate, 'yyyy-MM-dd')}"></td>-->
+<!--        <p th:text="${#dates.format(order.moddate, 'yyyy-MM-dd HH:mm:ss')}"></p>-->
+        <td>
+
+          <a th:href="@{/orderDetail(orderId=${order.orderId})}">주문 상세 보기</a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+</div> <!-- /container -->
+
+</body>
+<script>
+  function cancel(id) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/orders/" + id + "/cancel");
+    document.body.appendChild(form);
+    form.submit();
+  }
+</script>
+</html>

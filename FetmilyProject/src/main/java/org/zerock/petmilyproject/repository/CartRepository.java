@@ -3,7 +3,6 @@ package org.zerock.petmilyproject.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.zerock.petmilyproject.domain.Cart;
-import org.zerock.petmilyproject.domain.Member;
 
 import java.util.List;
 

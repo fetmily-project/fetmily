@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/shop/cart.css">
+  <title>Document</title>
+</head>
+<body>
+<section class="cart__main">
+
+<!--    <td th:text="${item.id}"></td>-->
+<!--    <td th:text="${item.orderPrice}"></td>-->
+<!--    <td th:text="${item.count}"></td>-->
+<!--    <td th:text="${item.item.itemName}"></td>-->
+
+  <header>
+    <img src="/assets/shop/header.svg" alt="">
+  </header>
+  <section class="cart__form">
+    <span class="cart__main__text">장바구니</span>
+    <hr>
+    <div class="btn_select_all">
+      <button>전체선택</button>
+      <button>전체삭제</button>
+    </div>
+
+    <div id="cartItemsContainer">
+
+    </div>
+
+
+<!--    <tr th:each="item : ${cart}">-->
+
+    <div class="cart_total">
+      <div class="total_price box">
+        <span>총 상품금액</span>
+        <span>11,700원</span>
+      </div>
+      <img src="/assets/shop/plus.svg" alt="">
+      <div class="total_sale box">
+        <span>총 할인금액</span>
+        <span>3,000원</span>
+      </div>
+      <img src="/assets/shop/plus.svg" alt="">
+      <div class="total_delivery box">
+        <span>총 배송비</span>
+        <span>0원</span>
+      </div>
+      <button class="btn_item_buy">총 11,700원 구매하기</button>
+    </div>
+
+
+
+
+
+
+
+
+  </section>
+  <footer>
+    <img src="/assets/shop/footer.svg" alt="">
+  </footer>
+</section>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/shop/cart.js"></script>
+
+</body>
+
+</html>

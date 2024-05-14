@@ -1,15 +1,14 @@
 package org.zerock.petmilyproject.service;
 
-import org.springframework.data.domain.Page;
+import org.zerock.petmilyproject.domain.Item;
 import org.zerock.petmilyproject.dto.ItemDTO;
 import org.zerock.petmilyproject.dto.PageRequestDTO;
 import org.zerock.petmilyproject.dto.PageResponseDTO;
-import org.zerock.petmilyproject.dto.ReplyDTO;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ShopService {
+public interface ItemService {
 
     Long register(ItemDTO itemDTO);
     ItemDTO readOne(Long bno);
@@ -17,6 +16,7 @@ public interface ShopService {
     void remove(Long bno);
 //    PageResponseDTO<ItemDTO> getListOfItem(PageRequestDTO pageRequestDTO);
 
+    public List<Item> findItems();
     List<ItemDTO> ListOfItemAll();
     List<ItemDTO> ListOfItemByKind(String kind);
 

@@ -1,8 +1,5 @@
 package org.zerock.petmilyproject.service;
 
-import jdk.jfr.Category;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -12,11 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.zerock.petmilyproject.domain.Item;
-import org.zerock.petmilyproject.domain.Member;
 import org.zerock.petmilyproject.dto.*;
-import org.zerock.petmilyproject.repository.ShopRepository;
+import org.zerock.petmilyproject.repository.ItemRepository;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,8 +19,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Log4j2
-public class ShopServiceImpl implements ShopService {
-    private final ShopRepository shopRepository;
+public class ItemServiceImpl implements ItemService {
+    private final ItemRepository itemRepository;
     private final ModelMapper modelMapper;
 
     @Override
@@ -35,7 +30,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public ItemDTO readOne(Long bno) {
-        Optional<Item> item = shopRepository.findById(bno);
+        Optional<Item> item = itemRepository.findById(bno);
         ItemDTO itemDTO = modelMapper.map(item, ItemDTO.class);
         return itemDTO;
     }
@@ -74,7 +69,7 @@ public class ShopServiceImpl implements ShopService {
             pageRequestDTO.getSize(),
             Sort.by("itemId").ascending());
 
-        Page<Item> result = shopRepository.listOfSearchItem(keyword, pageable);
+        Page<Item> result = itemRepository.listOfSearchItem(keyword, pageable);
 
         List<ItemDTO> dtoList = result.getContent().stream().map(item -> modelMapper.map(item, ItemDTO.class))
             .collect(Collectors.toList());
@@ -89,7 +84,7 @@ public class ShopServiceImpl implements ShopService {
     @Override
     public List<ItemDTO> ListOfItemAll() { // 전체 상품 리스트
 
-        List<Item> itemList = shopRepository.listOfItem();
+        List<Item> itemList = itemRepository.listOfItem();
 //        List<ItemDTO> itemDTOList = shopRepository.listOfItem();
         List<ItemDTO> itemDTOList = itemList.stream()
             .map(vo -> modelMapper.map(vo,ItemDTO.class))
@@ -99,7 +94,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public List<ItemDTO> ListOfItemByKind(String kind) { // 아이콘으로 kind에 해당하는 상품 리스트 불러오기
-        List<Item> itemList = shopRepository.ListOfItemByKind(kind);
+        List<Item> itemList = itemRepository.ListOfItemByKind(kind);
         List<ItemDTO> itemDTOList = itemList.stream()
             .map(vo -> modelMapper.map(vo,ItemDTO.class))
             .collect(Collectors.toList());
@@ -108,11 +103,16 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public List<ItemDTO> ListOfItemByBrand() {
-        List<Item> itemList = shopRepository.ListOfItemByBrand();
+        List<Item> itemList = itemRepository.ListOfItemByBrand();
         List<ItemDTO> itemDTOList = itemList.stream()
             .map(vo -> modelMapper.map(vo,ItemDTO.class))
             .collect(Collectors.toList());
         return itemDTOList;
+    }
+
+    @Override
+    public List<Item> findItems() {
+        return itemRepository.listOfItem();
     }
 
     //    @Override

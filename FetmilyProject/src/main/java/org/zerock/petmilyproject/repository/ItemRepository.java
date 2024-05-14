@@ -5,14 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.zerock.petmilyproject.domain.Cart;
 import org.zerock.petmilyproject.domain.Item;
-import org.zerock.petmilyproject.domain.Member;
 
 import java.util.Optional;
-import org.zerock.petmilyproject.dto.ItemDTO;
 
-public interface ShopRepository extends JpaRepository<Item, Long> {
+public interface ItemRepository extends JpaRepository<Item, Long> {
 //    @Query("select i from Item i")
 //    Page<Item> listOfItem(Pageable pageable);
 
