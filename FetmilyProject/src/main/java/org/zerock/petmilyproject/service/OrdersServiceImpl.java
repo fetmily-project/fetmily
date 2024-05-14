@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.petmilyproject.domain.Item;
 import org.zerock.petmilyproject.domain.Member;
-import org.zerock.petmilyproject.domain.OrderItem;
+//import org.zerock.petmilyproject.domain.OrderItem;
 import org.zerock.petmilyproject.domain.Orders;
 import org.zerock.petmilyproject.dto.OrdersDTO;
 import org.zerock.petmilyproject.repository.LogRepository;
@@ -25,25 +25,25 @@ public class OrdersServiceImpl implements OrdersService {
     private final OrdersRepository ordersRepository;
     private final ItemRepository itemRepository;
 
-    @Override
-    public Long order(Long memberId, long itemId, int count){
-
-        Member member = logRepository.findByMemberId(memberId)
-            .orElseThrow();
-        Item item = itemRepository.findById(itemId).orElseThrow();
-
-
-        OrderItem orderItem = OrderItem.createOrderItem(member, item, item.getPrice(), count);
-
-
-        Orders orders = Orders.createOrders(member, orderItem);
-
-        ordersRepository.save(orders);
-
-        return orders.getOrderId();
-
-
-    }
+//    @Override
+//    public Long order(Long memberId, long itemId, int count){
+//
+//        Member member = logRepository.findByMemberId(memberId)
+//            .orElseThrow();
+//        Item item = itemRepository.findById(itemId).orElseThrow();
+//
+//
+//        OrderItem orderItem = OrderItem.createOrderItem(member, item, item.getPrice(), count);
+//
+//
+//        Orders orders = Orders.createOrders(member, orderItem);
+//
+//        ordersRepository.save(orders);
+//
+//        return orders.getOrderId();
+//
+//
+//    }
 
     // 주문 조회
 //
@@ -52,20 +52,20 @@ public class OrdersServiceImpl implements OrdersService {
 //
 //
 
-    @Transactional // 주문 취소
-    public void cancelOrder(Long orderId){
-        Orders orders = ordersRepository.findById(orderId).get();
-        orders.cancel();
-    }
+//    @Transactional // 주문 취소
+//    public void cancelOrder(Long orderId){
+//        Orders orders = ordersRepository.findById(orderId).get();
+//        orders.cancel();
+//    }
 
 //    public List<Orders> findOrders(OrderSearch orderSearch){
 //        return ordersRepository.findAllByString(orderSearch);
 //    }
 
-    @Override // 주문 목록 조회
-    public List<Orders> findOrders(Long memberId) {
-        List<Orders> ordersList = ordersRepository.findOrdersByMemberId(memberId);
-        return  ordersList;
-    }
+//    @Override // 주문 목록 조회
+//    public List<Orders> findOrders(Long memberId) {
+//        List<Orders> ordersList = ordersRepository.findOrdersByMemberId(memberId);
+//        return  ordersList;
+//    }
 }
 

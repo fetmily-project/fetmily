@@ -48,18 +48,18 @@ public class Item extends BaseEntity{
 
     @Column(length = 20, nullable = false)
     private String kind;
-    @JsonIgnore
-    @OneToMany(mappedBy = "item")
-    private List<OrderItem> orderItem = new ArrayList<>();
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "item")
+//    private List<OrderItem> orderItem = new ArrayList<>();
 
-    public void removeStock(int stockNumber){ // 재고 감소
-        int restStock = this.stockQuantity - stockNumber;
-        if(restStock<0){
-            throw new OutOfStockException("상품의 재고가 부족합니다. 현재 재고 : " + this.stockQuantity);
-        }
-        this.stockQuantity = restStock;
-    }
-    public void addStock(int stockNumber) { this.stockQuantity += stockNumber;} // 재고 증
+//    public void removeStock(int stockNumber){ // 재고 감소
+//        int restStock = this.stockQuantity - stockNumber;
+//        if(restStock<0){
+//            throw new OutOfStockException("상품의 재고가 부족합니다. 현재 재고 : " + this.stockQuantity);
+//        }
+//        this.stockQuantity = restStock;
+//    }
+//    public void addStock(int stockNumber) { this.stockQuantity += stockNumber;} // 재고 증
 
 
 

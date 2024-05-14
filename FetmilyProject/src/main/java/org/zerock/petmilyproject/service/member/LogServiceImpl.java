@@ -75,7 +75,7 @@ public class LogServiceImpl implements LogService {
                 .addr(member.getAddr())
                 .name(member.getName())
                 .phone(member.getPhone())
-                .socialNumber(member.getSocialNumber())
+//                .socialNumber(member.getSocialNumber())
                 .build();
 
         return memberDTO;
