@@ -25,9 +25,6 @@ public class Cart extends BaseEntity {
     @JoinColumn(name = "itemId")
     private Item item;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "orders_id")
-    private Orders orders;
 
     @ColumnDefault("0")
     @Column(length = 500, nullable = false)
@@ -45,15 +42,7 @@ public class Cart extends BaseEntity {
         this.cnt = cnt;
     }
 
-    public static Cart createCart(Item item, long count){
-            Cart cart = Cart.builder().
-//            item(item).
-//            cnt(count).
-//            cartPrice(item.getPrice()).
-            build();
-//            item.removeStock(count);
-            return cart;
-    }
+
     public Long getTotalPrice(){
         return cartPrice*cnt;
     }

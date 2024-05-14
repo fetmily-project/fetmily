@@ -28,8 +28,6 @@ public class Member {
     @Column(length = 500)
     private String name;
 
-    @Column(length = 500)
-    private String socialNumber;
 
     @Column(length = 500)
     private String phone;
@@ -40,13 +38,6 @@ public class Member {
     @Column(length = 500)
     private String nickname;
 
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "member")
-    private List<Orders> orders = new ArrayList<>();
-    @JsonIgnore
-    @OneToMany(mappedBy = "member")
-    private List<OrderItem> orderItem = new ArrayList<>();
 
 
     public void changeAddr(MemberDTO memberDTO){
