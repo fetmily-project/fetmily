@@ -70,21 +70,35 @@ public class LogServiceImpl implements LogService {
 
         MemberDTO memberDTO = MemberDTO.builder()
                 .memberId(member.getMemberId())
+                .email(member.getEmail())
                 .nickname(member.getNickname())
                 .addr(member.getAddr())
                 .name(member.getName())
                 .phone(member.getPhone())
+                .socialNumber(member.getSocialNumber())
                 .build();
 
         return memberDTO;
     }
 
     @Override
-    public void modify(MemberDTO memberDTO) {
+    public void modifyAddr(MemberDTO memberDTO) {
         // memberId값으로 db에서 정보 가져와서 addr값만 change
         Member member = logRepository.findByMemberId(memberDTO.getMemberId())
                 .orElseThrow();
-        member.changeAddr(memberDTO.getAddr());
+
+        member.changeAddr(memberDTO);
+
+        logRepository.save(member);
+    }
+
+    @Override
+    public void modifyPassword(MemberDTO memberDTO) {
+        // memberId값으로 db에서 정보 가져와서 addr값만 change
+        Member member = logRepository.findByMemberId(memberDTO.getMemberId())
+                .orElseThrow();
+
+        member.changePassword(bCryptPasswordEncoder.encode(memberDTO.getPassword()));
 
         logRepository.save(member);
     }

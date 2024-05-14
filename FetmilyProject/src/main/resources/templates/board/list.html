@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/basic.html}">
+      layout:decorate="~{layout/layout1.html}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--    <link rel="stylesheet" href="/css/board/board.css">-->
+    <link th:href="@{/css/board/styles.css}" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap" rel="stylesheet">
@@ -75,7 +75,6 @@
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.boardId}]]</td>
-                            <td>[[${dto.nickname}]]</td>
                             <td>
                                 <a th:href="|@{/board/read(boardId =${dto.boardId})}&${link}|" class="text-decoration-none"> [[${dto.title}]] </a>
                                 <span>[ [[${dto.replyCount}]] ]</span>
@@ -83,7 +82,8 @@
                                       <img style="width:100px" th:each="boarImage: ${dto.boardImages}" th:src="|/view/s_${boarImage.uuid}_${boarImage.fileName}|">
                                   </div>    -->
                             </td>
-                            <td>[[${#temporals.format(dto.regDate, 'yyyy-MM-dd')}]]</td>
+                            <td>[[${dto.nickname}]]</td>
+                            <td>[[${#temporals.format(dto.regDate, 'yyyy.MM.dd')}]]</td>
                         </tr>
 
                         </tbody>

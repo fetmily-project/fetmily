@@ -173,4 +173,16 @@
     .bot_banner{
         margin: 84px 0px 154px 0px;
     }
-   
+
+
+
+
+   /* header 이미지 고정하기 위해 */
+   #shopHeader{
+       text-align: center;
+       border-bottom: 3px solid transparent;
+       border-image: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%);
+       border-image-slice: 1;
+       width:100%;
+       font-weight: bold;
+   }

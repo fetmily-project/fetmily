@@ -17,17 +17,17 @@
         <!-- 섹션의 목차 -->
         <nav class="center">
             <ul>
-                <li><a href="#">펫플레이스</a></li>
-                <li><a href="#">커뮤니티</a></li>
-                <li><a href="#">쇼핑</a></li>
-                <li><a href="#">공고</a></li>
+                <li><a th:href="@{/map/kakaomap}" id="mapHeader">펫플레이스</a></li>
+                <li><a th:href="@{/board/list}" id="boardHeader">커뮤니티</a></li>
+                <li><a th:href="@{/shop/list}" id="shopHeader">쇼핑</a></li>
+                <li><a th:href="@{/homeless/homeless}" id="homelessHeader">공고</a></li>
                 <li><a href="#">고객센터</a></li>
             </ul>
         </nav>
         <nav class="right">
             <ul>
                 <li><a href="#"><img src="/assets/header/shoppingIcon.svg"></a></li>
-                <li><a href="#"><img src="/assets/header/myPageIcon.svg"></a></li>
+                <li><a th:href="@{/member/info(memberId=1)}"><img src="/assets/header/myPageIcon.svg"></a></li>
             </ul>
         </nav>
     </header>
@@ -40,7 +40,7 @@
 <div>
 
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 <th:block layout:fragment="script" >
 
 </th:block>

@@ -1,0 +1,75 @@
+.content_body{
+    margin-left: 10px;
+}
+input[type=text]{
+    width: 400px;
+}
+input[type=date]{
+    width: 400px;
+}
+textarea{
+    width: 400px;
+}
+.pet_regist_btn{
+    width: 100px;
+    height: 30px;
+    margin-top: 20px;
+}.pet_regist_form{
+     display: flex;
+     flex-direction: column;
+ }
+
+.pet_regist_form > *{
+    display: flex;
+    margin: 20px;
+}
+
+label{
+    width: 200px;
+    margin-left: 50px;
+    font-size: 25px;
+}
+
+input{
+    font-size: 25px;
+    border-radius: 4px;
+    border-color: lightgray;
+}
+
+input[type=text]{
+    width: 500px;
+}
+
+input[type=date]{
+    width: 500px;
+}
+
+span{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+    margin-right: 50px;
+}
+
+textarea{
+    width: 500px;
+}
+
+.pet_regist_btn{
+    border-radius: 4px;
+    font-size: 18px;
+    width: 80px;
+    height: 40px;
+    align-self: center;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(34.98deg, rgba(0, 163, 255, 0.7) -24.01%, rgba(255, 190, 252, 0.7) 107%);
+    color: white;
+    border: none;
+}

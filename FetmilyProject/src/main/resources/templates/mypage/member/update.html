@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/mypage/mypage.css">
+  <link rel="stylesheet" href="/css/mypage/member/update.css">
+  <title>Title</title>
+</head>
+<body layout:fragment="content">
+<div class="container">
+  <div class="header">마이페이지</div>
+  <div class="body">
+    <div class="nav">
+      <ul>
+        <div class="nav_title">내 정보</div>
+        <a href="/mypage/member/info"><li>내 정보</li></a>
+        <a href="/mypage/member/update"><li>내 정보 수정</li></a>
+        <a href="/mypage/member/delete"><li>회원 탈퇴</li></a>
+      </ul>
+      <ul>
+        <div class="nav_title">쇼핑</div>
+        <a href="/mypage/buy/list"><li>주문내역</li></a>
+        <a href="/mypage/buy/addr"><li>배송지 관리</li></a>
+        <a href="/mypage/buy/like"><li>좋아요 누른 상품</li></a>
+        <a href="/mypage/buy/service"><li>고객센터</li></a>
+      </ul>
+      <ul>
+        <div class="nav_title">커뮤니티</div>
+        <a href="/mypage/post/mypost"><li>내가 쓴 게시글</li></a>
+        <a href="/mypage/post/myreview"><li>댓글 단 게시글</li></a>
+        <a href="/mypage/post/like"><li>좋아요 누른 게시글</li></a>
+      </ul>
+      <ul>
+        <div class="nav_title">동물</div>
+        <a href="/pet/list"><li>내 반려동물</li></a>
+        <a href="/pet/support"><li>후원중인 동물</li></a>
+      </ul>
+    </div>
+    <div class="content">
+      <span class="content_title">회원 정보 수정</span>
+      <div class="content_body">
+        <div class="member_info">
+          <div><label>이메일</label><span>[[${memberDTO.email}]]</span></div>
+          <div><label>닉네임</label><span>[[${memberDTO.nickname}]]</span></div>
+          <div><label>변경된 비밀번호</label><input type="password" class="cur_password"></div>
+          <div><label>비밀번호 확인</label><input type="password" class="change_password"><button class="change_btn">수정</button></div>
+
+
+        </div>
+      </div>
+      <span class="content_title">배송지 관리</span>
+      <div class="content_body">
+        <div class="addr">
+          <div><label>주문자명</label><input type="text" placeholder="주문자명" class="name"></div>
+          <div><label>휴대폰번호</label><input type="text" placeholder="휴대폰번호" class="phone"></div>
+          <div>
+            <label>배송지 주소</label>
+            <div>
+              <input type="text" id="sample4_postcode" placeholder="우편번호">
+              <input class="addr_btn" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+              <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+              <input type="text" id="sample4_jibunAddress" placeholder="지번주소">
+              <span id="guide" style="color:#999;display:none"></span><br>
+              <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+              <input type="text" id="sample4_extraAddress" placeholder="참고항목">
+            </div>
+          </div>
+          <button class="change_addr">수정</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/member/mypage.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/js/member/addr.js"></script>
+<script>
+  document.querySelector('.change_btn').addEventListener('click', () => {
+    changePassword();
+  })
+  document.querySelector('.change_addr').addEventListener('click', () => {
+    updateAddr();
+  })
+</script>
+</body>
+
+</html>

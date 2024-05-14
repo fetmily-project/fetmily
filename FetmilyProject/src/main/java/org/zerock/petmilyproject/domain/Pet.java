@@ -2,6 +2,7 @@ package org.zerock.petmilyproject.domain;
 
 
 import lombok.*;
+import org.zerock.petmilyproject.dto.PetDTO;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -28,7 +29,7 @@ public class Pet {
     private String petType;
 
     @Column(length = 500)
-    private LocalDateTime birth;
+    private String birth;
 
     @Column(length = 500)
     private String weight;
@@ -41,4 +42,22 @@ public class Pet {
 
     @Column(length = 1000)
     private String etc;
+
+    @Column(length = 1000)
+    private String petImage;
+
+    public void changePet(PetDTO petDTO){
+        this.petId = petDTO.getPetId();
+        this.petName = petDTO.getPetName();
+        this.petType = petDTO.getPetType();
+        this.birth = petDTO.getBirth();
+        this.weight = petDTO.getWeight();
+        this.neut = petDTO.getNeut();
+        this.etc = petDTO.getEtc();
+        this.petImage = petDTO.getPetImage();
+        this.sex = petDTO.getSex();
+        this.member = Member.builder()
+                .memberId(petDTO.getMemberId())
+                .build();
+    }
 }
