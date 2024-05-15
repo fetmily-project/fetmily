@@ -11,4 +11,7 @@ public interface CartService {
     void modify(CartDTO cartDTO);
     void remove(Long cartId);
     List<CartDTO> readList(Long memberId);
+
+    List<CartDTO> readOrderList(Long memberId);
+    List<ItemDTO> readOrderItemList(Long memberId);
 }

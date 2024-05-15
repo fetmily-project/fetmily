@@ -55,6 +55,22 @@ public class CartServiceImpl implements CartService {
         return cartDTOList;
     }
 
+    @Override
+    public List<CartDTO> readOrderList(Long memberId) {
+        List<CartDTO> orderList = cartRepository.findOrderByMemberId(memberId).stream()
+                .map(order -> modelMapper.map(order, CartDTO.class)).collect(Collectors.toList());
+
+        return orderList;
+    }
+
+    @Override
+    public List<ItemDTO> readOrderItemList(Long memberId) {
+        List<ItemDTO> orderItemList = cartRepository.findOrderItemByMemberId(memberId).stream()
+                .map(orderItem -> modelMapper.map(orderItem, ItemDTO.class)).collect(Collectors.toList());
+
+        return orderItemList;
+    }
+
     public int totalPrice(Long memberId){
         List<Cart> cartList = cartRepository.findAllByMemberId(memberId);
         return 1;

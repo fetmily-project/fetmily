@@ -41,13 +41,13 @@
     </div>
     <div class="content">
       <span class="content_title">주문내역</span>
-      <div class="content_body">
+      <div class="content_body" th:each="orderItem:${orderItemList}">
         <div class="order_list">
           <div class="order_item">
-            <img src="" alt="" class="img">
+            <img th:src="@{/assets/shop/__${orderItem.itemImage}__.svg}" alt="" class="img">
             <div class="order_item_info">
-              <span class="brand">벨칸도</span>
-              <span class="item_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</span>
+              <span class="brand">[[${orderItem.brand}]]</span>
+              <span class="item_name">[[${orderItem.itemName}]]</span>
               <div class="order_info">
                 <div>
                   <div class="order_status">배송완료</div>
@@ -64,6 +64,16 @@
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/member/mypage.js"></script>
+<script th:inline="javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    let orderItemList;
+    axios.get('/mypage/buy/orderitem').then((result) => {
+      orderItemList = result.data;
+      console.log(orderItemList)
+    })
+  })
+
+</script>
 </body>
 
 </html>
