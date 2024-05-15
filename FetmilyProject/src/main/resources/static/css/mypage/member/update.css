@@ -40,8 +40,12 @@ button{
     font-size: 12px;
 }
 
-.addr > input{
+.order_info > input{
     width: 200px;
+}
+
+.order_info > div{
+    margin-bottom: 10px;
 }
 
 span{
@@ -51,4 +55,26 @@ span{
 
 textarea{
     width: 500px;
+}
+
+.addr_input{
+    display: flex;
+    flex-direction: column;
+}
+
+.addr_input > *{
+    display: flex;
+}
+
+.addr_input > * > input[type=text]{
+    width: 200px;
+    margin: 0 10px 10px 0;
+}
+
+.addr{
+    display: flex;
+}
+
+.addr>*{
+    margin-bottom: 10px;
 }
