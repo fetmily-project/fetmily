@@ -1,0 +1,148 @@
+/* styles.css */
+html, body {
+    overflow: hidden;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.fc-header-toolbar {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.memoModal, .eventModal {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+.modal_body, .eventModal_body {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    background-image: linear-gradient(to top, #EAF6FD 0%, #EDECFB 50%, #FFEFFC 100%);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34,36,38,0.15);
+    transform: translateY(-50%);
+}
+.modal_body {
+    width: 23%;
+    height: 45%;
+}
+.eventModal_body {
+    width: 40%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.memoModal.active, .eventModal.active {
+    display: flex;
+}
+.input_row {
+    display: grid;
+    grid-template-columns: repeat(6, 15%);
+    gap: 2%;
+    padding: 8px 0;
+}
+.input_row input {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    background: transparent;
+}
+.input_row button, .memo_input_button {
+    color: white;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    background-color: #3688D8;
+    cursor: pointer;
+}
+.memoDateInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.memo_input_row input {
+    padding: 8px;
+    margin: 5px 0;
+    border: 2px solid #d9d9d9;
+    border-radius: 40px;
+    background: transparent;
+    width: 90%;
+    height: 90px;
+}
+.eventModal_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: space-between;
+}
+.info_row, .memo_event_info_row {
+    display: grid;
+    gap: 2%;
+    justify-items: center;
+    align-items: center;
+}
+.info_row {
+    grid-template-columns: repeat(6, 1fr);
+}
+.memoModal .modal_header, .eventModal .modal_header {
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #d9d9d9;
+    padding-bottom: 10px;
+}
+.memoModal .close_btn, .eventModal .close_btn {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.info_row .label:first-child {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+#colorPicker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+#colorPicker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+#colorPicker::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+.custom-event-style {
+    border: none;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 두 열로 나누기 */
+}
+.memo_info_row, .memo_event_info_row, .today_memo, .today_event {
+    padding: 10px; /* 각 항목에 패딩 추가 (선택사항) */
+}

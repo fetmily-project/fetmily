@@ -3,6 +3,7 @@ package org.zerock.petmilyproject.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,5 +23,13 @@ public class Memo extends BaseEntity {
 
     private String content;
 
-    private LocalDateTime memoDate;
+    private LocalDate memoDate;
+
+    public void setContent(String content) {
+    }
+
+    public void setMemoDate(LocalDate memoDate) {
+    }
+
+
 }
