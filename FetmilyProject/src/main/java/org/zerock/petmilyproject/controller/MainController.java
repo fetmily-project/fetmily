@@ -12,4 +12,9 @@ public class MainController {
     public void mainGetController() {
 
     }
+
+    @GetMapping("/")
+    public String mainRedirectController(){
+        return "redirect:/main";
+    }
 }

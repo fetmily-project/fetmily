@@ -18,7 +18,7 @@ import static org.springframework.util.ObjectUtils.isEmpty;
 @Log4j2
 @RequiredArgsConstructor
 public class LoginCheckFilter implements Filter {
-    private static final String[] blackList = {"/map/kakaomap", "/board/register"};
+    private static final String[] blackList = {"/board/register", "/mypage/*", "/cart/*"};
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
