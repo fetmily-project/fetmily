@@ -1,9 +1,11 @@
 package org.zerock.petmilyproject.domain;
 
+import java.util.List;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import org.zerock.petmilyproject.dto.CartDTO;
 
 @Entity
 @Getter
@@ -13,6 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 public class Cart extends BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
@@ -38,12 +41,19 @@ public class Cart extends BaseEntity {
     @Column(length = 500, nullable = false)
     private Long cartPrice;
 
-    public void changeCnt(Long cnt){
-        this.cnt = cnt;
+    public void changeCnt(Long cnt) {
+        this.cnt += cnt;
     }
 
 
-    public Long getTotalPrice(){
-        return cartPrice*cnt;
+    public Long getTotalPrice() {
+        return cartPrice * cnt;
     }
+
+    public void changeStatus() {
+        this.status = 1L;
+    }
+
+
 }
+

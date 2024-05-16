@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/cart/order.css">
+</head>
+<style>
+
+</style>
+<body>
+<section class="order__main" >
+  <header>
+    <img src="/assets/header.svg" alt="">
+  </header>
+  <section class="order__form">
+    <div class="top_order">
+      <span class="cart__main__text">주문결제</span>
+      <div class="ing">
+        <span>상품선택</span>
+        <span><img src="assets/arrow.svg" alt=""></span>
+        <span>장바구니</span>
+        <span><img src="assets/arrow.svg" alt=""></span>
+        <span class="now">주문/결제</span>
+        <span><img src="assets/arrow.svg" alt=""></span>
+        <span>주문완료</span>
+      </div>
+
+    </div>
+
+
+    <section class="addr_info info" >
+      <div class="addr_title title">
+        <span class="sub_title">배송지</span>
+        <hr>
+      </div>
+      <div class="info_box addr_box">
+        <ul class="addr_info_list ">
+          <li>이름</li>
+          <li>휴대전화</li>
+          <li>주소</li>
+          <li>배송 메모</li>
+        </ul>
+        <ul class="addr_info_data info_list" th:object="${memberDTO}">
+          <li th:text="${memberDTO.name}">정용안</li>
+          <li th:text="${memberDTO.phone}">010-0000-0000</li>
+          <li th:text="${memberDTO.addr}">서울 금천구 벚꽃로 298 대륭포스트6차 1층 103호</li>
+          <li>문 앞에 보관해 주세요.</li>
+        </ul>
+      </div>
+      <button class="mod_addr">배송지 수정</button>
+    </section>
+    <div class="order_title title">
+      <span class="sub_title">구매상품</span>
+      <hr>
+    </div>
+    <section class="order_info info" th:each="itemDTO :${itemDTOList}">
+
+      <div class="info_box item_box">
+        <img th:src="@{/assets/shop/__${itemDTO.itemImage}__.svg}" alt="">
+        <div class="order_item_info">
+          <span th:text="${itemDTO.brand}">벨칸도</span>
+          <div class="info_row">
+            <span th:text="${itemDTO.itemName}">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</span>
+            <span th:text="${itemDTO.cnt}" class="info_count">1개</span>
+            <span th:text="${#numbers.formatInteger(itemDTO.price*0.8, 0, 'COMMA')} +'원'">3,900원</span>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </section>
+
+
+
+    <section class="pay_info info">
+      <div class="pay_title title">
+        <span class="sub_title">결제정보</span>
+
+        <hr>
+      </div>
+      <div class="info_box">
+        <ul class="pay_info_list info_list">
+          <li>총 상품금액</li>
+          <li>총 할인금액</li>
+          <li>총 배송비</li>
+          <li>총 결제금액</li>
+          <li>결제방법</li>
+        </ul>
+        <ul class="pay_info_data info_list">
+          <li class="total-price"></li>
+          <li class="sale-price"></li>
+          <li>0원</li>
+          <li class="final-total-price"></li>
+          <div class="pay_type">
+            <input type="radio"><span>신용카드</span>
+            <input type="radio"><span>계좌이체</span>
+          </div>
+        </ul>
+      </div>
+      <hr>
+      <div class="final_check">
+
+        <span>위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공 및 결제에 동의합니다.</span>
+        <button class="btn_item_buy">결제하기</button>
+      </div>
+
+
+    </section>
+  </section>
+
+</section>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 총 금액 계산 함수
+    function calculateTotalPrice() {
+      const prices = document.querySelectorAll('.item_price');
+      let totalPrice = 0;
+
+      prices.forEach(price => {
+        const priceText = price.textContent;
+        const priceValue = parseInt(priceText.replace(/[^0-9]/g, ''), 10);
+        totalPrice += priceValue;
+      });
+
+      document.getElementById('total-price').textContent = totalPrice.toLocaleString() + '원';
+      document.getElementById('sale-price').textContent = (totalPrice*0.2).toLocaleString() + '원';
+      document.getElementById('final-total-price').textContent = (totalPrice*0.8).toLocaleString() + '원';
+    }
+
+    // 총 금액 계산 호출
+    calculateTotalPrice();
+  });
+</script>
+<footer>
+  <section class="footer_content">
+    <ul class="footer_text">
+      <li class="logo_text">FETMILY</li>
+      <li class="footer_tap"><span>&nbsp; |&nbsp; 개인정보처리방침 &nbsp;| &nbsp;이용약관</span></li>
+
+    </ul>
+    <div class="footer_tap">
+      <span>(주)펫밀리 | 대표자: 정용안 | 사업자번호: 000-11-001100 사업자 정보 확인</span>
+      <span>통신판매업: 2023-서울강남B-1111 | 개인정보보호책임자: 정용안 | 이메일: info@fetmily.com</span>
+      <span>전화번호: 070-0000-1111 | 주소: 서울 강남구 강남대로94길 20, 삼오빌딩 5층</span>
+      <span>©FETMILY. ALL RIGHTS RESERVED</span>
+    </div>
+
+  </section>
+
+
+</footer>
+</body>
+</html>
+

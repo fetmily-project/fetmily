@@ -73,10 +73,20 @@
         margin-bottom: 20px;
         text-indent: 10px;
     }
-    .search_box>.search_glass{
+    .btn_search{
+        background-color: #fff;
         margin: 5px;
         float: right;
     }
+
+   .search_glass {
+     position: absolute;
+     right: 20px;
+   }
+   .search_box{
+     position: relative;
+     margin-top: 20px;
+   }
 
     .new_item {
         width: 1202px;
@@ -173,7 +183,86 @@
     .bot_banner{
         margin: 84px 0px 154px 0px;
     }
+   .food_category{
+     display: inline-block;
+     /* width: 1000px; */
+   }
+   button {
+     border: none;
+     background-color: #fff;
+   }
+   .btn_all_view {
+     background: #fff;
+     float: right;
 
+   }
+   .toy_visible{
+     display: none;
+   }
+   .new_visible{
+     display: none;
+   }
+   .meal_visible{
+     display: none;
+   }
+   .snack_visible{
+     display: none;
+   }
+   footer {
+     height: 260px;
+     background: rgba(26, 12, 54, 0.9);
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+   }
+
+   .logo_text {
+     background: linear-gradient(90deg, #8162DA 0%, #F9BEFD 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+     text-fill-color: transparent;
+     font-family: 'Noto Sans KR';
+     font-style: normal;
+     font-weight: 600;
+     font-size: 20px;
+     line-height: 39px;
+
+
+   }
+
+   .footer_text>* {
+
+
+     display: inline-block;
+   }
+
+
+   .footer_tap>* {
+     display: inline-block;
+     font-family: 'Noto Sans KR';
+     font-style: normal;
+     font-weight: 100;
+     font-size: 14px;
+     line-height: 23px;
+     display: flex;
+     align-items: center;
+     background: linear-gradient(88.36deg, #8162DA -82.24%, #F9BEFD 100.35%), #E7C9E0;
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+     text-fill-color: transparent;
+
+
+   }
+   .footer_content{
+     width: 800px;
+     /* padding: 40px; */
+   }
+   .footer_text{
+     margin-bottom: 10px;
+   }
 
 
 

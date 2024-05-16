@@ -15,6 +15,9 @@ public interface LogRepository extends JpaRepository<Member, Long> {
 
     Boolean existsByNickname(String nickname);
 
-    @Query("select m from Member m where m.email=:email and m.password=:password")
-    Optional<Member> login(String email, String password);
+//    @Query("select m from Member m where m.email=:email and m.password=:password")
+//    Optional<Member> login(String email, String password);
+//
+//    @Query("select Member from Member m, Cart c where m.memberId = :memberId")
+//    Optional<Member> findByMemberCart(Long memberId);
 }

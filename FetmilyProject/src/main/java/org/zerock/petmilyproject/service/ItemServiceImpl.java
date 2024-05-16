@@ -1,5 +1,6 @@
 package org.zerock.petmilyproject.service;
 
+import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -62,26 +63,34 @@ public class ItemServiceImpl implements ItemService {
 //                .total((int)result.getTotalElements())
 //                .build();
 //    }
-
+//@Override
+//public List<ItemDTO> searchItem(Optional<String> keyword) { // 이름으로 상품 검색
+//    Pageable pageable = PageRequest.of(pageRequestDTO.getPage() <=0? 0: pageRequestDTO.getPage() -1,
+//        pageRequestDTO.getSize(),
+//        Sort.by("itemId").ascending());
+//
+//    Page<Item> result = itemRepository.listOfSearchItem(keyword, pageable);
+//
+//    List<ItemDTO> dtoList = result.getContent().stream().map(item -> modelMapper.map(item, ItemDTO.class))
+//        .collect(Collectors.toList());
+//
+//    return PageResponseDTO.<ItemDTO>withAll()
+//        .pageRequestDTO(pageRequestDTO)
+//        .dtoList(dtoList)
+//        .total((int)result.getTotalElements())
+//        .build();
+//}
     @Override
-    public PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO) { // 이름으로 상품 검색
-        Pageable pageable = PageRequest.of(pageRequestDTO.getPage() <=0? 0: pageRequestDTO.getPage() -1,
-            pageRequestDTO.getSize(),
-            Sort.by("itemId").ascending());
+    public List<ItemDTO> searchItem(Optional<String> keyword) { // 이름으로 상품 검색
 
-        Page<Item> result = itemRepository.listOfSearchItem(keyword, pageable);
+        List<Item> result = itemRepository.listOfSearchItem(keyword);
 
-        List<ItemDTO> dtoList = result.getContent().stream().map(item -> modelMapper.map(item, ItemDTO.class))
+        List<ItemDTO> dtoList = result.stream().map(item -> modelMapper.map(item, ItemDTO.class))
             .collect(Collectors.toList());
 
-        return PageResponseDTO.<ItemDTO>withAll()
-            .pageRequestDTO(pageRequestDTO)
-            .dtoList(dtoList)
-            .total((int)result.getTotalElements())
-            .build();
+        return dtoList;
     }
 
-    @Override
     public List<ItemDTO> ListOfItemAll() { // 전체 상품 리스트
 
         List<Item> itemList = itemRepository.listOfItem();
@@ -102,11 +111,46 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDTO> ListOfItemByBrand() {
-        List<Item> itemList = itemRepository.ListOfItemByBrand();
+    public List<ItemDTO> ListOfItemByBrand(String brand) {
+        if(brand.equals("All")){
+            List<Item> itemList = itemRepository.ListOfItemByBrandAll();
+            List<ItemDTO> itemDTOList = itemList.stream()
+                .map(vo -> modelMapper.map(vo,ItemDTO.class))
+                .collect(Collectors.toList());
+
+            return itemDTOList;
+        }
+
+        List<Item> itemList = itemRepository.ListOfItemByBrand(brand);
         List<ItemDTO> itemDTOList = itemList.stream()
             .map(vo -> modelMapper.map(vo,ItemDTO.class))
             .collect(Collectors.toList());
+
+
+        return itemDTOList;
+    }
+
+//    @Override
+//    public List<ItemDTO> ListOfItemByMemberId(Long memberId) {
+//        List<Item> itemList = itemRepository.ListOfItemByCart(memberId);
+//        List<ItemDTO> itemDTOList = itemList.stream()
+//            .map(vo -> modelMapper.map(vo,ItemDTO.class))
+//            .collect(Collectors.toList());
+//
+//        return itemDTOList;
+//    }
+
+
+    @Override
+    public List<ItemDTO> ListOfItemByCartId(List<Long> orderList) {
+        List<ItemDTO> itemDTOList = new ArrayList<>();
+
+        for(Long num : orderList){
+            Item itemList = itemRepository.ListOfItemByCartAll(num);
+            ItemDTO itemDTO = modelMapper.map(itemList, ItemDTO.class);
+            itemDTOList.add(itemDTO);
+        }
+
         return itemDTOList;
     }
 
@@ -114,7 +158,6 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> findItems() {
         return itemRepository.listOfItem();
     }
-
     //    @Override
 //    public List<ItemDTO> getCategoryListOfItem(Optional<String> category, Optional<String> kind) { // 상품 리스트
 //

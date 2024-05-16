@@ -7,7 +7,7 @@ import org.zerock.petmilyproject.dto.OrdersDTO;
 public interface OrdersService {
 
 
-//    public Long order(Long memberId, long itemId, int count);
+    Long order(OrdersDTO ordersDTO);
 
 //    public List<Orders> findOrders(Long memberId);
 //    public OrdersDTO getOrder(Long orderId);
