@@ -1,5 +1,6 @@
 package org.zerock.petmilyproject.controller;
 
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.zerock.petmilyproject.domain.Cart;
 import org.zerock.petmilyproject.dto.CartDTO;
 import org.zerock.petmilyproject.dto.ItemDTO;
 import org.zerock.petmilyproject.dto.MemberDTO;
@@ -94,6 +96,13 @@ public class CartController {
         MemberDTO memberDTO = logService.readOne(((Long) session.getAttribute("memberId")));
         System.out.println("memberDTO========"+memberDTO);
         List<ItemDTO> itemDTOList = itemService.ListOfItemByCartId(orderList);
+
+        List<CartDTO> cartDTOList = new ArrayList<>();
+        for(Long cartId : orderList) {
+            CartDTO cartDTO = cartService.readOne(cartId);
+            cartDTOList.add(cartDTO);
+        }
+        model.addAttribute("cartDTOList", cartDTOList);
         model.addAttribute("itemDTOList", itemDTOList);
         model.addAttribute("memberDTO", memberDTO);
     }

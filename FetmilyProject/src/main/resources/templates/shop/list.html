@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout1.html}">
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-<body layout:fragment="content">
+<body>
 
 
   <html lang="en">
@@ -13,15 +10,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/shop/shop.css">
+    <link rel="stylesheet" href="/css/shop/banner.css">
+    <link rel="stylesheet" href="/css/shop/header.css">
     <title>Item List</title>
   </head>
   <body>
   <div class="pg___main">
     <section class="event_banner"><div class="event_banner"><span class="event_text">05/01 ~ 05/31 신규 가입 쿠폰 혜택 이벤트 🎁</span></div></section>
-    <section class="header"><img src="/assets/shop/header.svg" alt=""></section>
-    <section class="top">
-      <div class="banner"></div>
-    </section>
+    <!-- ------ header ----- -->
+    <div class="header_container">
+      <div class="header_logo_text">
+        <span>FETMILY</span></div>
+      <div class="header_tab">
+        <ul>
+          <li><span>펫플레이스</span></li>
+          <li><span>커뮤니티</span></li>
+          <li><span>쇼핑</span></li>
+          <li><span>공고</span></li>
+          <li><span>고객센터</span></li>
+        </ul>
+      </div>
+      <div class="icon_box">
+        <div class="img"><img src="/assets/shop/bell.svg" alt=""></div>
+        <div class="img"><img src="/assets/shop/member.svg" alt=""></div>
+        <div class="img"><img src="/assets/shop/cart2.svg" alt=""></div>
+      </div>
+    </div>
+    <!-- ------ header ----- -->
+    <div class="banner_container">
+      <div class="banner_text">
+        <ul>
+          <li class="small_logo">FETMILY</li>
+          <li class="big_text">반려동물의 행복</li>
+          <li class="big_text">집사의 행복</li>
+          <li class="row_text">반려동물의 행복지수를 높여주세요!</li>
+        </ul>
+      </div>
+      <div class="cat"><img src="/assets/shop/banner_cat.svg" alt=""></div>
+    </div>
+
+<!--    <section class="top">-->
+
+
+<!--    </section>-->
 
     <section class="category___icon">
       <ul class="icon_list">

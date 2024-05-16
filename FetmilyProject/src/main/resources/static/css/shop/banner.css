@@ -1,0 +1,68 @@
+* {
+  font-family: "noto sans kr";
+}
+
+ul,
+li {
+  list-style: none;
+}
+.banner_container {
+  height: 260px;
+  width: 100%;
+  background: linear-gradient(176.1deg, rgba(0, 0, 0, 0) 3.18%, rgba(0, 0, 0, 0.2) 101.13%), linear-gradient(90deg, rgba(63, 50, 99, 0.2) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(63, 50, 99, 0.2) 100%), url(/assets/shop/Rectangle\ 26@3x.svg), #8162DA;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+.banner_text {
+  margin-right: 170px;
+}
+
+.banner {
+  width: 950px;
+
+}
+
+.cat {
+  position: relative;
+  float: right;
+  bottom: -20px;
+}
+
+.banner_text > ul > li {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.small_logo {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+
+
+  text-shadow: 2px 2px 4px rgba(103, 103, 103, 0.25);
+}
+
+.big_text {
+  font-family: 'Apple SD Gothic Neo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 54px;
+  line-height: 65px;
+  text-shadow: 1px 1px 1px rgba(103, 101, 101, 0.25);
+}
+
+.row_text {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 27px;
+
+
+  text-shadow: 2px 2px 4px rgba(103, 103, 103, 0.25);
+}
