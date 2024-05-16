@@ -146,3 +146,13 @@ html, body {
 .memo_info_row, .memo_event_info_row, .today_memo, .today_event {
     padding: 10px; /* 각 항목에 패딩 추가 (선택사항) */
 }
+
+/* header 이미지 고정하기 위해 */
+#calendarHeader{
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%);
+    border-image-slice: 1;
+    width:100%;
+    font-weight: bold;
+}

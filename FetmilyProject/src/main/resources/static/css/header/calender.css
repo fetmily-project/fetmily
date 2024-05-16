@@ -4,12 +4,3 @@
     right: 5%;
     z-index: 999;
 }
-/* header 이미지 고정하기 위해 */
-#calendarHeader{
-    text-align: center;
-    border-bottom: 3px solid transparent;
-    border-image: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%);
-    border-image-slice: 1;
-    width:100%;
-    font-weight: bold;
-}
