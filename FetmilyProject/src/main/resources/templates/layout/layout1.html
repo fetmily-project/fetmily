@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/header/header.css">
+    <link rel="stylesheet" href="/css/header/calender.css">
 </head>
 <body>
 
@@ -21,7 +22,7 @@
                 <li><a th:href="@{/board/list}" id="boardHeader">커뮤니티</a></li>
                 <li><a th:href="@{/shop/list}" id="shopHeader">쇼핑</a></li>
                 <li><a th:href="@{/homeless/homeless}" id="homelessHeader">공고</a></li>
-                <li><a href="#">고객센터</a></li>
+                <li><a th:href="@{/schedules}" id="calendarHeader">캘린더</a></li>
             </ul>
         </nav>
         <nav class="right">
@@ -34,6 +35,8 @@
 </div>
 
 <div layout:fragment="content">
+
+
 
 </div>
 

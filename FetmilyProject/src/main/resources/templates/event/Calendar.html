@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout1.html}">
 <head>
   <meta charset='utf-8' />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -11,7 +12,8 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="/css/calendar/calendar.css">
 </head>
-<body style="padding:30px;">
+<body>
+<div layout:fragment="content" style="padding:30px;">
 <div class="eventModal">
   <div class="eventModal_body">
     <div class="modal_header">
@@ -74,5 +76,6 @@
   <div id='calendar'></div>
 </div>
 <script src="/js/calendar/calendar.js"></script>
+</div>
 </body>
 </html>
