@@ -87,6 +87,7 @@ class MemoServiceImpl implements MemoService {
 
     }
 
+
     @Override
     public List<MemoDTO> getAllMemo() {
         List<Memo> memos = memoRepository.findAll();

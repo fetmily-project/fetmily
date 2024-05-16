@@ -20,6 +20,7 @@ html, body {
     background-color: rgba(0,0,0,0.4);
     z-index: 999;
 }
+
 .modal_body, .eventModal_body {
     position: absolute;
     top: 50%;
