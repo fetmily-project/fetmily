@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevButton = document.querySelector('.prev-button'); // 이전 페이지 버튼
     const nextButton = document.querySelector('.next-button'); // 이후 페이지 버튼
     prevButton.innerHTML = "< 이전";
-    nextButton.innerHTML = "이후 >";
+    nextButton.innerHTML = "다음 >";
     let pageNumberButtons; // 페이지 버튼들
 // 초기 페이지 번호
     /**
