@@ -279,9 +279,9 @@
 
             printReplies(1, 10, true); // 댓글 목록 갱신
         }).catch(e => {
-            alert("로그인 후에 이용가능합니다.");
-            registerModal.hide();
-            printReplies(1, 10, true); // 댓글 목록 갱신
+            if (confirm("로그인 후에 이용가능합니다. 로그인 페이지로 이동하곘습니까?")) {
+                window.location.href = "/member/login";
+            }
         });
     }, false);
 
