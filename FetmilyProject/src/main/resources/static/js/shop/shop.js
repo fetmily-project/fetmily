@@ -264,7 +264,9 @@ function renderList(itemMap, keyword) {
     itemList.forEach(function(item) {
       // if(itemList.getAttribute('alt')=="category")
       var divItem = document.createElement("div");
+      var divItemHover = document.createElement("div");
       divItem.classList.add("item");
+      divItemHover.classList.add("div_item_hover")
       divItem.addEventListener("click", function() {
         window.location.href = "/shop/item/" + item.itemId;
       })
@@ -278,6 +280,18 @@ function renderList(itemMap, keyword) {
       img.src = "/assets/shop/"+item.itemImage+".svg";
       img.alt = "itemImage";
 
+      var icon1 = document.createElement("img");
+      icon1.src = "/assets/shop/heartIcon.svg";
+      icon1.alt = "Icon1";
+      icon1.classList.add("icon1");
+
+      var icon2 = document.createElement("img");
+      icon2.src = "/assets/shop/cartIcon.svg";
+      icon2.alt = "Icon2";
+      icon2.classList.add("icon2");
+
+      divItemHover.appendChild(icon1);
+      divItemHover.appendChild(icon2);
       divItem.appendChild(img); // item div에 img 추가
       itemListCategory.appendChild(divItem); //  itemList에 item 추가
       index++;
@@ -312,6 +326,7 @@ function renderList(itemMap, keyword) {
       itemListUl.appendChild(listItemPrice);
       listItemSalePrice.prepend(saleText);
       itemListUl.appendChild(listItemSalePrice);
+      divItem.appendChild(divItemHover);
       divItem.appendChild(itemListUl);
     });
   });
