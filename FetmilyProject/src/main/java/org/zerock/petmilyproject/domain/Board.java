@@ -65,4 +65,7 @@ public class Board extends BaseEntity{
         this.imageSet.clear();
     }
 
+    public void updateViews() {
+        this.viewCnt += 1;
+    }
 }

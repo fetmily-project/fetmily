@@ -208,6 +208,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
 
             BoardListAllDTO dto = BoardListAllDTO.builder()
                     .boardId(board1.getBoardId())
+                    .viewCnt(board1.getViewCnt())
                     .memberId(member1.getMemberId())
                     .nickname(member1.getNickname())
                     .title(board1.getTitle())

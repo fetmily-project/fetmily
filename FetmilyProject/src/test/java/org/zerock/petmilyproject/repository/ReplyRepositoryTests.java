@@ -22,16 +22,16 @@
 //    @Test
 //    public void testInsert() {
 //
-//        Long boardId = 36L;
+//        Long boardId = 106L;
 //
 //
 //        Board board = Board.builder().boardId(boardId).build();
 //
 //        Reply reply = Reply.builder()
 //                .board(board)
-//                .content("댓글 test2.... ")
+//                .content("하하 파묘 귀엽네요 ")
 //                .member(Member.builder()
-//                        .memberId(4L)
+//                        .memberId(2L)
 //                        .build())
 //                .build();
 //

@@ -39,9 +39,17 @@ public class BoardServiceImpl implements BoardService {
     public BoardDTO readOne(Long boardId) {
 
         Optional<Board> result = boardRepository.findByIdWithImages(boardId);
+
+
+
         log.info("result에 image가 들어가나?");
         log.info(result);
         Board board = result.orElseThrow();
+
+        board.updateViews();
+
+        boardRepository.save(board);
+
         log.info("board에 image가 들어가나?");
         log.info(board);
         BoardDTO boardDTO = entityToDTO(board);

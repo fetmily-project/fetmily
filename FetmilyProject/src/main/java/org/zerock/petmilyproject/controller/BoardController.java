@@ -69,6 +69,8 @@ public class BoardController {
 
         boardDTO.setMemberId(loginMemberId);
 
+        boardDTO.setViewCnt(0L);
+
         log.info("board POST register......");
 
         if(bindingResult.hasErrors()){
