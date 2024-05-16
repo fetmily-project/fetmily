@@ -1,6 +1,6 @@
    * {
-        margin: 0;
-        padding: 0;
+        /*margin: 0;*/
+        /*padding: 0;*/
         box-sizing: border-box;
         font-family: "pretendard", sans-serif;
 
@@ -154,11 +154,11 @@
     }
 
 
-    .item > .div_item_hover{
+.div_item_hover{
         width: 248.48px;
         height: 139px;
         position: absolute;
-        bottom: 120px;
+        bottom: 142px;
         left: 0;
         background: linear-gradient(183.5deg, rgba(255, 255, 255, 0.1) 2.88%, rgba(53, 12, 141, 0.35) 97.12%);
         opacity: 0;
