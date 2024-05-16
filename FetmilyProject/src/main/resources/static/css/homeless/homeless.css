@@ -82,6 +82,12 @@ li {
 .pagination-container {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
+    padding: 30px;
+}
+.number-button{
+    padding: 5px;
+    margin: auto 5px;
 }
 
 .prev-button:hover,
