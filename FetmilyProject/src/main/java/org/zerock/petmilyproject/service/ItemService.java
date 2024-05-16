@@ -20,8 +20,11 @@ public interface ItemService {
     List<ItemDTO> ListOfItemAll();
     List<ItemDTO> ListOfItemByKind(String kind);
 
-    List<ItemDTO> ListOfItemByBrand();
-    PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO);
+    List<ItemDTO> ListOfItemByBrand(String brand);
+
+//    List<ItemDTO> ListOfItemByMemberId(Long memberId);
+    List<ItemDTO> ListOfItemByCartId(List<Long> orderList);
+    List<ItemDTO> searchItem(Optional<String> keyword);
 //    PageResponseDTO<ItemDTO> searchItem(Optional<String> keyword, PageRequestDTO pageRequestDTO);
 //
 //    List<ItemDTO> getCategoryListOfItem(String category, String kind);

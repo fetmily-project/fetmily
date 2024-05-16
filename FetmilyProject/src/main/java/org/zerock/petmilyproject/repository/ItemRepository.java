@@ -27,15 +27,22 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     // 새로운 상품 출력
 //    @Query("select i from Item i where i.reg_date >= CURRENT_DATE - INTERVAL 14 DAY and i.kind = :kind")
 //    List<Item> brandListOfItem(String kind);
-
     @Query("select i from Item i where i.itemName like concat('%', :keyword, '%')")
-    Page<Item> listOfSearchItem(Optional<String> keyword, Pageable pageable);
+    List<Item> listOfSearchItem(Optional<String> keyword);
 
     @Query("select i from Item i where i.kind = :kind")
     List<Item> ListOfItemByKind(String kind);
-    @Query("select i from Item i where i.category = 'food'")
-    List<Item> ListOfItemByBrand();
+    @Query("select i from Item i where i.category = 'meal' and i.brand = :brand")
+    List<Item> ListOfItemByBrand(String brand);
 
+    @Query("select i from Item i where i.category = 'meal'")
+    List<Item> ListOfItemByBrandAll();
+
+    @Query("select i from Item i, Cart c where c.item.itemId = i.itemId and c.cartId = :cartId")
+    Item ListOfItemByCartAll(Long cartId);
+
+//    @Query("select Item from Cart c, Member m where m.memberId = :memberId")
+//    List<Item> ListOfItemByCart(Long memberId);
 //
 //    @Query("select i from Item i where i.itemName like concat('%', :keyword, '%')")
 //    List<Item> listOfSearchItem(Optional<String> keyword, Pageable pageable);

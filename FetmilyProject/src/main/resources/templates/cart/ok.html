@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/shop/cart.css">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    * {
+      font-family: 'Noto Sans KR';
+      font-style: normal;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 150px;
+    }
+
+    .swiper-slide {
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .swiper-slide>img {
+      width: 95px;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .null_cart {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .null_cart>span {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 29px;
+      display: flex;
+      align-items: center;
+      color: #7D788A;
+      margin-top: 20px;
+    }
+
+    .null_cart>img {
+      width: 500px;
+      height: 300px;
+    }
+
+    .best {
+      font-weight: 300;
+      font-size: 14px;
+    }
+
+    .item_info_list>* {
+      font-size: 8px;
+      width: 100px;
+    }
+
+    .top_order {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ing {
+      font-family: 'Pretendard Variable';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      color: #C0C0C0;
+    }
+
+    .now {
+      color: #5C41A9;
+    }
+  </style>
+</head>
+
+<body>
+<section class="cart__main">
+  <header>
+    <img src="/assets/shop/header.svg" alt="">
+  </header>
+  <section class="cart__form">
+    <div class="top_order">
+      <span class="cart__main__text">주문완료</span>
+      <div class="ing">
+        <span>상품선택</span>
+        <span><img src="/assets/shop/arrow.svg" alt=""></span>
+        <span>장바구니</span>
+        <span><img src="/assets/shop/arrow.svg" alt=""></span>
+        <span>주문/결제</span>
+        <span><img src="/assets/shop/arrow.svg" alt=""></span>
+        <span class="now">주문완료</span>
+      </div>
+    </div>
+    <hr>
+    <div class="null_cart">
+      <img src="/assets/shop/null_cart.svg" alt="">
+      <span>주문이 완료 되었습니다!</span>
+    </div>
+    <hr>
+    <span class="best">추천상품</span>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <!-- 스와이퍼 슬라이드 요소들 -->
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <!-- 더 많은 스와이퍼 슬라이드 요소들 -->
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/shop/new_item1.svg" alt="itemImage">
+          <ul class="item_info_list">
+            <li class="item_info_brand">벨칸도</li>
+            <li class="item_info_name">벨칸도 마스터크래프트 토핑 100g 오리, 연어, 칠면조</li>
+            <li class="item_info_price">4,900원</li>
+            <li class="item_info_sale_price"><span class="sale_text">20% </span>3,920원</li>
+          </ul>
+        </div>
+
+        <!-- 필요에 따라 더 많은 슬라이드를 추가하세요 -->
+      </div>
+    </div>
+  </section>
+</section>
+<footer>
+  <section class="footer_content">
+    <ul class="footer_text">
+      <li class="logo_text">FETMILY</li>
+      <li class="footer_tap"><span>&nbsp; |&nbsp; 개인정보처리방침 &nbsp;| &nbsp;이용약관</span></li>
+    </ul>
+    <div class="footer_tap">
+      <span>(주)펫밀리 | 대표자: 정용안 | 사업자번호: 000-11-001100 사업자 정보 확인</span>
+      <span>통신판매업: 2023-서울강남B-1111 | 개인정보보호책임자: 정용안 | 이메일: info@fetmily.com</span>
+      <span>전화번호: 070-0000-1111 | 주소: 서울 강남구 강남대로94길 20, 삼오빌딩 5층</span>
+      <span>©FETMILY. ALL RIGHTS RESERVED</span>
+    </div>
+  </section>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 6,
+    slidesPerGroup: 6,
+    spaceBetween: 30,
+    freeMode: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    loop: true,
+  });
+</script>
+</body>
+
+</html>

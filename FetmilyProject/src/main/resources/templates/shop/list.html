@@ -3,12 +3,6 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout1.html}">
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/shop/shop.css">
-  <title>Item List</title>
-</head>
 
 
 <body layout:fragment="content">
@@ -39,13 +33,16 @@
 
     <div class="search_box">
       <input type="text" class="input_search" placeholder="검색어를 입력하세요.">
-      <img src="/assets/shop/search__glass.svg" class="search_glass">
+      <button class="btn_search" onclick="sendGetRequest()">
+        <img src="/assets/shop/search__glass.svg" class="search_glass">
+      </button>
     </div>
 
     <!-- 이번 주 신상품 -->
     <section class="new_item category">
       <span class="text12">NEW</span><br>
       <span class="text20bold">이번 주 신상품</span>
+      <button class="btn_all_view btn_new_all">전체보기</button>
       <!-- 동적으로 추가할 신상품 리스트 -->
       <div class="item_list item_list_new_item" alt="new">
 
@@ -59,24 +56,12 @@
 
 
     <!-- 브랜드별 사료 -->
-    <section class="new_item category_item">
-      <span class="text12">BRAND</span><br>
-      <span class="text20bold">브랜드별 사료</span>
-      <!-- 동적으로 추가할 브랜드별 리스트 -->
-      <div class="item_list category_item_list">
-
-      </div>
-      <!-- end -->
-
-      <section class="bot_banner">
-        <img src="/assets/shop/mid_banner.svg" alt="">
-      </section>
 
 
       <!-- 장난감 리스트 -->
       <section class="new_item toy_item">
         <span class="text12">TOY</span><br>
-        <span class="text20bold">장난감🧸</span>
+        <span class="text20bold">장난감🧸</span> <button class="btn_all_view btn_toy_all">전체보기</button>
         <!-- 동적으로 추가할 장난감 리스트 -->
         <div class="item_list item_list_category_toy">
 
@@ -84,10 +69,12 @@
       </section>
       <!-- 사료 리스트 -->
       <section class="new_item toy_item">
-        <span class="text12">MEAL</span>
+        <span class="text12">MEAL</span><br>
         <ul class="food_category">
           <li><span class="text20bold">브랜드별 사료</span></li>
+
         </ul>
+        <button class="btn_all_view btn_meal_all">전체보기</button>
         <!-- 동적으로 추가할 장난감 리스트 -->
         <div class="item_list item_list_category_meal">
         </div>
@@ -97,13 +84,40 @@
       <section class="new_item toy_item">
         <span class="text12">SNACK</span><br>
         <span class="text20bold">간식🦴</span>
+        <button class="btn_all_view btn_snack_all" >전체보기</button>
         <!-- 동적으로 추가할 장난감 리스트 -->
         <div class="item_list item_list_category_snack">
 
         </div>
       </section>
     </section>
+
   </div>
+  <footer>
+    <section class="footer_content">
+      <ul class="footer_text">
+        <li class="logo_text">FETMILY</li>
+        <li class="footer_tap"><span>&nbsp; |&nbsp; 개인정보처리방침 &nbsp;| &nbsp;이용약관</span></li>
+
+      </ul>
+      <div class="footer_tap">
+        <span>(주)펫밀리 | 대표자: 정용안 | 사업자번호: 000-11-001100 사업자 정보 확인</span>
+        <span>통신판매업: 2023-서울강남B-1111 | 개인정보보호책임자: 정용안 | 이메일: info@fetmily.com</span>
+        <span>전화번호: 070-0000-1111 | 주소: 서울 강남구 강남대로94길 20, 삼오빌딩 5층</span>
+        <span>©FETMILY. ALL RIGHTS RESERVED</span>
+      </div>
+
+    </section>
+
+
+  </footer>
+  <script>
+    function sendGetRequest() {
+      const query = document.querySelector('.input_search').value;
+      const url = `/shop/list/search?keyword=${encodeURIComponent(query)}`;
+      window.location.href = url;
+    }
+  </script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/js/shop/shop.js"></script>
   </body>
