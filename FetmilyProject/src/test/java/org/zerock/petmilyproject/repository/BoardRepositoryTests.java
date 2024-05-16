@@ -37,13 +37,14 @@
 //
 //    @Test
 //    public void testInsert() {
-//        IntStream.rangeClosed(1, 100).forEach(i -> {
+//        IntStream.rangeClosed(1, 10).forEach(i -> {
 //            Board board = Board.builder()
-//                    .title("pagenation 테스트" + i)
+//                    .title("진돗개 귀여워요" + i)
 //                    .content("구름이는 귀엽습니다." + i)
 //                    .member(Member.builder()
 //                            .memberId(3L)
 //                            .build())
+//                    .viewCnt(0L)
 //                    .build();
 //
 //            Board result = boardRepository.save(board);

@@ -29,4 +29,6 @@ public class BoardListAllDTO {
     private Long replyCount;
 
     private List<BoardImageDTO> boardImages;
+
+    private Long viewCnt;
 }

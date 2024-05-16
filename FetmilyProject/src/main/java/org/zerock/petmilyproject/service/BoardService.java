@@ -31,6 +31,7 @@ public interface BoardService {
                 .member(Member.builder()
                         .memberId(boardDTO.getMemberId())
                         .build())
+                .viewCnt(boardDTO.getViewCnt())
                 .build();
 
         if(boardDTO.getFileNames() != null){
@@ -56,6 +57,7 @@ public interface BoardService {
                 .nickname(board.getMember().getNickname())
                 .regDate(board.getRegDate())
                 .modDate(board.getModDate())
+                .viewCnt(board.getViewCnt())
                 .build();
 
         List<String> fileNames = board.getImageSet().stream().sorted().map(

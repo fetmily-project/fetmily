@@ -4825,6 +4825,7 @@ textarea.form-control-lg {
   justify-content: center;
   padding-left: 0;
   list-style: none;
+  cursor: pointer;
 }
 
 .page-link {
@@ -11583,6 +11584,18 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 
   .footer_text {
     margin-bottom: 10px;
+  }
+
+
+  /* header 구현*/
+  /* header 이미지 고정하기 위해 */
+  #boardHeader{
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%);
+    border-image-slice: 1;
+    width:100%;
+    font-weight: bold;
   }
 
 }

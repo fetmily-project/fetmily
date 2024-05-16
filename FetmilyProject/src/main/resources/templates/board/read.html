@@ -60,7 +60,12 @@
 <!--                    </div>-->
                     <div class="input-register mb-3">
                         <span class="input-group-text">작성일</span>
-                        <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy.MM.dd HH:mm:ss')}" readonly>
+                        <input type="text" class="form-control" th:value="${#temporals.format(dto.regDate, 'yyyy.MM.dd HH:mm:ss')}" readonly>
+                    </div>
+
+                    <div class="input-register mb-3">
+                        <span class="input-group-text">조회수</span>
+                        <input type="text" class="form-control" th:value="${dto.viewCnt}" readonly>
                     </div>
 
                     <div class="input-register mb-3">
@@ -93,9 +98,9 @@
                              th:src="|/view/${fileName}|">
                     </div>
 
-                </div><!--end card-->
-            </div><!-- end col-->
-        </div><!-- end row-->
+                </div>
+            </div>
+        </div>
 
         <div class="row mt-3">
             <div class="col-md-12">
