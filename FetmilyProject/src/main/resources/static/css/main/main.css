@@ -183,3 +183,97 @@
 .menu-text{
     margin-top: 100px;
 }
+
+/* footer 구현 */
+* {
+    box-sizing: border-box;
+    font-family: "pretendard", sans-serif;
+    line-height: 1;
+;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    vertical-align: top;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    border: none;
+}
+
+footer {
+    height: 260px;
+    background: linear-gradient(76.83deg, rgba(18, 166, 255, 0.1) 37.62%, rgba(255, 2, 108, 0.1) 164.89%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_text {
+    background: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%), #1A1A1A;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 39px;
+
+
+}
+
+.footer_text>* {
+
+
+    display: inline-block;
+}
+
+/* .footer_text li+li::before {
+
+
+    display: inline-block;
+    content: "|";
+    color: #bdbdbd;
+    margin: 0 8px;
+    font-size: 20px;
+    font-weight: 100;
+} */
+.footer_tap>* {
+    display: inline-block;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, #07A4FF 0%, #F9BEFD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+
+}
+
+.footer_content {
+    width: 800px;
+    /* padding: 40px; */
+}
+
+.footer_text {
+    margin-bottom: 10px;
+}
