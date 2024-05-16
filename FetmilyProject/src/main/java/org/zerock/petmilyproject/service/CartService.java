@@ -15,5 +15,9 @@ public interface CartService {
     public int totalPrice(Long memberId);
     List<ItemDTO> readList(Long memberId);
     List<CartDTO> readList1(Long memberId);
+
+
+    List<CartDTO> readOrderList(Long memberId);
+    List<ItemDTO> readOrderItemList(Long memberId);
 }
 
